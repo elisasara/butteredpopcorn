@@ -1,7 +1,7 @@
-require("dotenv").config();
+require('dotenv').config();
 
-module.exports= 
-{
+module.exports= {
+  
   "development": {
     "username": "root",
     "password": process.env.MySQL_Database_Password,

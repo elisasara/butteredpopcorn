@@ -1,4 +1,5 @@
-import React from "react";
+import React, { Component } from "react";
+
 
 class Home extends Component {
     state = {
@@ -8,7 +9,7 @@ class Home extends Component {
     
 
     render() {
-        (
+    return (
             <div>
                 <h1>Welcome to Buttered Popcorn!</h1>
                 {this.state.user ? (
