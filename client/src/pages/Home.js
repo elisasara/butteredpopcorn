@@ -6,18 +6,18 @@ class Home extends Component {
         user: null
     }
 
-    
+
 
     render() {
-    return (
+        return (
             <div>
-                <h1>Welcome to Buttered Popcorn!</h1>
                 {this.state.user ? (
                     <div>
-                        <h3>You are currently logged in as{this.state.user.username}</h3>
+                        <h1>Welcome to Buttered Popcorn, {this.state.user.firstName}!</h1>
                     </div>
                 ) : (
                         <div>
+                            <h1>Welcome to Buttered Popcorn!</h1>
                             <a href="/register"><h3>Create an Account</h3></a>
                             <a href="/login"><h3>Log In</h3></a>
                         </div>)
