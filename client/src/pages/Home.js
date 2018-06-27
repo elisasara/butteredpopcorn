@@ -1,12 +1,23 @@
 import React, { Component } from "react";
-
+import API from "../utils/API";
 
 class Home extends Component {
     state = {
         user: null
     }
 
+    componentDidMount() {
+        this.getUser();
+    }
 
+    getUser =( ) => {
+        API.getUser()
+        .then(res => {
+            console.log("res:", res);
+            this.setState(res.data);
+        })
+        .catch(err => console.log(err));
+    }
 
     render() {
         return (
