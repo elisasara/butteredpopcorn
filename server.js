@@ -29,6 +29,7 @@ app.use(passport.session());
 
 require("./routes/auth-api-routes.js")(app, passport, db.User);
 require("./routes/auth.js")(app, passport);
+require("./routes/movie-api-routes")(app);
 
 
 //load passport strategies
