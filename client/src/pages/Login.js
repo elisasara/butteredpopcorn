@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import API from "../utils/API";
 
 class Login extends Component {
     state = {
@@ -6,7 +7,7 @@ class Login extends Component {
         password: ""
     }
 
-    handleInputChange = () => {
+    handleInputChange = event => {
         const { name, value } = event.target
         this.setState({
             [name]: value
@@ -31,14 +32,14 @@ class Login extends Component {
         return (
             <div>
                 {/* Why was this just "/login" on example? */}
-                <form action="/auth/login" method="post">
+                <form action="/login" method="post">
                     <div className="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" className="form-control" id="email" placeholder="Email" value={this.state.email} onChange={this.handleInputChange} />
+                        <label htmlFor="email">Email</label>
+                        <input type="email" className="form-control" id="email" name="email" placeholder="Email" value={this.state.email} onChange={this.handleInputChange} />
                     </div>
                     <div className="form-group">
-                        <label for="password">Password</label>
-                        <input type="password" className="form-control" id="password" placeholder="Password" value={this.state.value} onChange={this.handleInputChange} />
+                        <label htmlFor="password">Password</label>
+                        <input type="password" className="form-control" id="password" name="password" placeholder="Password" value={this.state.value} onChange={this.handleInputChange} />
                     </div>
                     <button type="submit" className="btn btn-primary" onClick={this.handleSubmit}>Login</button>
                 </form>

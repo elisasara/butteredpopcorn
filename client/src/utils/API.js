@@ -9,7 +9,7 @@ export default {
        return axios.post("/auth/login", loginData);
     },
 
-    registerUser: function (registerdata) {
+    registerUser: function (registerData) {
         return axios.post("/auth/register", registerData);
     }
 };

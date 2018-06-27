@@ -1,10 +1,12 @@
 const express = require("express");
 const path = require("path");
-const passport = require("passsport");
+const passport = require("passport");
 const bodyParser = require("body-parser");
 const session = require("express-session");
 const PORT = process.env.PORT || 3001;
 const app = express();
+const LocalStrategy = require('passport-local').Strategy;
+// const passportLocalSequelize = require("passport-local-sequelize");
 
 const db = require("./models");
 // const apiRoutes = require("./routes/apiRoutes");
@@ -18,12 +20,21 @@ if (process.env.NODE_ENV === "production") {
 }
 
 // Initialize Passport
-app.use(session({ secret: "keyboard cat", resave: true, saveUninitialized: true}));
+app.use(session({ secret: "keyboard cat", resave: false, saveUninitialized: false}));
 app.use(passport.initialize());
 app.use(passport.session());
 
 // Use apiRoutes
 // app.use("/api", apiRoutes);
+// require("./routes/auth-api-routes")(app);
+// app.use(routes);
+// app.use("./routes/auth");
+
+// passport config
+const User = require('./models/user');
+passport.use(new LocalStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
 // Send every request to the React app
 // Define any API routes before this runs

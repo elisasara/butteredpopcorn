@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import API from "../utils/API";
 
 class Register extends Component {
     state = {
@@ -7,7 +8,7 @@ class Register extends Component {
         password: ""
     }
 
-    handleInputChange = () => {
+    handleInputChange = event => {
         const { name, value } = event.target
         this.setState({
             [name]: value
@@ -31,20 +32,21 @@ class Register extends Component {
 
 
     render() {
+        console.log(this.state.firstName);
         return (
             <div>
-                <form action="/auth/register" method="post">
+                <form action="/register" method="post">
                     <div className="form-group">
-                        <label for="firstName">First Name</label>
-                        <input type="text" className="form-control" id="firstName" placeholder="First Name" value={this.state.firstName} onChange={this.handleInputChange} />
+                        <label htmlFor="firstName">First Name</label>
+                        <input type="text" className="form-control" id="firstName" placeholder="First Name" name="firstName" value={this.state.firstName} onChange={this.handleInputChange} />
                     </div>
                     <div className="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" className="form-control" id="email" placeholder="Email" value={this.state.email} onChange={this.handleInputChange} />
+                        <label htmlFor="email">Email</label>
+                        <input type="email" className="form-control" id="email" placeholder="Email" name="email" value={this.state.email} onChange={this.handleInputChange} />
                     </div>
                     <div className="form-group">
-                        <label for="password">Password</label>
-                        <input type="password" className="form-control" id="password" placeholder="Password" value={this.state.password} onChange={this.handleInputChange} />
+                        <label htmlFor="password">Password</label>
+                        <input type="password" className="form-control" id="password" placeholder="Password" name="password" value={this.state.password} onChange={this.handleInputChange} />
                     </div>
                     <button type="submit" className="btn btn-primary" onClick={this.registerUser}>Create Account</button>
                 </form>
