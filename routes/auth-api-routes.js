@@ -3,6 +3,8 @@ const passport = require('passport');
 const User = require('../models/user');
 const router = express.Router();
 
+module.exports = function(router, passport, User) {
+
 router.get("/auth/check", function (req, res){
     if (req.user) {
        res.json({user: req.user});
@@ -27,3 +29,4 @@ router.post("/auth/register", function(req, res) {
         };
     });
 });
+};
