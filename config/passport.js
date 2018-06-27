@@ -23,7 +23,7 @@ module.exports = function(passport, user) {
 
     // LOCAL SIGNUP
     passport.use("local-signup", new LocalStrategy({
-        firstNameField: "firstName",
+        firstName: "firstName",
         usernameField: "email",
         passwordField: "password",
         passReqToCallback: true // allows us to pass back the entire request to the callback
@@ -47,10 +47,9 @@ module.exports = function(passport, user) {
                 var userPassword = generateHash(password);
                 var data =
                     {
+                        firstName: req.body.firstName,
                         email: email,
                         password: userPassword,
-                        firstname: req.body.firstname,
-                        lastname: req.body.lastname
                     };
                 User.create(data).then(function(newUser, created) {
                     if (!newUser) {
