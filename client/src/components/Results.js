@@ -2,7 +2,13 @@ import React from "react";
 
 const Results = props => (
     <div>
-        <h4>{this.props.title}</h4>
+        {props.results.map(movie => (
+            <div className="row">
+                <h3>{movie.title}</h3>
+                <h4>{movie.media_type}</h4>
+                <p>{movie.overview}</p>
+            </div>
+        ))}
     </div>
 )
 

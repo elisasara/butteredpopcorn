@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+// import movieAPI from "../utils/movieAPI";
 
 // all of this logic will eventually need to be moved into app.js
 // these methods will be passed down as props into the header component
@@ -49,8 +50,8 @@ const Header = props => (
         <a className="navbar-brand" href="/">Buttered Popcorn</a>
         <form className="form-inline">
             <input className="form-control mr-sm-2" type="search" placeholder="Search" name="search" value={props.search} onChange={props.handleInputChange} />
-            <button className="btn btn-success my-2 my-sm-0" onClick={props.handleSubmit}> Search
-                    </button>
+            <a href="/search"><button className="btn btn-success my-2 my-sm-0" onClick={props.handleSubmit}> Search
+                    </button></a>
         </form>
         <a className="navbar-text" href="#">Log In/Register</a>
     </nav>
