@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
-
 // import movieAPI from "../utils/movieAPI";
 
 // all of this logic will eventually need to be moved into app.js

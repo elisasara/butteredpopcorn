@@ -1,15 +1,12 @@
 import React from "react";
 
 const Results = props => (
-    <div>
-        {props.results.map(movie => (
-            <div className="row">
-                <h3>{movie.title}</h3>
-                <h4>{movie.media_type}</h4>
-                <p>{movie.overview}</p>
-            </div>
-        ))}
+    <div className="row">
+        <h3>{props.title}</h3>
+        <h4>{props.media}</h4>
+        <p>{props.overview}</p>
     </div>
+
 )
 
 export default Results;

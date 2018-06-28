@@ -8,6 +8,7 @@ import Register from "./pages/Register";
 import NoMatch from "./pages/NoMatch";
 import movieAPI from "./utils/movieAPI";
 import DisplayResults from "./components/DisplayResults";
+import Results from "./components/Results";
 
 
 class App extends Component {
@@ -31,7 +32,7 @@ class App extends Component {
     movieAPI.searchFor(search)
       .then(res => {
         this.setState({
-          results: res
+          results: res.data
         })
         console.log(this.state.results);
       })
@@ -45,17 +46,26 @@ class App extends Component {
           search={this.state.search}
           handleInputChange={this.handleInputChange}
           handleSubmit={this.handleSubmit} />
-        <Router>
-          <div className="container">
-            <Switch>
-              <Route exact path="/" component={Home} />
-              <Route exact path="/login" component={Login} />
-              <Route exact path="/register" component={Register} />
-              <Route exact path="/search" render={(props) => <DisplayResults results={this.state.results} />} />
-              <Route component={NoMatch} />
-            </Switch>
-          </div>
-        </Router>
+        {this.state.results.length ? 
+        (<DisplayResults>
+          {this.state.results.map(title => (
+            <Results
+            title={title.title}
+            media={title.media_type}
+            overview={title.overview} />
+          ))}
+          </DisplayResults>) :
+          (<Router>
+            <div className="container">
+              <Switch>
+                <Route exact path="/" component={Home} />
+                <Route exact path="/login" component={Login} />
+                <Route exact path="/register" component={Register} />
+                {/* <Route exact path="/search" render={(props) => <DisplayResults results={this.state.results} />} /> */}
+                <Route component={NoMatch} />
+              </Switch>
+            </div>
+          </Router>)}
       </div>
 
     );
