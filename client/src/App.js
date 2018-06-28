@@ -50,7 +50,8 @@ class App extends Component {
         (<DisplayResults>
           {this.state.results.map(title => (
             <Results
-            title={title.title}
+            showTitle={title.name}
+            movieTitle={title.title}
             media={title.media_type}
             overview={title.overview} />
           ))}
