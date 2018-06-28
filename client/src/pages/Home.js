@@ -3,7 +3,9 @@ import API from "../utils/API";
 
 class Home extends Component {
     state = {
-        user: null
+        user: null,
+        search: "",
+        results: []
     }
 
     componentDidMount() {
