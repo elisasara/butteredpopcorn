@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const axios = require("axios");
-const CircularJSON = require("circular-json");
+// const CircularJSON = require("circular-json");
 require("dotenv").config();
 
 const APIKey = process.env.TMDB_API_Key
