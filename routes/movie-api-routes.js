@@ -15,7 +15,9 @@ module.exports = function (router) {
             // .then(({ data: { results } }) =>
             .then((results) => {
             // const data =  CircularJSON.stringify(results);
-            res.json(results)})
+            const data = results.data.results;
+            console.log(data);
+            res.json(data)})
             .catch(err => { console.log(err); res.end() });
     });
 }; 
