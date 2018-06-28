@@ -16,10 +16,11 @@ module.exports = function (router) {
         // console.log({params: req.query, api_key:APIKey});
         // axios.get("https://api.themoviedb.org/3/search/multi?", { params: req.query, api_key: APIKey })
         // axios.get(`https://api.themoviedb.org/3/search/multi?api_key${APIKey}&query=${req.params.search}`)
-        axios.get(`https://api.themoviedb.org/3/search/multi?api_key${APIKey}&query=${searchTerm}`)
-            .then(({ data: { results } }) =>
+        axios.get(`https://api.themoviedb.org/3/search/multi?api_key=${APIKey}&query=${searchTerm}`)
+            // .then(({ data: { results } }) =>
+            .then((results) =>
                 res.json(results))
-            .catch(err => res.status(422).json(err));
+            .catch(err => {console.log(err); res.end()});
     });
 
 }; 
