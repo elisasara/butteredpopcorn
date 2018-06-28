@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import movieAPI from "../utils/movieAPI";
 
 // all of this logic will eventually need to be moved into app.js
 // these methods will be passed down as props into the header component

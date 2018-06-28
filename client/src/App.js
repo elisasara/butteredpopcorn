@@ -7,6 +7,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import NoMatch from "./pages/NoMatch";
 import movieAPI from "./utils/movieAPI";
+import DisplayResults from "./components/DisplayResults";
 
 
 class App extends Component {
@@ -48,6 +49,7 @@ class App extends Component {
               <Route exact path="/" component={Home} />
               <Route exact path="/login" component={Login} />
               <Route exact path="/register" component={Register} />
+              <Route exact path="/search/:searchTerm" component={DisplayResults} />
               <Route component={NoMatch} />
             </Switch>
           </div>
