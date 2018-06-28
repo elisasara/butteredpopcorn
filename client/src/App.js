@@ -6,13 +6,42 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import NoMatch from "./pages/NoMatch";
+import movieAPI from "./utils/movieAPI";
 
 
 class App extends Component {
+  state = {
+    user: null,
+    search: "",
+    results: []
+  }
+
+  handleInputChange = event => {
+    const { name, value } = event.target;
+    this.setState({
+      [name]: value
+    });
+  };
+
+  handleSubmit = event => {
+    event.preventDefault();
+    const search = encodeURI(this.state.search);
+    console.log(search);
+    movieAPI.searchFor(search)
+      .then(res => this.setState({
+        results: res.data
+      }))
+      .catch(err => console.log(err));
+    (console.log(this.state));
+  };
+
   render() {
     return (
       <div>
-        <Header />
+        <Header
+          search={this.state.search}
+          handleInputChange={this.handleInputChange}
+          handleSubmit={this.handleSubmit} />
         <Router>
           <div className="container">
             <Switch>

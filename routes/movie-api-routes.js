@@ -17,5 +17,4 @@ module.exports = function (router) {
                 res.json(results))
             .catch(err => {console.log(err); res.end()});
     });
-
 }; 
