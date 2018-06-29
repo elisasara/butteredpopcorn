@@ -5,13 +5,7 @@ import React from "react";
 
 const InfoPage = props => (
     <div>
-        <div>
-            {props.children}
-            {/* this div goes to the left */}
-        </div>
-        <div>
-            this div goes to the right
-        </div>
+        {props.children}
     </div>
 )
 
