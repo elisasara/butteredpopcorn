@@ -16,7 +16,8 @@ class App extends Component {
   state = {
     user: null,
     search: "",
-    results: []
+    results: [],
+    info: {}
   }
 
   handleInputChange = event => {
@@ -40,6 +41,35 @@ class App extends Component {
       .catch(err => console.log(err));
   };
 
+  searchTitle = (id, type) => {
+    const idToUse = id;
+    const mediaType = type;
+    console.log("id", idToUse);
+    console.log("media:", mediaType);
+
+    if (mediaType === "movie") {
+      movieAPI.searchMovie(idToUse)
+        .then(res => {
+          this.setState({
+            info: res.data
+          });
+          console.log(this.state.info);
+        })
+        .catch(err => console.log(err));
+    };
+
+    if (mediaType === "tv") {
+      movieAPI.searchTV(id)
+        .then(res => {
+          this.setState({
+            info: res.data
+          });
+          console.log(this.state.info);
+        })
+        .catch(err => console.log(err));
+    };
+  };
+
   render() {
     return (
       <div>
@@ -47,31 +77,33 @@ class App extends Component {
           search={this.state.search}
           handleInputChange={this.handleInputChange}
           handleSubmit={this.handleSubmit} />
-        {this.state.results.length ? 
-        (<DisplayResults>
-          {this.state.results.map(title => (
-            <Results
-            key={title.id}
-            id={title.id}
-            showTitle={title.name}
-            movieTitle={title.title}
-            media={title.media_type}
-            overview={title.overview} />
-          ))}
+        {this.state.results.length ?
+          (<DisplayResults>
+            {this.state.results.map(title => (
+              <Results
+                key={title.id}
+                id={title.id}
+                showTitle={title.name}
+                movieTitle={title.title}
+                media={title.media_type}
+                overview={title.overview}
+                searchTitle={this.searchTitle}
+              />
+            ))}
           </DisplayResults>) :
           (
-          <Router>
-            <div className="container">
-              <Switch>
-                <Route exact path="/" component={Home} />
-                <Route exact path="/login" component={Login} />
-                <Route exact path="/register" component={Register} />
-                {/* <Route exact path="/search" render={(props) => <DisplayResults results={this.state.results} />} /> */}
-                {/* <Route exact path="/info/title" component={InfoPage} /> */}
-                <Route component={NoMatch} />
-              </Switch>
-            </div>
-          </Router>)}
+            <Router>
+              <div className="container">
+                <Switch>
+                  <Route exact path="/" component={Home} />
+                  <Route exact path="/login" component={Login} />
+                  <Route exact path="/register" component={Register} />
+                  {/* <Route exact path="/search" render={(props) => <DisplayResults results={this.state.results} />} /> */}
+                  {/* <Route exact path="/info/title" component={InfoPage} /> */}
+                  <Route component={NoMatch} />
+                </Switch>
+              </div>
+            </Router>)}
       </div>
 
     );
