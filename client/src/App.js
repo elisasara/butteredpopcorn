@@ -99,7 +99,12 @@ class App extends Component {
                   <Route exact path="/login" component={Login} />
                   <Route exact path="/register" component={Register} />
                   {/* <Route exact path="/search" render={(props) => <DisplayResults results={this.state.results} />} /> */}
-                  {/* <Route exact path="/info/title" component={InfoPage} /> */}
+                  <Route exact path="/info"
+                    render={(props) =>
+                      <InfoPage
+                        info={this.state.info}
+                      />}
+                  />
                   <Route component={NoMatch} />
                 </Switch>
               </div>
