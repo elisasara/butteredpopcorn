@@ -9,6 +9,7 @@ import NoMatch from "./pages/NoMatch";
 import movieAPI from "./utils/movieAPI";
 import DisplayResults from "./components/DisplayResults";
 import Results from "./components/Results";
+// import InfoPage from "./components/InfoPage";
 
 
 class App extends Component {
@@ -50,19 +51,23 @@ class App extends Component {
         (<DisplayResults>
           {this.state.results.map(title => (
             <Results
+            key={title.id}
+            id={title.id}
             showTitle={title.name}
             movieTitle={title.title}
             media={title.media_type}
             overview={title.overview} />
           ))}
           </DisplayResults>) :
-          (<Router>
+          (
+          <Router>
             <div className="container">
               <Switch>
                 <Route exact path="/" component={Home} />
                 <Route exact path="/login" component={Login} />
                 <Route exact path="/register" component={Register} />
                 {/* <Route exact path="/search" render={(props) => <DisplayResults results={this.state.results} />} /> */}
+                {/* <Route exact path="/info/title" component={InfoPage} /> */}
                 <Route component={NoMatch} />
               </Switch>
             </div>

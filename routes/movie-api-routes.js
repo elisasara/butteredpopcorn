@@ -20,4 +20,26 @@ module.exports = function (router) {
             res.json(data)})
             .catch(err => { console.log(err); res.end() });
     });
+
+    router.get("/api/findmovie/:id", (req, res) => {
+        const id = req.params.id;
+        console.log("id for search: ", id);
+        axios.get(`https://api.themoviedb.org/3/movie/${id}?api_key=${APIKey}`)
+        .then(results => {
+            console.log(results.data);
+            res.json(results.data);
+        })
+        .catch(err => {console.log(err); res.end()});
+    });
+
+    router.get("/api/findtv/:id", (req, res) => {
+        const id = req.params.id;
+        console.log("id for search: ", id);
+        axios.get(`https://api.themoviedb.org/3/tv/${id}?api_key=${APIKey}`)
+        .then(results => {
+            console.log(results.data);
+            res.json(results.data);
+        })
+        .catch(err => {console.log(err); res.end()});
+    });
 }; 
