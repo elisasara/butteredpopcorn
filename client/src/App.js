@@ -9,7 +9,8 @@ import NoMatch from "./pages/NoMatch";
 import movieAPI from "./utils/movieAPI";
 import DisplayResults from "./components/DisplayResults";
 import Results from "./components/Results";
-// import InfoPage from "./components/InfoPage";
+import InfoPage from "./pages/InfoPage";
+import MovieInfo from "./components/MovieInfo";
 
 
 class App extends Component {
@@ -100,10 +101,11 @@ class App extends Component {
                   <Route exact path="/register" component={Register} />
                   {/* <Route exact path="/search" render={(props) => <DisplayResults results={this.state.results} />} /> */}
                   <Route exact path="/info"
-                    render={(props) =>
-                      <InfoPage
-                        info={this.state.info}
-                      />}
+                    render={(props) => (
+                      <InfoPage>
+                        <MovieInfo info={this.state.info} />
+                      </InfoPage>
+                    )}
                   />
                   <Route component={NoMatch} />
                 </Switch>

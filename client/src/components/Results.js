@@ -63,8 +63,8 @@ const Results = props => (
     <div className="row" id={props.id}>
         <div>
         {props.showTitle ? 
-        (<h3 onClick={() => props.searchTitle(props.id, props.media)}>{props.showTitle}</h3>) :
-        (<h3 onClick={() => props.searchTitle(props.id, props.media)}>{props.movieTitle}</h3>)}
+        (<a href="/info"><h3 onClick={() => props.searchTitle(props.id, props.media)}>{props.showTitle}</h3></a>) :
+        (<a href="/info"><h3 onClick={() => props.searchTitle(props.id, props.media)}>{props.movieTitle}</h3></a>)}
         </div>
         <div>
         <h4>{props.media}</h4>
