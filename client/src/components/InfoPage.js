@@ -9,21 +9,21 @@ class InfoPage extends Component {
         info: {}
     }
 
-    componentDidMount (){
+    componentDidMount() {
         movieAPI.searchMovie(this.props.match.params.id)
-        .then(res => {
-            this.setState({
-                info: res.data,
-            });
-            console.log(this.state.info);
-        })
-        .catch(err => console.log(err));
+            .then(res => {
+                this.setState({
+                    info: res.data,
+                });
+                console.log(this.state.info);
+            })
+            .catch(err => console.log(err));
     }
 
-    render (){
-        return(
+    render() {
+        return (
             <div>
-            <MovieInfo info={this.state.info} />
+                <MovieInfo info={this.state.info} />
             </div>
         )
     }

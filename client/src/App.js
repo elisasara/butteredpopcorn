@@ -6,7 +6,7 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import NoMatch from "./pages/NoMatch";
-import Search from "./pages/Search";
+// import Search from "./pages/Search";
 // import movieAPI from "./utils/movieAPI";
 // import DisplayResults from "./components/DisplayResults";
 // import Results from "./components/Results";
