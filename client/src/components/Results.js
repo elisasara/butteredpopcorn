@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import movieAPI from "../utils/movieAPI";
-import InfoPage from "../pages/InfoPage";
+import InfoPage from "./InfoPage";
 import MovieInfo from "./MovieInfo";
 
 

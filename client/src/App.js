@@ -6,10 +6,10 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import NoMatch from "./pages/NoMatch";
-import movieAPI from "./utils/movieAPI";
+// import movieAPI from "./utils/movieAPI";
 import DisplayResults from "./components/DisplayResults";
-import Results from "./components/Results";
-// import InfoPage from "./pages/InfoPage";
+// import Results from "./components/Results";
+// import InfoPage from "./components/InfoPage";
 // import MovieInfo from "./components/MovieInfo";
 
 
@@ -21,26 +21,26 @@ class App extends Component {
     // info: {}
   }
 
-  handleInputChange = event => {
-    const { name, value } = event.target;
-    this.setState({
-      [name]: value
-    });
-  };
+  // handleInputChange = event => {
+  //   const { name, value } = event.target;
+  //   this.setState({
+  //     [name]: value
+  //   });
+  // };
 
-  handleSubmit = event => {
-    event.preventDefault();
-    const search = this.state.search;
-    console.log(search);
-    movieAPI.searchFor(search)
-      .then(res => {
-        this.setState({
-          results: res.data
-        })
-        // console.log(this.state.results);
-      })
-      .catch(err => console.log(err));
-  };
+  // handleSubmit = event => {
+  //   event.preventDefault();
+  //   const search = this.state.search;
+  //   console.log(search);
+  //   movieAPI.searchFor(search)
+  //     .then(res => {
+  //       this.setState({
+  //         results: res.data
+  //       })
+  //       // console.log(this.state.results);
+  //     })
+  //     .catch(err => console.log(err));
+  // };
 
   // searchTitle = (id, type) => {
   //   const idToUse = id;
@@ -75,10 +75,12 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Header
+        <Header />
+        {/* <Header
           search={this.state.search}
           handleInputChange={this.handleInputChange}
-          handleSubmit={this.handleSubmit} />
+          handleSubmit={this.handleSubmit} /> */}
+        {/* <Header />
         {this.state.results.length ?
           (<DisplayResults>
             {this.state.results.map(title => (
@@ -93,7 +95,7 @@ class App extends Component {
               />
             ))}
           </DisplayResults>) :
-          (
+          ( */}
             <Router>
               <div className="container">
                 <Switch>
@@ -111,7 +113,8 @@ class App extends Component {
                   <Route component={NoMatch} />
                 </Switch>
               </div>
-            </Router>)}
+            </Router>
+            {/* )} */}
       </div>
 
     );
