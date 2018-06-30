@@ -9,8 +9,8 @@ import NoMatch from "./pages/NoMatch";
 import movieAPI from "./utils/movieAPI";
 import DisplayResults from "./components/DisplayResults";
 import Results from "./components/Results";
-import InfoPage from "./pages/InfoPage";
-import MovieInfo from "./components/MovieInfo";
+// import InfoPage from "./pages/InfoPage";
+// import MovieInfo from "./components/MovieInfo";
 
 
 class App extends Component {
@@ -18,7 +18,7 @@ class App extends Component {
     user: null,
     search: "",
     results: [],
-    info: {}
+    // info: {}
   }
 
   handleInputChange = event => {
@@ -37,39 +37,40 @@ class App extends Component {
         this.setState({
           results: res.data
         })
-        console.log(this.state.results);
+        // console.log(this.state.results);
       })
       .catch(err => console.log(err));
   };
 
-  searchTitle = (id, type) => {
-    const idToUse = id;
-    const mediaType = type;
-    console.log("id", idToUse);
-    console.log("media:", mediaType);
+  // searchTitle = (id, type) => {
+  //   const idToUse = id;
+  //   const mediaType = type;
+  //   console.log("id", idToUse);
+  //   console.log("media:", mediaType);
 
-    if (mediaType === "movie") {
-      movieAPI.searchMovie(idToUse)
-        .then(res => {
-          this.setState({
-            info: res.data
-          });
-          console.log(this.state.info);
-        })
-        .catch(err => console.log(err));
-    };
+  //   if (mediaType === "movie") {
+  //     movieAPI.searchMovie(idToUse)
+  //       .then(res => {
+  //         console.log("res.data: ", res.data);
+  //         this.setState({
+  //           info: res.data
+  //         });
+  //         console.log(this.state.info);
+  //       })
+  //       .catch(err => console.log(err));
+  //   };
 
-    if (mediaType === "tv") {
-      movieAPI.searchTV(id)
-        .then(res => {
-          this.setState({
-            info: res.data
-          });
-          console.log(this.state.info);
-        })
-        .catch(err => console.log(err));
-    };
-  };
+  //   if (mediaType === "tv") {
+  //     movieAPI.searchTV(id)
+  //       .then(res => {
+  //         this.setState({
+  //           info: res.data
+  //         });
+  //         console.log(this.state.info);
+  //       })
+  //       .catch(err => console.log(err));
+  //   };
+  // };
 
   render() {
     return (
@@ -100,13 +101,13 @@ class App extends Component {
                   <Route exact path="/login" component={Login} />
                   <Route exact path="/register" component={Register} />
                   {/* <Route exact path="/search" render={(props) => <DisplayResults results={this.state.results} />} /> */}
-                  <Route exact path="/info"
-                    render={(props) => (
+                  {/* <Route exact path="/info"
+                    render={(props) => 
                       <InfoPage>
                         <MovieInfo info={this.state.info} />
                       </InfoPage>
-                    )}
-                  />
+                    }
+                  /> */}
                   <Route component={NoMatch} />
                 </Switch>
               </div>

@@ -3,10 +3,13 @@ import React from "react";
 
 
 
-const InfoPage = props => (
+const InfoPage = props =>{ 
+    console.log("infopage: ", props.children);
+return (
     <div>
         {props.children}
     </div>
 )
+}
 
 export default InfoPage;
