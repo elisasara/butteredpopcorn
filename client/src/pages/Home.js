@@ -46,23 +46,25 @@ import movieAPI from "../utils/movieAPI";
 
 class Home extends Component {
     state = {
-        user: null,
+        // user: null,
         search: "",
         results: []
     }
 
-    componentDidMount() {
-        this.getUser();
-    }
+    // componentDidMount() {
+    //     this.getUser();
+    // }
 
-    getUser = () => {
-        API.getUser()
-            .then(res => {
-                console.log("res:", res);
-                this.setState(res);
-            })
-            .catch(err => console.log(err));
-    }
+    // getUser = () => {
+    //     API.getUser()
+    //         .then(res => {
+    //             console.log("res:", res);
+    //             this.setState({
+    //                 user: res
+    //             });
+    //         })
+    //         .catch(err => console.log(err));
+    // }
 
     handleInputChange = event => {
         const { name, value } = event.target;
@@ -96,6 +98,7 @@ class Home extends Component {
                     <DisplayResults>
                         {this.state.results.map(title => (
                             <Results
+                                // userId={this.state.user.firstName}
                                 key={title.id}
                                 id={title.id}
                                 showTitle={title.name}
@@ -109,6 +112,18 @@ class Home extends Component {
                 </div>
             )
         }
+        // if (this.state.user) {
+        //     return (
+        //         <div>
+        //             <Header
+        //                 search={this.state.search}
+        //                 handleInputChange={this.handleInputChange}
+        //                 handleSubmit={this.handleSubmit} />
+        //             <h1>Welcome to Buttered Popcorn,!</h1>
+        //         </div>
+        //     )
+        // }
+
         else {
             return (
                 <div>
@@ -116,21 +131,33 @@ class Home extends Component {
                         search={this.state.search}
                         handleInputChange={this.handleInputChange}
                         handleSubmit={this.handleSubmit} />
-                    {this.state.user ? (
-                        <div>
-                            <h1>Welcome to Buttered Popcorn, {this.state.user.firstName}!</h1>
-                        </div>
-                    ) : (
-                            <div>
-                                <h1>Welcome to Buttered Popcorn!</h1>
-                                <a href="/register"><h3>Create an Account</h3></a>
-                                <a href="/login"><h3>Log In</h3></a>
-                            </div>)
-                    }
+                    <h1>Welcome to Buttered Popcorn!</h1>
                 </div>
             )
         }
+
+        // return (
+        //     <div>
+        //         <Header
+        //             search={this.state.search}
+        //             handleInputChange={this.handleInputChange}
+        //             handleSubmit={this.handleSubmit} />
+        //         {this.state.user ? (
+        //             <div>
+        //                 <h1>Welcome to Buttered Popcorn... </h1>
+        //                 {/* <h1>Welcome to Buttered Popcorn, {this.state.user.data.user.firstName}!</h1> */}
+        //             </div>
+        //         ) : (
+        //                 <div>
+        //                     <h1>Welcome to Buttered Popcorn!</h1>
+        //                     <a href="/register"><h3>Create an Account</h3></a>
+        //                     <a href="/login"><h3>Log In</h3></a>
+        //                 </div>)
+        //         }
+        //     </div>
+        // )
     }
 }
+
 
 export default Home;

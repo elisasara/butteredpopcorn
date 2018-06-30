@@ -10,8 +10,9 @@ import NoMatch from "./pages/NoMatch";
 // import movieAPI from "./utils/movieAPI";
 // import DisplayResults from "./components/DisplayResults";
 // import Results from "./components/Results";
-import InfoPage from './components/InfoPage';
+import InfoPage from "./components/InfoPage";
 // import MovieInfo from "./components/MovieInfo";
+import API from "./utils/API";
 
 
 // class App extends Component {
@@ -130,9 +131,22 @@ import InfoPage from './components/InfoPage';
 class App extends Component {
   state = {
     user: null,
-    search: "",
-    results: []
   }
+
+  componentDidMount() {
+    this.getUser();
+}
+
+getUser = () => {
+    API.getUser()
+        .then(res => {
+            console.log("res:", res);
+            this.setState({
+                user: res
+            });
+        })
+        .catch(err => console.log(err));
+}
 
   render() {
     return (
