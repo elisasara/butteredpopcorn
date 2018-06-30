@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import MovieInfo from "./MovieInfo";
 import movieAPI from "../utils/movieAPI";
 import API from "../utils/API";
+import DBInfo from "./DBInfo";
 
 // import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
@@ -43,6 +44,7 @@ class InfoPage extends Component {
         return (
             <div>
                 <MovieInfo info={this.state.info} />
+                <DBInfo title={this.state.info.title} tmdbId={this.state.info.id} />
             </div>
         )
     }

@@ -10,15 +10,17 @@ const MovieInfo = props => {
     const releaseDate = props.info.release_date;
     console.log("release date: ", releaseDate);
     return (
-        <div className="container">
-            <div className="row">
-                <div className="col-md-4">
-                    <img src={imageURL} alt="poster" />
-                </div>
-                <div className="col-md-4">
-                    <h3>{name}</h3>
-                    <p className="font-italic">{releaseDate}</p>
-                    <p>{overview}</p>
+        <div className="col-md-8">
+            <div className="container">
+                <div className="row">
+                    <div className="col-md-4">
+                        <img src={imageURL} alt="poster" />
+                    </div>
+                    <div className="col-md-4">
+                        <h3>{name}</h3>
+                        <p className="font-italic">{releaseDate}</p>
+                        <p>{overview}</p>
+                    </div>
                 </div>
             </div>
         </div>
