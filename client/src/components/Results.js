@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import movieAPI from "../utils/movieAPI";
-import InfoPage from "./InfoPage";
-import MovieInfo from "./MovieInfo";
+// import InfoPage from "./InfoPage";
+// import MovieInfo from "./MovieInfo";
 
 
 class Results extends Component {
@@ -42,31 +42,41 @@ class Results extends Component {
     render() {
         return (
             <div>
-                {!this.state.info ? (
                     <div className="row" id={this.props.id}>
                         <div>
                             {this.props.showTitle ? (
-                                <h3 onClick={this.searchTitle}>{this.props.showTitle}</h3>
+                                <h3 onClick={this.props.searchTitle}>{this.props.showTitle}</h3>
                             ) : (
-                                    <h3 onClick={this.searchTitle}>{this.props.movieTitle}</h3>
+                                    <h3 onClick={this.props.searchTitle}>{this.props.movieTitle}</h3>
                                 )}
                         </div>
                         <div>
                             <h4>{this.props.media}</h4>
                             <p>{this.props.overview}</p>
                         </div>
-                    </div>) : (
-                        <div>
-                            <InfoPage>
-                                <MovieInfo info={this.state.info} />
-                            </InfoPage>
-                        </div>
-                    )
-                }
+                    </div>
             </div>
         )
     }
 }
+
+// const Results = props => (
+//             <div>
+//                     <div className="row" id={this.props.id}>
+//                         <div>
+//                             {this.props.showTitle ? (
+//                                 <h3 onClick={this.props.searchTitle}>{this.props.showTitle}</h3>
+//                             ) : (
+//                                     <h3 onClick={this.props.searchTitle}>{this.props.movieTitle}</h3>
+//                                 )}
+//                         </div>
+//                         <div>
+//                             <h4>{this.props.media}</h4>
+//                             <p>{this.props.overview}</p>
+//                         </div>
+//                     </div>
+//             </div>
+//         )
 
 
 
