@@ -7,4 +7,5 @@ const DisplayResults = props => (
     </div>
 )
 
+
 export default DisplayResults;

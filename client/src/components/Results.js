@@ -1,12 +1,15 @@
 import React, { Component } from "react";
 import movieAPI from "../utils/movieAPI";
+import { Link } from "react-router-dom";
+
 // import InfoPage from "./InfoPage";
 // import MovieInfo from "./MovieInfo";
 
 
 class Results extends Component {
     state = {
-        info: ""
+        info: {},
+        infoPopulated: false
     }
 
     // function for searching for movie
@@ -20,20 +23,24 @@ class Results extends Component {
             movieAPI.searchMovie(id)
                 .then(res => {
                     this.setState({
-                        info: res.data
+                        info: res.data,
+                        infoPopulated: true
                     });
                     console.log(this.state.info);
+                    console.log(this.state.infoPopulated);
                 })
                 .catch(err => console.log(err));
-        };
+        }
 
-        if (type === "tv") {
+        else if (type === "tv") {
             movieAPI.searchTV(id)
                 .then(res => {
                     this.setState({
-                        info: res.data
+                        info: res.data,
+                        infoPopulated: true
                     });
                     console.log(this.state.info);
+                    console.log(this.state.infoPopulated);
                 })
                 .catch(err => console.log(err));
         };
@@ -42,23 +49,24 @@ class Results extends Component {
     render() {
         return (
             <div>
-                    <div className="row" id={this.props.id}>
-                        <div>
-                            {this.props.showTitle ? (
-                                <h3 onClick={this.props.searchTitle}>{this.props.showTitle}</h3>
-                            ) : (
-                                    <h3 onClick={this.props.searchTitle}>{this.props.movieTitle}</h3>
-                                )}
-                        </div>
-                        <div>
-                            <h4>{this.props.media}</h4>
-                            <p>{this.props.overview}</p>
-                        </div>
+                <div className="row" id={this.props.id}>
+                    <div>
+                        {this.props.showTitle ? (
+                            <Link to={"/search/tv/" + this.props.id}><h3 onClick={this.searchTitle}>{this.props.showTitle}</h3></Link>
+                        ) : (
+                                <Link to={"/search/movie/" + this.props.id}><h3 onClick={this.searchTitle}>{this.props.movieTitle}</h3></Link>
+                            )}
                     </div>
+                    <div>
+                        <h4>{this.props.media}</h4>
+                        <p>{this.props.overview}</p>
+                    </div>
+                </div>
             </div>
         )
     }
-}
+};
+
 
 // const Results = props => (
 //             <div>

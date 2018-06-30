@@ -10,12 +10,9 @@ class Search extends Component {
     state = {
         search: "",
         results: [],
-        info: {}
+        info: {},
+        hasInfo: false
     }
-
-    // componentDidMount() {
-    //     this.findIfInfo(this.state.info);
-    // }
 
     // findIfInfo = () => {
     //     if (this.state.info === {}) {
@@ -60,9 +57,11 @@ class Search extends Component {
             movieAPI.searchMovie(id)
                 .then(res => {
                     this.setState({
-                        info: res.data
+                        info: res.data,
+                        hasInfo: true
                     });
                     console.log(this.state.info);
+                    console.log(this.state.hasInfo);
                 })
                 .catch(err => console.log(err));
         };
@@ -71,9 +70,11 @@ class Search extends Component {
             movieAPI.searchTV(id)
                 .then(res => {
                     this.setState({
-                        info: res.data
+                        info: res.data,
+                        hasInfo: true
                     });
                     console.log(this.state.info);
+                    console.log(this.state.hasInfo);
                 })
                 .catch(err => console.log(err));
         };
@@ -81,7 +82,7 @@ class Search extends Component {
 
 
     render() {
-        if (this.state.info !== {}) {
+        if (this.state.hasInfo) {
             return (
                 <div>
                     <Header
@@ -103,8 +104,8 @@ class Search extends Component {
                         handleInputChange={this.handleInputChange}
                         search={this.state.search}
                     />
-                    <h1>This is what I should be seeing!</h1>
-                    {/* <DisplayResults>
+                    {/* <h1>This is what I should be seeing!</h1> */}
+                    <DisplayResults>
                         {this.state.results.map(title => (
                             <Results
                                 key={title.id}
@@ -116,7 +117,7 @@ class Search extends Component {
                                 searchTitle={this.searchTitle}
                             />
                         ))}
-                    </DisplayResults> */}
+                    </DisplayResults>
                 </div>
             )
         }
