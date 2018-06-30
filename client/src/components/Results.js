@@ -70,17 +70,17 @@ import { Link } from "react-router-dom";
 const Results = props =>
     (
         <div>
-            <div className="row" id={this.props.id}>
+            <div className="row" id={props.id}>
                 <div>
-                    {this.props.showTitle ? (
-                        <Link to={"/search/tv/" + this.props.id}><h3 onClick={this.searchTitle}>{this.props.showTitle}</h3></Link>
+                    {props.showTitle ? (
+                        <Link to={"/search/tv/" + props.id}><h3 onClick={props.searchTitle}>{props.showTitle}</h3></Link>
                     ) : (
-                            <Link to={"/search/movie/" + this.props.id}><h3 onClick={this.searchTitle}>{this.props.movieTitle}</h3></Link>
+                            <Link to={"/search/movie/" + props.id}><h3 onClick={props.searchTitle}>{props.movieTitle}</h3></Link>
                         )}
                 </div>
                 <div>
-                    <h4>{this.props.media}</h4>
-                    <p>{this.props.overview}</p>
+                    <h4>{props.media}</h4>
+                    <p>{props.overview}</p>
                 </div>
             </div>
         </div>
