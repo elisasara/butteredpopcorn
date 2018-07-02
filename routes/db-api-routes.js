@@ -12,21 +12,14 @@ module.exports = function (router) {
         };
         console.log("addToDb: ", addToWant);
         db.WantToWatch.create(addToWant).then(data => {
-            console.log("Data: ", data);
             res.json(data);
         });
-        // db.CurrentlyWatching.findAll({
-        //     where: {
-        //         tmdbID: req.body.movieData.tmdbID,
-        //         UserId: req.user.id
-        //     }
-        // }).then(toBeDeleted => {
         db.CurrentlyWatching.destroy({
             where: {
                 tmdbID: req.body.movieData.tmdbID,
                 UserId: req.user.id
             }
-        }).then(deleted => console.log("This was deleted"));
+        }).then(deleted => console.log("Currently watching deleted"));
     });
 
     router.post("/db/watching", function (req, res) {
@@ -39,6 +32,12 @@ module.exports = function (router) {
         db.CurrentlyWatching.create(addToWatching).then(data => {
             res.json(data);
         });
+        db.WantToWatch.destroy({
+            where: {
+                tmdbID: req.body.movieData.tmdbID,
+                UserId: req.user.id
+            }
+        }).then(deleted => console.log("Want to watch deleted"));
     });
 
     router.post("/db/watched", function (req, res) {
@@ -54,6 +53,18 @@ module.exports = function (router) {
         db.Watched.create(addToWatched).then(data => {
             res.json(data);
         });
+        db.WantToWatch.destroy({
+            where: {
+                tmdbID: req.body.movieData.tmdbID,
+                UserId: req.user.id
+            }
+        }).then(wantDeleted => console.log("Want to watch deleted"));
+        db.CurrentlyWatching.destroy({
+            where: {
+                tmdbID: req.body.movieData.tmdbID,
+                UserId: req.user.id
+            }
+        }).then(watchingDeleted => console.log("Watching deleted"));
     });
 
 };
