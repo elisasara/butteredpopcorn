@@ -6,7 +6,7 @@ const db = require("./models");
 module.exports = function(db, router){
     router.post("/db/want", function(req, res){
         console.log("req.body: ", req.body);
-       db.WantToWatch.creater(req.body).then(function(data){
+       db.WantToWatch.create(req.body).then(function(data){
            res.json(data);
        });
     });
