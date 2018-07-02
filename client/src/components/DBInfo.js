@@ -10,7 +10,7 @@ class DBInfo extends Component {
         // dbAPI.wantToWatch(tmdbId, title)
         dbAPI.wantToWatch({tmdbID: tmdbId, title: title})
             .then(res => {
-                console.log("res: ", res);
+                console.log("Want to Watch added to DB");
             })
             .catch(err => console.log(err));
     };

@@ -8,8 +8,8 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.STRING,
             allowNull: false
         }
-    })
-    WantToWatch.associate = function(models) {
+    });
+    WantToWatch.associate = function (models) {
         WantToWatch.belongsTo(models.User, {
             foreignKey: {
                 allowNull: false

@@ -1,9 +1,9 @@
 const express = require('express');
 const router = express.Router();
 // const axios = require("axios");
-const WantToWatch = require("../models/wantToWatch");
+const db = require("../models");
 
-module.exports = function(router, WantToWatch){
+module.exports = function(router){
     router.post("/db/want", function(req, res){
         // console.log("req.body.tmdbId: ", req.body.movieData.tmdbID);
         // console.log("req.session.userId: ", req.user.id);
@@ -13,7 +13,7 @@ module.exports = function(router, WantToWatch){
            UserId: req.user.id
         };
         console.log("addToDb: ", addToDb);
-       WantToWatch.create(addToDb).then(function(data){
+       db.WantToWatch.create(addToDb).then(data => {
            res.json(data);
        });
     });
