@@ -17,11 +17,15 @@ module.exports= {
     "dialect": "mysql"
   },
   // this will have to change for heroku deployment
-  "production": {
-    "username": "root",
-    "password": process.env.MySQL_Database_Password,
-    "database": "database_production",
-    "host": "127.0.0.1",
-    "dialect": "mysql"
+  // "production": {
+  //   "username": "root",
+  //   "password": process.env.MySQL_Database_Password,
+  //   "database": "database_production",
+  //   "host": "127.0.0.1",
+  //   "dialect": "mysql"
+  // }
+  "producetion": {
+      "use_env_variable": "JAWSDB_URL",
+      "dialect": "mysql"
   }
 }
