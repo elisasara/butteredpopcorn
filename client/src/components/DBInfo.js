@@ -5,10 +5,10 @@ import WantToWatchBtn from "./WantToWatchBtn";
 class DBInfo extends Component {
     state = {}
 
-    wantToWatch = (tmdbId) => {
+    wantToWatch = (tmdbId, title) => {
         console.log("I've been clicked");
-        dbAPI.wantToWatch(tmdbId)
-        // dbAPI.wantToWatch({ userId: userId, tmdbId: tmdbId })
+        // dbAPI.wantToWatch(tmdbId, title)
+        dbAPI.wantToWatch({tmdbID: tmdbId, title: title})
             .then(res => {
                 console.log("res: ", res);
             })
@@ -18,7 +18,7 @@ class DBInfo extends Component {
         return (
             <div className="container">
                 {/* <button onclick={() => this.wantToWatch(this.props.info.id)} className="btn btn-default" type="button">Want to Watch</button> */}
-                <WantToWatchBtn onClick={()=> this.wantToWatch(this.props.tmdbId)} />
+                <WantToWatchBtn onClick={()=> this.wantToWatch(this.props.tmdbId, this.props.title)} />
             </div>
         )
     }

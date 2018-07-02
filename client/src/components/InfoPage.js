@@ -24,14 +24,14 @@ class InfoPage extends Component {
             .catch(err => console.log(err));
 
         // get user info
-        API.getUser()
-            .then(res => {
-                console.log("res:", res);
-                this.setState({
-                    user: res
-                });
-            })
-            .catch(err => console.log(err));
+        // API.getUser()
+        //     .then(res => {
+        //         console.log("res:", res);
+        //         this.setState({
+        //             user: res
+        //         });
+        //     })
+        //     .catch(err => console.log(err));
 
     }
 

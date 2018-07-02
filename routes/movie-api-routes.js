@@ -26,7 +26,7 @@ module.exports = function (router) {
         console.log("id for search: ", id);
         axios.get(`https://api.themoviedb.org/3/movie/${id}?api_key=${APIKey}`)
         .then(results => {
-            console.log("movie info: ", results.data);
+            // console.log("movie info: ", results.data);
             res.json(results.data);
         })
         .catch(err => {console.log(err); res.end()});
@@ -37,7 +37,7 @@ module.exports = function (router) {
         console.log("id for search: ", id);
         axios.get(`https://api.themoviedb.org/3/tv/${id}?api_key=${APIKey}`)
         .then(results => {
-            console.log("tv info: ", results.data);
+            // console.log("tv info: ", results.data);
             res.json(results.data);
         })
         .catch(err => {console.log(err); res.end()});

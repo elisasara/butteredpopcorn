@@ -15,6 +15,7 @@ router.get("/auth/check", function (req, res){
 });
 
 router.post("/auth/login", passport.authenticate("local-signin", {session: true}), function (req, res) {
+    // req.session.userId = res.id;
     res.json(true);
 });
 
@@ -25,6 +26,7 @@ router.post("/auth/register", passport.authenticate("local-signup", {session: tr
         email: req.body.email
     }}).spread(user, created => {
         if (created) {
+            // req.session.userId = res.id;
             res.json(user);
         };
     });
