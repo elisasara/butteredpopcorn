@@ -3,10 +3,17 @@ import dbAPI from "../utils/dbAPI";
 import WantToWatchBtn from "./WantToWatchBtn";
 import WatchingBtn from "./WatchingBtn";
 import WatchedBtn from "./WatchedBtn";
+import Rating from "./Rating";
 
 class DBInfo extends Component {
     // use state to highlight which option was chosen
-    state = {}
+    state = {
+        want: false,
+        watching: false,
+        watched: false,
+        rating: "",
+        visibility: "invisible"
+    }
 
     wantToWatch = (tmdbId, title) => {
         console.log("I've been clicked");
@@ -14,6 +21,12 @@ class DBInfo extends Component {
         dbAPI.wantToWatch({ tmdbID: tmdbId, title: title })
             .then(res => {
                 console.log("Want to Watch added to DB");
+                this.setState({
+                    want: true,
+                    watching: false,
+                    watched: false,
+                    visibility: "invisible"
+                });
             })
             .catch(err => console.log(err));
     };
@@ -24,6 +37,12 @@ class DBInfo extends Component {
         dbAPI.currentlyWatching({ tmdbID: tmdbId, title: title })
             .then(res => {
                 console.log("Watching added to DB");
+                this.setState({
+                    want: false,
+                    watching: true,
+                    watched: false,
+                    visibility: "invisible"
+                });
             })
             .catch(err => console.log(err));
     };
@@ -33,9 +52,20 @@ class DBInfo extends Component {
         dbAPI.watched({ tmdbID: tmdbId, title: title, rating: rating })
             .then(res => {
                 console.log("Watched added to DB");
+                this.setState({
+                    want: false,
+                    watching: false,
+                    watched: true
+                });
             })
             .catch(err => console.log(err));
     };
+
+    showRating = () => {
+        this.setState({
+            visibility: "visible"
+        })
+    }
 
     render() {
         return (
@@ -43,7 +73,9 @@ class DBInfo extends Component {
                 {/* <button onclick={() => this.wantToWatch(this.props.info.id)} className="btn btn-default" type="button">Want to Watch</button> */}
                 <WantToWatchBtn onClick={() => this.wantToWatch(this.props.tmdbId, this.props.title)} />
                 <WatchingBtn onClick={() => this.currentlyWatching(this.props.tmdbId, this.props.title)} />
-                <WatchedBtn onClick={() => this.watched(this.props.tmdbId, this.props.title)} />
+                {/* <WatchedBtn onClick={() => this.watched(this.props.tmdbId, this.props.title)} /> */}
+                <WatchedBtn onClick={this.showRating} />
+                <Rating visibility={this.state.visibility} tmdbID={this.props.tmdbId} title={this.props.title} submitToWatched={this.watched}/>
             </div>
         )
     }
