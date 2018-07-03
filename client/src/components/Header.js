@@ -14,7 +14,7 @@ const Header = props => (
             </Link>
         </form>
         {props.user ? (
-            <span className="navbar-text">Welcome {props.user.user.firstName}</span>
+            <Link to="/profile"><span className="navbar-text">Welcome {props.user.user.firstName}</span></Link>
         ) : (<span className="navbar-text"><a href="/login">Log In</a>/ 
             <a href="/register">Register</a></span>)}
     </nav>
