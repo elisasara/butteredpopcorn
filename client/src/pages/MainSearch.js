@@ -5,75 +5,13 @@ import DisplayResults from "../components/DisplayResults";
 import Results from "../components/Results";
 import movieAPI from "../utils/movieAPI";
 
-// class Home extends Component {
-//     state = {
-//         user: null
-//     }
-
-//     componentDidMount() {
-//         this.getUser();
-//     }
-
-//     getUser =( ) => {
-//         API.getUser()
-//         .then(res => {
-//             console.log("res:", res);
-//             this.setState(res);
-//         })
-//         .catch(err => console.log(err));
-//     }
-
-//     render() {
-//         return (
-//             <div>
-//                 {this.state.user ? (
-//                     <div>
-//                         <h1>Welcome to Buttered Popcorn, {this.state.user.firstName}!</h1>
-//                     </div>
-//                 ) : (
-//                         <div>
-//                             <h1>Welcome to Buttered Popcorn!</h1>
-//                             <a href="/register"><h3>Create an Account</h3></a>
-//                             <a href="/login"><h3>Log In</h3></a>
-//                         </div>)
-//                 }
-//             </div>
-//         )
-//     }
-// }
-
-// export default Home
 
 class MainSearch extends Component {
     state = {
-        // user: null,
-        // search: this.props.match.params.search,
         results: []
     }
 
-    // componentDidMount() {
-    //     this.getUser();
-    // }
-
-    // getUser = () => {
-    //     API.getUser()
-    //         .then(res => {
-    //             console.log("res:", res);
-    //             this.setState({
-    //                 user: res
-    //             });
-    //         })
-    //         .catch(err => console.log(err));
-    // }
-
-    // handleInputChange = event => {
-    //     const { name, value } = event.target;
-    //     this.setState({
-    //         [name]: value
-    //     });
-    // };
-
-    componentDidMount(){
+    componentDidMount() {
         this.handleSubmit();
     }
 
@@ -86,20 +24,14 @@ class MainSearch extends Component {
                 this.setState({
                     results: res.data
                 })
-                // console.log(this.state.results);
             })
             .catch(err => console.log(err));
     };
 
-    // YOU MIGHT NEED TO SEPARATE THIS INTO TWO COMPONENTS
     render() {
         if (this.state.results.length) {
             return (
                 <div>
-                    {/* <Header
-                        search={this.state.search}
-                        handleInputChange={this.handleInputChange}
-                        handleSubmit={this.handleSubmit} /> */}
                     <DisplayResults>
                         {this.state.results.map(title => (
                             <Results
@@ -117,53 +49,13 @@ class MainSearch extends Component {
                 </div>
             )
         }
-        // else if (this.state.user) {
         else {
             return (
                 <div>
-                    {/* <Header
-                        search={this.state.search}
-                        handleInputChange={this.handleInputChange}
-                        handleSubmit={this.handleSubmit} /> */}
-                        <h2>There are no results matching that title</h2>
-                    {/* {this.state.user ? (<h1>Welcome to Buttered Popcorn, {this.state.user.data.user.firstName}!</h1>
-                    ) : (<h1>Welcome to Buttered Popcorn!</h1>)} */}
+                    <h2>There are no results matching that title</h2>
                 </div>
             )
         }
-
-        // else {
-        //     return (
-        //         <div>
-        //             <Header
-        //                 search={this.state.search}
-        //                 handleInputChange={this.handleInputChange}
-        //                 handleSubmit={this.handleSubmit} />
-        //             <h1>Welcome to Buttered Popcorn!</h1>
-        //         </div>
-        //     )
-        // }
-
-        // return (
-        //     <div>
-        //         <Header
-        //             search={this.state.search}
-        //             handleInputChange={this.handleInputChange}
-        //             handleSubmit={this.handleSubmit} />
-        //         {this.state.user ? (
-        //             <div>
-        //                 <h1>Welcome to Buttered Popcorn... </h1>
-        //                 {/* <h1>Welcome to Buttered Popcorn, {this.state.user.data.user.firstName}!</h1> */}
-        //             </div>
-        //         ) : (
-        //                 <div>
-        //                     <h1>Welcome to Buttered Popcorn!</h1>
-        //                     <a href="/register"><h3>Create an Account</h3></a>
-        //                     <a href="/login"><h3>Log In</h3></a>
-        //                 </div>)
-        //         }
-        //     </div>
-        // )
     }
 }
 

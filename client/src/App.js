@@ -73,7 +73,7 @@ class App extends Component {
               <Route exact path="/register" component={Register} />
               <Route exact path="/search/:search" component={MainSearch} />
               <Route exact path="/search/movie/:id" component={InfoPage} />
-              <Route exact path="/search/movie/:id" component={InfoPage} />
+              <Route exact path="/search/tv/:id" component={InfoPage} />
               {/* <Route exact path="/search" component={Search} /> */}
               {/* <Route exact path="/search" render={(props) => <DisplayResults results={this.state.results} />} /> */}
               {/* <Route exact path="/info"
