@@ -46,25 +46,25 @@ import movieAPI from "../utils/movieAPI";
 
 class Home extends Component {
     state = {
-        // user: null,
+        user: null,
         search: "",
         results: []
     }
 
-    // componentDidMount() {
-    //     this.getUser();
-    // }
+    componentDidMount() {
+        this.getUser();
+    }
 
-    // getUser = () => {
-    //     API.getUser()
-    //         .then(res => {
-    //             console.log("res:", res);
-    //             this.setState({
-    //                 user: res
-    //             });
-    //         })
-    //         .catch(err => console.log(err));
-    // }
+    getUser = () => {
+        API.getUser()
+            .then(res => {
+                console.log("res:", res);
+                this.setState({
+                    user: res
+                });
+            })
+            .catch(err => console.log(err));
+    }
 
     handleInputChange = event => {
         const { name, value } = event.target;
@@ -87,6 +87,7 @@ class Home extends Component {
             .catch(err => console.log(err));
     };
 
+    // YOU MIGHT NEED TO SEPARATE THIS INTO TWO COMPONENTS
     render() {
         if (this.state.results.length) {
             return (
@@ -112,18 +113,7 @@ class Home extends Component {
                 </div>
             )
         }
-        // if (this.state.user) {
-        //     return (
-        //         <div>
-        //             <Header
-        //                 search={this.state.search}
-        //                 handleInputChange={this.handleInputChange}
-        //                 handleSubmit={this.handleSubmit} />
-        //             <h1>Welcome to Buttered Popcorn,!</h1>
-        //         </div>
-        //     )
-        // }
-
+        // else if (this.state.user) {
         else {
             return (
                 <div>
@@ -131,10 +121,23 @@ class Home extends Component {
                         search={this.state.search}
                         handleInputChange={this.handleInputChange}
                         handleSubmit={this.handleSubmit} />
-                    <h1>Welcome to Buttered Popcorn!</h1>
+                    {this.state.user ? (<h1>Welcome to Buttered Popcorn, {this.state.user.firstName}!</h1>
+                    ) : (<h1>Welcome to Buttered Popcorn!</h1>)}
                 </div>
             )
         }
+
+        // else {
+        //     return (
+        //         <div>
+        //             <Header
+        //                 search={this.state.search}
+        //                 handleInputChange={this.handleInputChange}
+        //                 handleSubmit={this.handleSubmit} />
+        //             <h1>Welcome to Buttered Popcorn!</h1>
+        //         </div>
+        //     )
+        // }
 
         // return (
         //     <div>
