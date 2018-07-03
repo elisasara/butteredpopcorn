@@ -18,7 +18,7 @@ class MainSearch extends Component {
     handleSubmit = () => {
         // event.preventDefault();
         const search = this.props.match.params.search;
-        console.log(search);
+        // console.log(search);
         movieAPI.searchFor(search)
             .then(res => {
                 this.setState({

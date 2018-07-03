@@ -1,7 +1,7 @@
 import React from "react";
 
 const TvInfo = props => {
-    const id = props.info.id;
+    // const id = props.info.id;
     // console.log("id: ", id);
     const title = props.info.name;
     // console.log("title: ", title);
