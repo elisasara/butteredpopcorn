@@ -63,8 +63,10 @@ const Header = props => (
                     </button>
             </Link>
         </form>
-        <a className="navbar-text" href="/login">Log In</a>
-        <a className="navbar-text" href="/register">Register</a>
+        {props.user ? (
+            <span className="navbar-text">Welcome {props.user.user.firstName}</span>
+        ) : (<span><a className="navbar-text" href="/login">Log In</a>
+            <a className="navbar-text" href="/register">Register</a></span>)}
     </nav>
 )
 
