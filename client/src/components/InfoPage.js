@@ -23,7 +23,7 @@ class InfoPage extends Component {
                         info: res.data,
                         movie: true
                     });
-                    console.log(this.state.info);
+                    // console.log(this.state.info);
                 })
                 .catch(err => console.log(err));
         }
@@ -35,7 +35,7 @@ class InfoPage extends Component {
                         info: res.data,
                         tv: true
                     });
-                    console.log(this.state.info);
+                    // console.log(this.state.info);
                 })
                 .catch(err => console.log(err));
         }

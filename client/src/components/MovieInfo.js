@@ -2,13 +2,13 @@ import React from "react";
 
 const MovieInfo = props => {
     const name = props.info.title;
-    console.log("name: ", name);
+    // console.log("name: ", name);
     const imageURL = `https://image.tmdb.org/t/p/w300/${props.info.poster_path}`;
-    console.log("img URL: ", imageURL);
+    // console.log("img URL: ", imageURL);
     const overview = props.info.overview;
-    console.log("overview: ", overview);
+    // console.log("overview: ", overview);
     const releaseDate = props.info.release_date;
-    console.log("release date: ", releaseDate);
+    // console.log("release date: ", releaseDate);
     return (
         <div className="container">
             <div className="row">

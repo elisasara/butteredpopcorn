@@ -16,7 +16,7 @@ class DBInfo extends Component {
     }
 
     wantToWatch = (tmdbId, title) => {
-        console.log("I've been clicked");
+        // console.log("I've been clicked");
         // dbAPI.wantToWatch(tmdbId, title)
         dbAPI.wantToWatch({ tmdbID: tmdbId, title: title })
             .then(res => {
@@ -33,7 +33,7 @@ class DBInfo extends Component {
     };
 
     currentlyWatching = (tmdbId, title) => {
-        console.log("I've been clicked");
+        // console.log("I've been clicked");
         // dbAPI.wantToWatch(tmdbId, title)
         dbAPI.currentlyWatching({ tmdbID: tmdbId, title: title })
             .then(res => {
@@ -50,7 +50,7 @@ class DBInfo extends Component {
     };
 
     watched = (tmdbId, title, rating) => {
-        console.log("I've been clicked");
+        // console.log("I've been clicked");
         dbAPI.watched({ tmdbID: tmdbId, title: title, rating: rating })
             .then(res => {
                 console.log("Watched added to DB");

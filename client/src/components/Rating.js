@@ -34,22 +34,4 @@ class Rating extends Component {
     }
 }
 
-// const Rating = props => (
-//     <span className={props.visibility}>
-//         <form>
-//             <div className="form-group">
-//                 <label htmlFor="rating">Your Rating:</label>
-//                 <select className="form-control" id="rating">
-//                     <option>1</option>
-//                     <option>2</option>
-//                     <option>3</option>
-//                     <option>4</option>
-//                     <option>5</option>
-//                 </select>
-//             </div>
-//             <button className="btn" onClick={() => props.submitToWatched(props.tmdbId, props.title, this.state.rating)} >Submit</button>
-//         </form>
-//     </span>
-// )
-
 export default Rating;

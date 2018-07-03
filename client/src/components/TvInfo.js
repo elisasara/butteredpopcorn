@@ -2,15 +2,15 @@ import React from "react";
 
 const TvInfo = props => {
     const id = props.info.id;
-    console.log("id: ", id);
+    // console.log("id: ", id);
     const title = props.info.name;
-    console.log("title: ", title);
+    // console.log("title: ", title);
     const seasons = props.info.number_of_seasons;
-    console.log("seasons: ", seasons);
+    // console.log("seasons: ", seasons);
     const overview = props.info.overview;
-    console.log("overview: ", overview);
+    // console.log("overview: ", overview);
     const imageURL = `https://image.tmdb.org/t/p/w300/${props.info.poster_path}`;
-    console.log("imageURL: ", imageURL);
+    // console.log("imageURL: ", imageURL);
     return (<div>
         <div className="container">
             <div className="row">
