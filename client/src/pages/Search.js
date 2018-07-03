@@ -85,11 +85,11 @@ class Search extends Component {
         if (this.state.hasInfo) {
             return (
                 <div>
-                    <Header
+                    {/* <Header
                         handleSubmit={this.handleSubmit}
                         handleInputChange={this.handleInputChange}
                         search={this.state.search}
-                    />
+                    /> */}
                     <InfoPage>
                         <MovieInfo info={this.state.info} />
                     </InfoPage>
@@ -99,11 +99,11 @@ class Search extends Component {
         else {
             return (
                 <div>
-                    <Header
+                    {/* <Header
                         handleSubmit={this.handleSubmit}
                         handleInputChange={this.handleInputChange}
                         search={this.state.search}
-                    />
+                    /> */}
                     {/* <h1>This is what I should be seeing!</h1> */}
                     <DisplayResults>
                         {this.state.results.map(title => (

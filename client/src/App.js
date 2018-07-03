@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import './App.css';
-// import Header from "./components/Header";
+import Header from "./components/Header";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import NoMatch from "./pages/NoMatch";
+import MainSearch from "./pages/MainSearch";
 // import Search from "./pages/Search";
 // import movieAPI from "./utils/movieAPI";
 // import DisplayResults from "./components/DisplayResults";
@@ -131,51 +132,77 @@ import API from "./utils/API";
 class App extends Component {
   state = {
     user: null,
+    search: ""
   }
 
   componentDidMount() {
     this.getUser();
-}
+  }
 
-getUser = () => {
+  getUser = () => {
     API.getUser()
-        .then(res => {
-            console.log("res:", res);
-            this.setState({
-                user: res
-            });
-        })
-        .catch(err => console.log(err));
-}
+      .then(res => {
+        console.log("res:", res);
+        this.setState({
+          user: res
+        });
+      })
+      .catch(err => console.log(err));
+  }
+
+  handleInputChange = event => {
+    const { name, value } = event.target;
+    this.setState({
+      [name]: value
+    });
+  };
+
+  // handleSubmit = event => {
+  //   event.preventDefault();
+  //   const search = this.state.search;
+  //   console.log(search);
+  //   movieAPI.searchFor(search)
+  //     .then(res => {
+  //       this.setState({
+  //         results: res.data
+  //       })
+  //       // console.log(this.state.results);
+  //     })
+  //     .catch(err => console.log(err));
+  // };
 
   render() {
     return (
       <div>
-          <Router>
-            <div className="container">
-              <Switch>
-                <Route exact path="/" component={Home} />
-                <Route exact path="/login" component={Login} />
-                <Route exact path="/register" component={Register} />
-                <Route exact path="/search" component={Home} />
-                <Route exact path="/search/movie/:id" component={InfoPage} />
-                <Route exact path="/search/movie/:id" component={InfoPage} />
-                {/* <Route exact path="/search" component={Search} /> */}
-                {/* <Route exact path="/search" render={(props) => <DisplayResults results={this.state.results} />} /> */}
-                {/* <Route exact path="/info"
+        <Router>
+          <div className="container">
+            <Header
+              search={this.state.search}
+              handleInputChange={this.handleInputChange}
+              handleSubmit={this.handleSubmit} />
+            <Switch>
+              <Route exact path="/" component={Home} />
+              <Route exact path="/login" component={Login} />
+              <Route exact path="/register" component={Register} />
+              <Route exact path="/search/:search" component={MainSearch} />
+              <Route exact path="/search/movie/:id" component={InfoPage} />
+              <Route exact path="/search/movie/:id" component={InfoPage} />
+              {/* <Route exact path="/search" component={Search} /> */}
+              {/* <Route exact path="/search" render={(props) => <DisplayResults results={this.state.results} />} /> */}
+              {/* <Route exact path="/info"
                     render={(props) => 
                       <InfoPage>
                         <MovieInfo info={this.state.info} />
                       </InfoPage>
                     }
                   /> */}
-                <Route component={NoMatch} />
-              </Switch>
-            </div>
-          </Router>
-        </div>
+              <Route component={NoMatch} />
+            </Switch>
+          </div>
+        </Router>
+      </div>
 
-        );
+    );
   }
 }
 
