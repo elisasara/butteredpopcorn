@@ -1,6 +1,5 @@
 const express = require('express');
 const router = express.Router();
-// const axios = require("axios");
 const db = require("../models");
 
 module.exports = function (router) {
@@ -65,6 +64,54 @@ module.exports = function (router) {
                 UserId: req.user.id
             }
         }).then(watchingDeleted => console.log("Watching deleted"));
+    });
+
+    router.get("/db/watched", function (req, res) {
+        const userId = req.user.id;
+        console.log("User ID: ", userId);
+        db.Watched.findAll({
+            where: {
+                UserId: userId
+            }
+        }).then(data => {
+            res.json(data);
+        });
+    });
+
+    router.get("/db/watching", function (req, res) {
+        const userId = req.user.id;
+        console.log("User ID: ", userId);
+        db.CurrentlyWatching.findAll({
+            where: {
+                UserId: userId
+            }
+        }).then(data => {
+            res.json(data);
+        });
+    });
+
+    router.get("/db/towatch", function (req, res) {
+        const userId = req.user.id;
+        console.log("User ID: ", userId);
+        db.WantToWatch.findAll({
+            where: {
+                UserId: userId
+            }
+        }).then(data => {
+            res.json(data);
+        });
+    });
+
+    router.get("/db/user", function (req, res) {
+        const userId = req.user.id;
+        console.log("User ID: ", userId);
+        db.User.findAll({
+            where: {
+                id: userId
+            }
+        }).then(data => {
+            res.json(data);
+        });
     });
 
 };

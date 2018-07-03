@@ -11,5 +11,21 @@ export default {
 
     watched: function(movieData) {
         return axios.post("/db/watched", {movieData});
+    },
+
+    getWatched: function() {
+        return axios.get("/db/watched");
+    },
+
+    getWatching: function() {
+        return axios.get("/db/watching");
+    },
+
+    getWantToWatch: function() {
+        return axios.get("/db/towatch");
+    },
+
+    getUserFromDb: function() {
+        return axios.get("/db/user");
     }
 }

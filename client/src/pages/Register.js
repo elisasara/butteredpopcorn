@@ -32,7 +32,6 @@ class Register extends Component {
 
 
     render() {
-        console.log(this.state.firstName);
         return (
             <div>
                 <form action="/register" method="post">

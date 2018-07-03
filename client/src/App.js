@@ -14,6 +14,7 @@ import MainSearch from "./pages/MainSearch";
 import InfoPage from "./components/InfoPage";
 // import MovieInfo from "./components/MovieInfo";
 import API from "./utils/API";
+import Profile from "./pages/Profile";
 
 class App extends Component {
   state = {
@@ -74,15 +75,7 @@ class App extends Component {
               <Route exact path="/search/:search" component={MainSearch} />
               <Route exact path="/search/movie/:id" component={InfoPage} />
               <Route exact path="/search/tv/:id" component={InfoPage} />
-              {/* <Route exact path="/search" component={Search} /> */}
-              {/* <Route exact path="/search" render={(props) => <DisplayResults results={this.state.results} />} /> */}
-              {/* <Route exact path="/info"
-                    render={(props) => 
-                      <InfoPage>
-                        <MovieInfo info={this.state.info} />
-                      </InfoPage>
-                    }
-                  /> */}
+              <Route exact path="/profile" component={Profile} />
               <Route component={NoMatch} />
             </Switch>
           </div>

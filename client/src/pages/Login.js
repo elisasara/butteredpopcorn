@@ -31,7 +31,6 @@ class Login extends Component {
     render() {
         return (
             <div>
-                {/* Why was this just "/login" on example? */}
                 <form action="/login" method="post">
                     <div className="form-group">
                         <label htmlFor="email">Email</label>

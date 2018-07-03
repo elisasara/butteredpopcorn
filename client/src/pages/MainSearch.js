@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import API from "../utils/API";
-import Header from "../components/Header";
+// import API from "../utils/API";
+// import Header from "../components/Header";
 import DisplayResults from "../components/DisplayResults";
 import Results from "../components/Results";
 import movieAPI from "../utils/movieAPI";

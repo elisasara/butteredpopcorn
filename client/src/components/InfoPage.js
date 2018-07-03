@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import MovieInfo from "./MovieInfo";
 import movieAPI from "../utils/movieAPI";
-import API from "../utils/API";
+// import API from "../utils/API";
 import DBInfo from "./DBInfo";
 import TvInfo from "./TvInfo";
 
@@ -15,7 +15,8 @@ class InfoPage extends Component {
     }
 
     componentDidMount() {
-        if (this.props.match === "/search/movie/:id") {
+        console.log("this.props.match: ", this.props.match)
+        if (this.props.match.path === "/search/movie/:id") {
             movieAPI.searchMovie(this.props.match.params.id)
                 .then(res => {
                     this.setState({
@@ -42,16 +43,14 @@ class InfoPage extends Component {
 
 
     render() {
-        // put in db entering info here as well. float left and right for that info
-        // work on formating of movie page
-        // work on tv version of this as well
         return (
             <div>
                 {this.state.movie ? (<div>
                     <MovieInfo info={this.state.info} />
-                    <DBInfo title={this.state.info.title} tmdbId={this.state.info.id} />
+                    <DBInfo title={this.state.info.title} type="movie" tmdbId={this.state.info.id} />
                 </div>) : (<div>
                     <TvInfo info={this.state.info} />
+                    <DBInfo title={this.state.info.name} type="tv" tmdbId={this.state.info.id} />
                     {/* <h1>TV Info goes here</h1> */}
                     {/* <DBInfo title={this.state.info.title} tmdbId={this.state.info.id} /> */}
                 </div>)}
