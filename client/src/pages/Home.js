@@ -121,7 +121,7 @@ class Home extends Component {
                         search={this.state.search}
                         handleInputChange={this.handleInputChange}
                         handleSubmit={this.handleSubmit} />
-                    {this.state.user ? (<h1>Welcome to Buttered Popcorn, {this.state.user.firstName}!</h1>
+                    {this.state.user ? (<h1>Welcome to Buttered Popcorn, {this.state.user.data.user.firstName}!</h1>
                     ) : (<h1>Welcome to Buttered Popcorn!</h1>)}
                 </div>
             )
