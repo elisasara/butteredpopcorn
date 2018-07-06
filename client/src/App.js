@@ -37,6 +37,15 @@ class App extends Component {
       .catch(err => console.log(err));
   }
 
+  logoutUser = () => {
+    API.logoutUser()
+    .then(res => {
+        this.setState({
+            user: null
+        });  
+        console.log("User logged out")});
+};
+
   handleInputChange = event => {
     const { name, value } = event.target;
     this.setState({
@@ -67,7 +76,9 @@ class App extends Component {
               search={this.state.search}
               handleInputChange={this.handleInputChange}
               handleSubmit={this.handleSubmit}
-              user={this.state.user} />
+              user={this.state.user}
+              logout={this.logoutUser}
+              />
             <Switch>
               <Route exact path="/" component={Home} />
               <Route exact path="/login" component={Login} />

@@ -14,6 +14,13 @@ router.get("/auth/check", function (req, res){
     };
 });
 
+router.get("/auth/logout", function(req, res){
+    req.session.destroy(function(err){
+        res.redirect("/");
+    });
+});
+
+
 router.post("/auth/login", passport.authenticate("local-signin", {session: true}), function (req, res) {
     // req.session.userId = res.id;
     res.json(true);

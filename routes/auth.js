@@ -29,6 +29,15 @@ module.exports = function (router, passport, User) {
         successRedirect: "/",
         failureRedirect: "/register"
     }));
+
+    // router.get("/logout", )
+
+    // router.get("/logout", function (req, res) {
+    //     req.session.destroy(function (err) {
+    //         res.redirect("/");
+    //     });
+    // });
+
     // router.post('/login', function (req, res) {
     //     res.redirect('/');
     // });
