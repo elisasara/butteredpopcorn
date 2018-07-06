@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import dbAPI from "../utils/dbAPI";
 
 class FindFriends extends Component {
     state = {
@@ -13,9 +14,18 @@ class FindFriends extends Component {
         });
     };
 
-    handleSearch = event => {
-
-    }
+    handleSearch = (event, email) => {
+        event.preventDefault();
+        const friend=this.state.searchFriends;
+        console.log("Friend Search: ", friend);
+        dbAPI.getSearchedFriend({email: friend})
+        .then(res => {
+            console.log("friend res: ", res);
+            this.setState({
+                results: res
+            });
+        });
+    };
 
     render() {
         return (
@@ -25,7 +35,7 @@ class FindFriends extends Component {
                         <label htmlFor="friendEmail">Search by Email:</label>
                         <input type="text" className="form-control" name="searchFriends" value={this.state.searchFriends} id="friendEmail" onChange={this.handleInputChange} />
                     </div>
-                    <button type="submit" class="btn btn-primary">Search</button>
+                    <button className="btn btn-primary" onClick={()=>this.handleSearch(this.state.searchFriends)}>Search</button>
                 </form>
                 {this.state.results.length ? (
                     <h1>Friend Results Go Here!</h1>

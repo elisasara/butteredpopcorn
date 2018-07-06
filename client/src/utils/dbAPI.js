@@ -27,5 +27,9 @@ export default {
 
     getUserFromDb: function() {
         return axios.get("/db/user");
+    },
+
+    getSearchedFriend: function(friend) {
+        return axios.get("/db/findfriends", {friend});
     }
 }

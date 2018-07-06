@@ -114,4 +114,15 @@ module.exports = function (router) {
         });
     });
 
+    router.get("/db/findfriends", function(req, res) {
+        console.log(req.body);
+        db.User.findAll({
+            where: {
+                email: req.body
+            }
+        }).then(data => {
+            res.json(data);
+        });
+    });
+
 };
