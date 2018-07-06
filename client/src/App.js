@@ -7,14 +7,10 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import NoMatch from "./pages/NoMatch";
 import MainSearch from "./pages/MainSearch";
-// import Search from "./pages/Search";
-// import movieAPI from "./utils/movieAPI";
-// import DisplayResults from "./components/DisplayResults";
-// import Results from "./components/Results";
 import InfoPage from "./components/InfoPage";
-// import MovieInfo from "./components/MovieInfo";
 import API from "./utils/API";
 import Profile from "./pages/Profile";
+import FindFriends from "./pages/FindFriends";
 
 class App extends Component {
   state = {
