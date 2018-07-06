@@ -114,11 +114,11 @@ module.exports = function (router) {
         });
     });
 
-    router.get("/db/findfriends", function(req, res) {
-        console.log(req.body);
+    router.get("/db/findfriends/:friend", function(req, res) {
+        console.log(req.params.friend);
         db.User.findAll({
             where: {
-                email: req.body
+                email: req.params.friend
             }
         }).then(data => {
             res.json(data);

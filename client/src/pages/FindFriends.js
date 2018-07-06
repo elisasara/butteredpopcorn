@@ -14,11 +14,11 @@ class FindFriends extends Component {
         });
     };
 
-    handleSearch = (event, email) => {
-        event.preventDefault();
+    handleSearch = (email) => {
+        // event.preventDefault();
         const friend=this.state.searchFriends;
         console.log("Friend Search: ", friend);
-        dbAPI.getSearchedFriend({email: friend})
+        dbAPI.getSearchedFriend(friend)
         .then(res => {
             console.log("friend res: ", res);
             this.setState({
@@ -30,13 +30,13 @@ class FindFriends extends Component {
     render() {
         return (
             <div className="container">
-                <form className="form-inline">
+                {/* <form className="form-inline"> */}
                     <div className="form-group">
                         <label htmlFor="friendEmail">Search by Email:</label>
                         <input type="text" className="form-control" name="searchFriends" value={this.state.searchFriends} id="friendEmail" onChange={this.handleInputChange} />
                     </div>
                     <button className="btn btn-primary" onClick={()=>this.handleSearch(this.state.searchFriends)}>Search</button>
-                </form>
+                {/* </form> */}
                 {this.state.results.length ? (
                     <h1>Friend Results Go Here!</h1>
                 ) : (
