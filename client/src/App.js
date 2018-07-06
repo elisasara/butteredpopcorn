@@ -87,6 +87,7 @@ class App extends Component {
               <Route exact path="/search/movie/:id" component={InfoPage} />
               <Route exact path="/search/tv/:id" component={InfoPage} />
               <Route exact path="/profile" component={Profile} />
+              <Route exact path="/findfriends" component={FindFriends} />
               <Route component={NoMatch} />
             </Switch>
           </div>
