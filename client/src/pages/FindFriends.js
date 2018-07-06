@@ -20,9 +20,9 @@ class FindFriends extends Component {
         console.log("Friend Search: ", friend);
         dbAPI.getSearchedFriend(friend)
         .then(res => {
-            console.log("friend res: ", res);
+            console.log("friend res: ", res.data);
             this.setState({
-                results: res
+                results: res.data
             });
         });
     };
