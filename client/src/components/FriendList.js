@@ -1,4 +1,5 @@
 import React from "react";
+import AddFriendBtn from "./AddFriendBtn";
 
 const FriendList = props => (
     <div className="row">
@@ -8,8 +9,7 @@ const FriendList = props => (
             <p>Joined Buttered Popcorn: {props.joined}</p>
         </div>
         <div className="col md-4">
-            <h3>Button Goes Here</h3>
-            <p>{props.id} for button</p>
+            <AddFriendBtn>{props.children}</AddFriendBtn>
         </div>
     </div>
 )

@@ -32,5 +32,9 @@ export default {
     getSearchedFriend: function(friend) {
         console.log("friend in dbapi: ", friend);
         return axios.get(`/db/findfriends/${friend}`);
+    },
+
+    findIfFriend: function(friend) {
+        return axios.get(`/db/findiffriends/${friend}`);
     }
 }

@@ -125,4 +125,16 @@ module.exports = function (router) {
         });
     });
 
+    router.get("/db/findiffriends/:friend", function(req, res) {
+        console.log(req.params.friend);
+        db.Friends.findAll({
+            where: {
+                friendId: req.params.friend,
+                UserId: req.user.id
+            }
+        }).then(data => {
+            res.json(data);
+        });
+    });
+
 };
