@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import dbAPI from "../utils/dbAPI";
+import FriendList from "../components/FriendList";
 
 class FindFriends extends Component {
     state = {
@@ -38,7 +39,10 @@ class FindFriends extends Component {
                     <button className="btn btn-primary" onClick={()=>this.handleSearch(this.state.searchFriends)}>Search</button>
                 {/* </form> */}
                 {this.state.results.length ? (
-                    <h1>Friend Results Go Here!</h1>
+                    this.state.results.map(friend =>
+                    <FriendList key={friend.id} name={friend.firstName} email={friend.email} joined={friend.createdAt} id={friend.id} />
+                )
+                    // <h1>Friend Results Go Here!</h1>
                 ) : (
                         <h1>Search for your friends here!</h1>
                     )}
