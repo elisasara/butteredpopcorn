@@ -36,5 +36,9 @@ export default {
 
     findIfFriend: function(friend) {
         return axios.get(`/db/findiffriends/${friend}`);
+    },
+
+    followFriend: function(friendId) {
+        return axios.post(`/db/followfriend/${friendId}`);
     }
 }

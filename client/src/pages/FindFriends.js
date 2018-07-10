@@ -15,7 +15,7 @@ class FindFriends extends Component {
         });
     };
 
-    handleSearch = (email) => {
+    handleSearch = email => {
         // event.preventDefault();
         const friend = this.state.searchFriends;
         console.log("Friend Search: ", friend);
@@ -40,7 +40,7 @@ class FindFriends extends Component {
                 {/* </form> */}
                 {this.state.results.length ? (
                     this.state.results.map(friend =>
-                        <FriendList key={friend.id} name={friend.firstName} email={friend.email} joined={friend.createdAt} id={friend.id} />
+                        <FriendList key={friend.id} name={friend.firstName} email={friend.email} joined={friend.createdAt} friendId={friend.id} />
                     )
                 ) : (
                         <h1>Search for your friends here!</h1>

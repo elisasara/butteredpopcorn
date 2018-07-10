@@ -9,7 +9,7 @@ const FriendList = props => (
             <p>Joined Buttered Popcorn: {props.joined}</p>
         </div>
         <div className="col md-4">
-            <AddFriendBtn>{props.children}</AddFriendBtn>
+            <AddFriendBtn friendId={props.friendId} />
         </div>
     </div>
 )

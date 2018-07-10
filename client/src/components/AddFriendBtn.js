@@ -6,8 +6,14 @@ class AddFriendBtn extends Component {
         friends: false
     }
 
-    findIfFriend = (friend) => {
-        const friendId = this.props.id;
+    // move this to one level up and then send down as prop
+    componentDidMount (){
+        this.findIfFriend();
+    }
+
+    //this is maybe no the most efficient way to do this?? Can there be an overall call and a comparison of the two states?
+    findIfFriend = () => {
+        const friendId = this.props.friendId;
         dbAPI.findIfFriend(friendId)
             .then(res => {
                 if (res.length > 0) {
@@ -21,13 +27,24 @@ class AddFriendBtn extends Component {
             });
     };
 
+    followFriend = () => {
+        dbAPI.followFriend(this.props.friendId)
+        .then(res => {
+            this.setState({
+                friends: true
+            });
+            alert(`Now following ${this.props.name}`);
+        });
+    };
+
     render() {
+        console.log("friend id: ", this.props.friendId);
         return (
             <div>
                 {this.state.friends ? (
-                    <button className="btn btn-success"><span class="glyphicons glyphicons-check"></span></button>
+                    <div><i className="fas fa-check-square"></i></div>
                 ) : (
-                        <button className="btn">Follow</button>
+                        <button className="btn" onClick={this.followFriend}>Follow</button>
                     )}
             </div>
         )

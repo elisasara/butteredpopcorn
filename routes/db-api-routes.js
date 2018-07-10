@@ -114,7 +114,7 @@ module.exports = function (router) {
         });
     });
 
-    router.get("/db/findfriends/:friend", function(req, res) {
+    router.get("/db/findfriends/:friend", function (req, res) {
         console.log(req.params.friend);
         db.User.findAll({
             where: {
@@ -125,7 +125,7 @@ module.exports = function (router) {
         });
     });
 
-    router.get("/db/findiffriends/:friend", function(req, res) {
+    router.get("/db/findiffriends/:friend", function (req, res) {
         console.log(req.params.friend);
         db.Friends.findAll({
             where: {
@@ -137,4 +137,10 @@ module.exports = function (router) {
         });
     });
 
+    router.post("/db/followfriend/:friendId", function (req, res) {
+        db.Friends.create({
+            friendId: req.params.friendId,
+            UserId: req.user.id
+        }).then(data => res.json(data));
+    });
 };
