@@ -11,15 +11,16 @@ class AddFriendBtn extends Component {
         this.findIfFriend();
     }
 
-    //this is maybe no the most efficient way to do this?? Can there be an overall call and a comparison of the two states?
+    //this is maybe not the most efficient way to do this?? Can there be an overall call and a comparison of the two states?
     findIfFriend = () => {
         const friendId = this.props.friendId;
         dbAPI.findIfFriend(friendId)
             .then(res => {
-                if (res.length > 0) {
-                    this.setState = {
+                console.log("res for addfriendbutton: ", res.data);
+                if (res.data.length > 0) {
+                    this.setState({
                         friends: true
-                    };
+                    });
                 }
                 else {
                     return false;
@@ -33,7 +34,7 @@ class AddFriendBtn extends Component {
             this.setState({
                 friends: true
             });
-            alert(`Now following ${this.props.name}`);
+            alert(`Friend added!`);
         });
     };
 

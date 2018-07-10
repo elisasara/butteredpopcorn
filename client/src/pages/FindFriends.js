@@ -28,6 +28,31 @@ class FindFriends extends Component {
             });
     };
 
+    // findIfFriend = () => {
+    //     const friendId = this.props.friendId;
+    //     dbAPI.findIfFriend(friendId)
+    //         .then(res => {
+    //             if (res.length > 0) {
+    //                 this.setState = {
+    //                     friends: true
+    //                 };
+    //             }
+    //             else {
+    //                 return false;
+    //             };
+    //         });
+    // };
+
+    // followFriend = () => {
+    //     dbAPI.followFriend(this.props.friendId)
+    //     .then(res => {
+    //         this.setState({
+    //             friends: true
+    //         });
+    //         alert(`Friend added!`);
+    //     });
+    // };
+
     render() {
         return (
             <div className="container">
