@@ -168,19 +168,25 @@ module.exports = function (router) {
     //     }).then(data => res.json(data));
     // });
 
-    router.get("/db/friendactivity", function (req, res){
+    router.get("/db/friendactivity", function (req, res) {
         db.Friends.findAll({
-            where: req.user.id
+            where: {
+                UserId: req.user.id
+            }
         }).then(data => {
-            let idArr=[];
-            data.forEach(function(friend){
-                const friendId= friend.friendId;
+            console.log("data: ", data);
+            const Op=sequelize.Op;
+            let idArr = [];
+            data.forEach(function (friend) {
+                const friendId = friend.friendId;
                 idArr.push(friendId);
             });
             console.log(idArr);
             db.CurrentlyWatching.findAll({
                 where: {
-                    [Op.or]: idArr
+                    UserId: {
+                        [Op.or]: idArr
+                    }
                 }
             }).then(results => {
                 console.log(results);
