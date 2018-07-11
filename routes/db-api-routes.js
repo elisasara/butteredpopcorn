@@ -159,25 +159,64 @@ module.exports = function (router) {
                 idArr.push(friendId);
             });
             console.log(idArr);
-            db.User.findAll({
+            // db.User.findAll({
+            //     where: {
+            //         id: {
+            //             [Op.or]: idArr
+            //         }
+            //     },
+            //     include: [{
+            //         model: db.CurrentlyWatching,
+            //     },
+            //     {
+            //         model: db.Watched,
+            //     },
+            //     {
+            //         model: db.WantToWatch
+            //     }]
+            // }).then(results => {
+            //     console.log(results);
+            //     res.json(results);
+            // });
+            let resultsArr = [];
+            db.CurrentlyWatching.findAll({
                 where: {
-                    id: {
+                    UserId: {
                         [Op.or]: idArr
                     }
                 },
                 include: [{
-                    model: db.CurrentlyWatching,
-                },
-                {
-                    model: db.Watched,
-                },
-                {
-                    model: db.WantToWatch
+                    model: db.User
                 }]
-            }).then(results => {
-                console.log(results);
-                res.json(results);
+            }).then(currently => {
+                resultsArr.push(currently);
             });
-        });
+            db.Watched.findAll({
+                where: {
+                    UserId: {
+                        [Op.or]: idArr
+                    }
+                },
+                include: {
+                    model: db.User
+                }
+            }).then(already => {
+                resultsArr.push(already);
+            });
+            db.WantToWatch.findAll({
+                where: {
+                    UserId: {
+                        [Op.or]: idArr
+                    }
+                },
+                include: {
+                    model: db.User
+                }
+            }).then(want => {
+                resultsArr.push(want);
+            });
+            console.log(resultsArr);
+            res.json(resultsArr);
     });
+});
 };

@@ -17,22 +17,22 @@ class Feed extends Component {
                 // for each record go through and do a for each for currently watching/watching/watched and add to one array
                 // sort array in order of updated at date
                 // set state to that array
-                let feedArr = [];
-                res.data.forEach(function(record) {
-                    record.currentlyWatchings.forEach(function(item1){
-                        feedArr.push(item);
-                    });
-                    record.Watchings.forEach(function(item2){
-                        feedArr.push(item);
-                    });
-                    record.Watcheds.forEach(function(item3){
-                        feedArr.push(item);
-                    });
-                })
-                this.setState({
-                    feed: feedArr
-                });
-                console.log("feed state: ", this.state.feed)
+            //     let feedArr = [];
+            //     res.data.forEach(function(record) {
+            //         record.currentlyWatchings.forEach(function(item1){
+            //             feedArr.push(item1);
+            //         });
+            //         record.Watchings.forEach(function(item2){
+            //             feedArr.push(item2);
+            //         });
+            //         record.Watcheds.forEach(function(item3){
+            //             feedArr.push(item3);
+            //         });
+            //     })
+            //     this.setState({
+            //         feed: feedArr
+            //     });
+            //     console.log("feed state: ", this.state.feed)
             });
     };
 
