@@ -40,5 +40,10 @@ export default {
 
     followFriend: function(friendId) {
         return axios.post(`/db/followfriend/${friendId}`);
+    },
+
+    // does this work???
+    getNewsfeed: function() {
+        return axios.get("/db/friendactivity");
     }
 }

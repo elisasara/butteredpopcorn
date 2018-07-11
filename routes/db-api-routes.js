@@ -143,4 +143,49 @@ module.exports = function (router) {
             UserId: req.user.id
         }).then(data => res.json(data));
     });
+
+    // does this work????
+    // router.get("/db/friendactivity", function (req, res) {
+    //     db.Friends.findAll({
+    //         where: {
+    //             UserId: req.user.id
+    //         },
+    //         include: [{
+    //             model: db.CurrentlyWatchings,
+    //             where: {
+    //                 UserId: db.Friends.friendId
+    //             }
+    //         }]
+    //     }).then(data => res.json(data));
+    // });
+
+    // router.get("/db/friendactivity", function (req, res){
+    //     db.Friends.findAll({
+    //         where: {
+    //             UserId: req.user.id
+    //         },
+    //         include: [db.CurrentlyWatching]
+    //     }).then(data => res.json(data));
+    // });
+
+    router.get("/db/friendactivity", function (req, res){
+        db.Friends.findAll({
+            where: req.user.id
+        }).then(data => {
+            let idArr=[];
+            data.forEach(function(friend){
+                const friendId= friend.friendId;
+                idArr.push(friendId);
+            });
+            console.log(idArr);
+            db.CurrentlyWatching.findAll({
+                where: {
+                    [Op.or]: idArr
+                }
+            }).then(results => {
+                console.log(results);
+                res.json(results);
+            });
+        });
+    });
 };
