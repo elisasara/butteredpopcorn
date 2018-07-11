@@ -165,10 +165,8 @@ module.exports = function (router) {
                         [Op.or]: idArr
                     }
                 },
-                // attributes: ["id", "firstName"],
                 include: [{
                     model: db.CurrentlyWatching,
-                    // attributes: ["tmdbID", "title", "createdAt"]
                 },
                 {
                     model: db.Watched,
@@ -176,14 +174,6 @@ module.exports = function (router) {
                 {
                     model: db.WantToWatch
                 }]
-                // include: [{
-                //     model: db.CurrentlyWatchings,
-                //     where: {
-                //         id: {
-                //             [Op.or]: idArr
-                //         }
-                //     }
-                // }]
             }).then(results => {
                 console.log(results);
                 res.json(results);
