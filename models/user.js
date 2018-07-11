@@ -24,25 +24,34 @@ module.exports = function (sequelize, DataTypes) {
             allowNull: false
         }
     });
-    User.associate = function(models) {
+    User.associate = function (models) {
         User.hasMany(models.WantToWatch, {
             onDelete: "cascade"
         });
-    };
-    User.associate = function(models) {
         User.hasMany(models.Watched, {
             onDelete: "cascade"
         });
-    };
-    User.associate = function(models) {
         User.hasMany(models.CurrentlyWatching, {
             onDelete: "cascade"
         });
-    };
-    User.associate = function(models) {
         User.hasMany(models.Friends, {
             onDelete: "cascade"
         });
     };
+    // User.associate = function(models) {
+    //     User.hasMany(models.Watched, {
+    //         onDelete: "cascade"
+    //     });
+    // };
+    // User.associate = function(models) {
+    //     User.hasMany(models.CurrentlyWatching, {
+    //         onDelete: "cascade"
+    //     });
+    // };
+    // User.associate = function(models) {
+    //     User.hasMany(models.Friends, {
+    //         onDelete: "cascade"
+    //     });
+    // };
     return User;
 };

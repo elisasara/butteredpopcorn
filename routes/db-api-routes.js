@@ -145,30 +145,6 @@ module.exports = function (router) {
         }).then(data => res.json(data));
     });
 
-    // does this work????
-    // router.get("/db/friendactivity", function (req, res) {
-    //     db.Friends.findAll({
-    //         where: {
-    //             UserId: req.user.id
-    //         },
-    //         include: [{
-    //             model: db.CurrentlyWatchings,
-    //             where: {
-    //                 UserId: db.Friends.friendId
-    //             }
-    //         }]
-    //     }).then(data => res.json(data));
-    // });
-
-    // router.get("/db/friendactivity", function (req, res){
-    //     db.Friends.findAll({
-    //         where: {
-    //             UserId: req.user.id
-    //         },
-    //         include: [db.CurrentlyWatching]
-    //     }).then(data => res.json(data));
-    // });
-
     router.get("/db/friendactivity", function (req, res) {
         db.Friends.findAll({
             where: {
@@ -183,12 +159,25 @@ module.exports = function (router) {
                 idArr.push(friendId);
             });
             console.log(idArr);
-            db.CurrentlyWatching.findAll({
+            db.User.findAll({
                 where: {
-                    UserId: {
+                    id: {
                         [Op.or]: idArr
                     }
-                }
+                },
+                attributes: ["id", "firstName"],
+                include: [{
+                    model: db.CurrentlyWatching,
+                    attributes: ["tmdbID", "title", "createdAt"]
+                }]
+                // include: [{
+                //     model: db.CurrentlyWatchings,
+                //     where: {
+                //         id: {
+                //             [Op.or]: idArr
+                //         }
+                //     }
+                // }]
             }).then(results => {
                 console.log(results);
                 res.json(results);
