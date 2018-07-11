@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const db = require("../models");
+// const sequelize =require("sequelize");
 
 module.exports = function (router) {
     router.post("/db/towatch", function (req, res) {
@@ -175,7 +176,7 @@ module.exports = function (router) {
             }
         }).then(data => {
             console.log("data: ", data);
-            const Op=sequelize.Op;
+            const Op = db.sequelize.Op;
             let idArr = [];
             data.forEach(function (friend) {
                 const friendId = friend.friendId;
