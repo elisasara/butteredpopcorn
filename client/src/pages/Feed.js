@@ -14,6 +14,9 @@ class Feed extends Component {
         dbAPI.getNewsfeed()
             .then(res => {
                 console.log(res.data);
+                this.setState({
+                    feed: []
+                })
                 // for each record go through and do a for each for currently watching/watching/watched and add to one array
                 // sort array in order of updated at date
                 // set state to that array
