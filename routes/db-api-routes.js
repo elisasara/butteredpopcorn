@@ -165,10 +165,16 @@ module.exports = function (router) {
                         [Op.or]: idArr
                     }
                 },
-                attributes: ["id", "firstName"],
+                // attributes: ["id", "firstName"],
                 include: [{
                     model: db.CurrentlyWatching,
-                    attributes: ["tmdbID", "title", "createdAt"]
+                    // attributes: ["tmdbID", "title", "createdAt"]
+                },
+                {
+                    model: db.Watched,
+                },
+                {
+                    model: db.WantToWatch
                 }]
                 // include: [{
                 //     model: db.CurrentlyWatchings,
