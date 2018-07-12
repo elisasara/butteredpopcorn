@@ -159,64 +159,64 @@ module.exports = function (router) {
                 idArr.push(friendId);
             });
             console.log(idArr);
-            db.User.findAll({
-                where: {
-                    id: {
-                        [Op.or]: idArr
-                    }
-                },
-                include: [{
-                    model: db.CurrentlyWatching,
-                },
-                {
-                    model: db.Watched,
-                },
-                {
-                    model: db.WantToWatch
-                }]
-            }).then(results => {
-                console.log(results);
-                res.json(results);
-            });
-            // let resultsArr = [];
-            // db.CurrentlyWatching.findAll({
+            // db.User.findAll({
             //     where: {
-            //         UserId: {
+            //         id: {
             //             [Op.or]: idArr
             //         }
             //     },
             //     include: [{
-            //         model: db.User
+            //         model: db.CurrentlyWatching,
+            //     },
+            //     {
+            //         model: db.Watched,
+            //     },
+            //     {
+            //         model: db.WantToWatch
             //     }]
-            // }).then(currently => {
-            //     resultsArr.push(currently);
+            // }).then(results => {
+            //     console.log(results);
+            //     res.json(results);
             // });
-            // db.Watched.findAll({
-            //     where: {
-            //         UserId: {
-            //             [Op.or]: idArr
-            //         }
-            //     },
-            //     include: {
-            //         model: db.User
-            //     }
-            // }).then(already => {
-            //     resultsArr.push(already);
-            // });
-            // db.WantToWatch.findAll({
-            //     where: {
-            //         UserId: {
-            //             [Op.or]: idArr
-            //         }
-            //     },
-            //     include: {
-            //         model: db.User
-            //     }
-            // }).then(want => {
-            //     resultsArr.push(want);
-            // });
-            // console.log(resultsArr);
-            // res.json(resultsArr);
+            let resultsArr = [];
+            db.CurrentlyWatching.findAll({
+                where: {
+                    UserId: {
+                        [Op.or]: idArr
+                    }
+                },
+                include: [{
+                    model: db.User
+                }]
+            }).then(currently => {
+                resultsArr.push(currently);
+                db.Watched.findAll({
+                    where: {
+                        UserId: {
+                            [Op.or]: idArr
+                        }
+                    },
+                    include: {
+                        model: db.User
+                    }
+                }).then(already => {
+                    resultsArr.push(already);
+                    db.WantToWatch.findAll({
+                        where: {
+                            UserId: {
+                                [Op.or]: idArr
+                            }
+                        },
+                        include: {
+                            model: db.User
+                        }
+                    }).then(want => {
+                        resultsArr.push(want);
+                        console.log(resultsArr);
+                        res.json(resultsArr);
+                    });
+                });
+            });
+        });
     });
-});
 };
