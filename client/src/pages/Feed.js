@@ -43,11 +43,10 @@ class Feed extends Component {
         return (
             <div>
                 {this.state.feed.length ? (
-                    // <h1>Newsfeed goes here</h1>
                     <div>
                         {this.state.feed.map(news => (
                             <NewsItem
-                                key={news.title}
+                                key={`${news.User.firstName}${news.tmdbID}`}
                                 name={news.User.firstName}
                                 title={news.title}
                                 rating={news.rating}

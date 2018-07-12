@@ -3,6 +3,7 @@ var bCrypt = require("bcrypt-nodejs");
 module.exports = function(passport, user) {
     var User = user;
     var LocalStrategy = require("passport-local").Strategy;
+    var FacebookStrategy = require("passport-facebook").Strategy;
 
     // serialize
     passport.serializeUser(function(user, done) {
@@ -62,6 +63,18 @@ module.exports = function(passport, user) {
             }
         });
     }));
+
+    passport.use(new FacebookStrategy({
+        clientID: FACEBOOK_APP_ID,
+        clientSecret: FACEBOOK_APP_SECRET,
+        callbackURL: "http://localhost:3000/auth/facebook/callback"
+    },
+    function(accessToken, refreshToken, profile, cb) {
+        User.findOrCreate({facebookId: profile.id}, function(err, user){
+            return cb(err, user);
+        });
+    }
+))
 
     // LOCAL SIGNIN
     passport.use("local-signin", new LocalStrategy({
