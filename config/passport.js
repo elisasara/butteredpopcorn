@@ -1,4 +1,5 @@
 var bCrypt = require("bcrypt-nodejs");
+require("dotenv").config();
 
 module.exports = function(passport, user) {
     var User = user;
@@ -65,9 +66,9 @@ module.exports = function(passport, user) {
     }));
 
     passport.use(new FacebookStrategy({
-        clientID: FACEBOOK_APP_ID,
-        clientSecret: FACEBOOK_APP_SECRET,
-        callbackURL: "http://localhost:3000/auth/facebook/callback"
+        clientID: process.env.FACEBOOK_APP_ID,
+        clientSecret: process.env.FACEBOOK_APP_SECRET,
+        callbackURL: "http://localhost:3001/auth/facebook/callback"
     },
     function(accessToken, refreshToken, profile, cb) {
         User.findOrCreate({facebookId: profile.id}, function(err, user){
