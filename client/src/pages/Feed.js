@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import dbAPI from "../utils/dbAPI";
+import NewsItem from "../components/NewsItem";
 // import Moment from "react-moment";
 
 class Feed extends Component {
@@ -34,32 +35,7 @@ class Feed extends Component {
                 this.setState({
                     feed: feedArrSorted
                 });
-
                 console.log("state: ", this.state.feed);
-
-                // this.setState({
-                //     feed: 
-                //     })
-                // })
-                // for each record go through and do a for each for currently watching/watching/watched and add to one array
-                // sort array in order of updated at date
-                // set state to that array
-                //     let feedArr = [];
-                //     res.data.forEach(function(record) {
-                //         record.currentlyWatchings.forEach(function(item1){
-                //             feedArr.push(item1);
-                //         });
-                //         record.Watchings.forEach(function(item2){
-                //             feedArr.push(item2);
-                //         });
-                //         record.Watcheds.forEach(function(item3){
-                //             feedArr.push(item3);
-                //         });
-                //     })
-                //     this.setState({
-                //         feed: feedArr
-                //     });
-                //     console.log("feed state: ", this.state.feed)
             });
     };
 
@@ -67,7 +43,18 @@ class Feed extends Component {
         return (
             <div>
                 {this.state.feed.length ? (
-                    <h1>This is where your newsfeed will go</h1>
+                    // <h1>Newsfeed goes here</h1>
+                    <div>
+                        {this.state.feed.map(news => (
+                            <NewsItem
+                                key={news.title}
+                                name={news.User.firstName}
+                                title={news.title}
+                                rating={news.rating}
+                                status={news.status}
+                            />
+                        ))}
+                    </div>
                 ) : (
                         <h1>You don't have any friend activity. Click here to find your friends.</h1>
                     )}
