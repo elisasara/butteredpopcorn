@@ -10,6 +10,11 @@ module.exports = function (sequelize, DataTypes) {
         },
         rating: {
             type: DataTypes.STRING
+        },
+        status: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            defaultValue: "Watched"
         }
     });
     Watched.associate = function (models) {
