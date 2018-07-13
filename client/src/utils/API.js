@@ -15,5 +15,9 @@ export default {
 
     logoutUser: function () {
         return axios.get("/auth/logout");
+    },
+
+    facebookLogin: function() {
+        return axios.get("/auth/facebook");
     }
 };

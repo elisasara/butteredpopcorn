@@ -1,5 +1,10 @@
 import React, { Component } from "react";
 import API from "../utils/API";
+import FacebookLogin from "react-facebook-login";
+
+const responseFacebook = (response) => {
+    console.log(response);
+  }
 
 class Login extends Component {
     state = {
@@ -24,13 +29,28 @@ class Login extends Component {
                 // console.log(res);
                 this.props.history.push("/");
             })
-            .catch(err => console.log(err));
+                .catch(err => console.log(err));
         };
     };
+
+    // handleFacebook = () => {
+    //     API.facebookLogin().then(res => {
+    //         this.props.history.push("/")
+    //     }).catch(err => console.log(err));
+    // };
+
 
     render() {
         return (
             <div>
+                {/* <button className="btn btn-primary" onClick={this.handleFacebook}>Log In with Facebook</button> */}
+                {/* <a href="/auth/facebook"><button className="btn btn-primary">Log In with Facebook</button></a> */}
+                <FacebookLogin
+                    appId="1882216708738280"
+                    autoLoad={true}
+                    fields="name,email,picture"
+                    // onClick={componentClicked}
+                    callback={responseFacebook} />
                 <form action="/login" method="post">
                     <div className="form-group">
                         <label htmlFor="email">Email</label>

@@ -4,6 +4,7 @@ import API from "../utils/API";
 class Register extends Component {
     state = {
         firstName: "",
+        lastName: "",
         email: "",
         password: ""
     }
@@ -20,6 +21,7 @@ class Register extends Component {
         if (this.state.firstName && this.state.email && this.state.password) {
             API.registerUser({
                 firstName: this.state.firstName,
+                lastName: this.state.lastName,
                 email: this.state.email,
                 password: this.state.password
             }).then(res => {
@@ -38,6 +40,10 @@ class Register extends Component {
                     <div className="form-group">
                         <label htmlFor="firstName">First Name</label>
                         <input type="text" className="form-control" id="firstName" placeholder="First Name" name="firstName" value={this.state.firstName} onChange={this.handleInputChange} />
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="lastName">Last Name</label>
+                        <input type="text" className="form-control" id="lastName" placeholder="Last Name" name="lastName" value={this.state.firstName} onChange={this.handleInputChange} />
                     </div>
                     <div className="form-group">
                         <label htmlFor="email">Email</label>

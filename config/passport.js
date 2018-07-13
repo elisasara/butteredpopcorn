@@ -71,7 +71,7 @@ module.exports = function(passport, user) {
         callbackURL: "http://localhost:3001/auth/facebook/callback"
     },
     function(accessToken, refreshToken, profile, cb) {
-        User.findOrCreate({facebookId: profile.id}, function(err, user){
+        User.findOrCreate({facebookId: profile.id}, {firstName: profile.displayName, email: profile.emails[0]}, function(err, user){
             return cb(err, user);
         });
     }

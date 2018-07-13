@@ -11,7 +11,18 @@ module.exports = function (sequelize, DataTypes) {
             validate: {
                 len: {
                     args: 2,
-                    msg: "Name must be at least two characters in length"
+                    msg: "First name must be at least two characters in length"
+                }
+            }
+        },
+
+        lastName: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            validate: {
+                len: {
+                    args: 1,
+                    msg: "Must provide last name."
                 }
             }
         },
