@@ -22,6 +22,7 @@ class Register extends Component {
             API.registerUser({
                 firstName: firstName,
                 lastName: lastName,
+                fullName: firstName + " " + lastName,
                 email: email,
                 password: password
                 // firstName: this.state.firstName,
