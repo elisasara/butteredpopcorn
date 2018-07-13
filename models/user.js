@@ -1,10 +1,10 @@
 module.exports = function (sequelize, DataTypes) {
     var User = sequelize.define("User", {
         facebookId: {
-           type: DataTypes.STRING,
-           allowNull:true 
+            type: DataTypes.STRING,
+            allowNull: true
         },
-        
+
         firstName: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -26,6 +26,11 @@ module.exports = function (sequelize, DataTypes) {
                 }
             }
         },
+
+        // fullName: {
+        //     type: DataTypes.STRING,
+        //     defaultValue: this.firstName + " " + this.lastName
+        // },
 
         email: {
             type: DataTypes.STRING,

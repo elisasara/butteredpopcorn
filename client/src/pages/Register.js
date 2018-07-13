@@ -18,7 +18,7 @@ class Register extends Component {
 
     handleSubmit = event => {
         event.preventDefault();
-        if (this.state.firstName && this.state.email && this.state.password) {
+        if (this.state.firstName && this.state.lastName && this.state.email && this.state.password) {
             API.registerUser({
                 firstName: this.state.firstName,
                 lastName: this.state.lastName,
@@ -43,7 +43,7 @@ class Register extends Component {
                     </div>
                     <div className="form-group">
                         <label htmlFor="lastName">Last Name</label>
-                        <input type="text" className="form-control" id="lastName" placeholder="Last Name" name="lastName" value={this.state.firstName} onChange={this.handleInputChange} />
+                        <input type="text" className="form-control" id="lastName" placeholder="Last Name" name="lastName" value={this.state.lastName} onChange={this.handleInputChange} />
                     </div>
                     <div className="form-group">
                         <label htmlFor="email">Email</label>
