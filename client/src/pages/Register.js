@@ -16,8 +16,8 @@ class Register extends Component {
         });
     };
 
-    handleSubmit = (event, firstName, lastName, email, password) => {
-        event.preventDefault();
+    handleSubmit = (firstName, lastName, email, password) => {
+        // event.preventDefault();
         if (this.state.firstName && this.state.lastName && this.state.email && this.state.password) {
             API.registerUser({
                 firstName: firstName,
@@ -61,7 +61,7 @@ class Register extends Component {
                         <label htmlFor="password">Password</label>
                         <input type="password" className="form-control" id="password" placeholder="Password" name="password" value={this.state.password} onChange={this.handleInputChange} />
                     </div>
-                    <button type="submit" className="btn btn-primary" onClick={() => this.registerUser(this.state.firstName, this.state.lastName, this.state.email, this.state.password)}>Create Account</button>
+                    <button className="btn btn-primary" onClick={() => this.registerUser(this.state.firstName, this.state.lastName, this.state.email, this.state.password)}>Create Account</button>
                 </form>
                 <div>
                     <h4>Already have an account? <a href="/login">Log in here.</a></h4>
