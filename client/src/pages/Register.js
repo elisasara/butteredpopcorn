@@ -43,6 +43,7 @@ class Register extends Component {
     render() {
         return (
             <div>
+                {/* <form> */}
                 <form action="/register" method="post">
                     <div className="form-group">
                         <label htmlFor="firstName">First Name</label>

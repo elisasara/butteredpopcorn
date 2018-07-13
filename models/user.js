@@ -27,11 +27,6 @@ module.exports = function (sequelize, DataTypes) {
             }
         },
 
-        // fullName: {
-        //     type: DataTypes.STRING,
-        //     defaultValue: this.firstName + " " + this.lastName
-        // },
-
         email: {
             type: DataTypes.STRING,
             allowNull: false,
