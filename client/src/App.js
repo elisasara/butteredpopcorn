@@ -36,12 +36,13 @@ class App extends Component {
 
   logoutUser = () => {
     API.logoutUser()
-    .then(res => {
+      .then(res => {
         this.setState({
-            user: null
-        });  
-        console.log("User logged out")});
-};
+          user: null
+        });
+        console.log("User logged out")
+      });
+  };
 
   handleInputChange = event => {
     const { name, value } = event.target;
@@ -68,26 +69,28 @@ class App extends Component {
     return (
       <div>
         <Router>
-          <div className="container">
+          <div>
             <Header
               search={this.state.search}
               handleInputChange={this.handleInputChange}
               handleSubmit={this.handleSubmit}
               user={this.state.user}
               logout={this.logoutUser}
-              />
-            <Switch>
-              <Route exact path="/" component={Home} />
-              <Route exact path="/login" component={Login} />
-              <Route exact path="/register" component={Register} />
-              <Route exact path="/search/:search" component={MainSearch} />
-              <Route exact path="/search/movie/:id" component={InfoPage} />
-              <Route exact path="/search/tv/:id" component={InfoPage} />
-              <Route exact path="/profile" component={Profile} />
-              <Route exact path="/findfriends" component={FindFriends} />
-              <Route exact path="/feed" component={Feed} />
-              <Route component={NoMatch} />
-            </Switch>
+            />
+            <div className="container" id="mainArea">
+              <Switch>
+                <Route exact path="/" component={Home} />
+                <Route exact path="/login" component={Login} />
+                <Route exact path="/register" component={Register} />
+                <Route exact path="/search/:search" component={MainSearch} />
+                <Route exact path="/search/movie/:id" component={InfoPage} />
+                <Route exact path="/search/tv/:id" component={InfoPage} />
+                <Route exact path="/profile" component={Profile} />
+                <Route exact path="/findfriends" component={FindFriends} />
+                <Route exact path="/feed" component={Feed} />
+                <Route component={NoMatch} />
+              </Switch>
+            </div>
           </div>
         </Router>
       </div>
