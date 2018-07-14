@@ -28,8 +28,7 @@ module.exports = function (sequelize, DataTypes) {
         },
 
         fullName: {
-            type: DataTypes.STRING,
-            allowNull: false,
+            type: DataTypes.STRING
         },
 
         email: {

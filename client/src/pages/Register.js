@@ -18,11 +18,13 @@ class Register extends Component {
 
     handleSubmit = (firstName, lastName, email, password) => {
         // event.preventDefault();
+        const fullName = this.state.firstName + " " + this.state.lastName;
+        console.log("fullname: ", fullName);
         if (this.state.firstName && this.state.lastName && this.state.email && this.state.password) {
             API.registerUser({
                 firstName: firstName,
                 lastName: lastName,
-                fullName: firstName + " " + lastName,
+                fullName: fullName,
                 email: email,
                 password: password
                 // firstName: this.state.firstName,
@@ -33,7 +35,7 @@ class Register extends Component {
                 // console.log(res);
                 this.props.history.push("/");
             })
-            .catch(err => console.log(err));
+                .catch(err => console.log(err));
         }
         else {
             alert("Please fill out all fields");
@@ -44,7 +46,6 @@ class Register extends Component {
     render() {
         return (
             <div>
-                {/* <form> */}
                 <form action="/register" method="post">
                     <div className="form-group">
                         <label htmlFor="firstName">First Name</label>
@@ -62,7 +63,8 @@ class Register extends Component {
                         <label htmlFor="password">Password</label>
                         <input type="password" className="form-control" id="password" placeholder="Password" name="password" value={this.state.password} onChange={this.handleInputChange} />
                     </div>
-                    <button className="btn btn-primary" onClick={() => this.registerUser(this.state.firstName, this.state.lastName, this.state.email, this.state.password)}>Create Account</button>
+                    {/* <button className="btn btn-primary" onClick={() => this.handleSubmit(this.state.firstName, this.state.lastName, this.state.email, this.state.password)}>Create Account</button> */}
+                    <button className="btn btn-primary" type="submit" onClick={this.handleSubmit}>Create Account</button>
                 </form>
                 <div>
                     <h4>Already have an account? <a href="/login">Log in here.</a></h4>

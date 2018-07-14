@@ -29,6 +29,7 @@ module.exports = function (router, passport, User) {
     router.post("/auth/register", passport.authenticate("local-signup", { session: true }), function (req, res) {
         // create user here but only if email does not already exist in db
         //spread is used instead of then when more than one argument is passed returned from a promise
+        console.log("register req: ", req.body);
         User.findOrCreate({
             where: {
                 email: req.body.email
