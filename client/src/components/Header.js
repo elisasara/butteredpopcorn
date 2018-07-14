@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const Header = props => (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light" >
+    <nav className="navbar fixed-top navbar-expand-lg navbar-light bg-light" >
         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target=".mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
         </button>
@@ -18,18 +18,21 @@ const Header = props => (
         </form>
         {props.user ? (
             <div className="collapse navbar-collapse mainNav">
-                <ul className="navbar-nav mr-auto">
-                    <li className="nav-item">
+                <ul className="navbar-nav ml-auto p-2">
+                    <li className="nav-item ml-2 mr-2">
                         {/* <Link to="/profile"><span className="navbar-text">Welcome {props.user.user.firstName}</span></Link> */}
                         <Link to="/profile">Welcome {props.user.user.firstName}</Link>
                     </li>
-                    <Link to="/findfriends"><span className="navbar-text">Find Friends</span></Link>
-                    <span className="navbar-text"><button className="btn" type="submit" onClick={props.logout}>Log Out</button></span>
+                    <li className="nav-item ml-2 mr-2">
+                        <Link to="/findfriends">Find Friends</Link>
+                    </li>
+                    <li className="navbar-item mr-2 ml-2" onClick={props.logout}><a href="/">Log Out</a></li>
+                    {/* <span className="navbar-text"><button className="btn" type="submit" onClick={props.logout}>Log Out</button></span> */}
                 </ul>
             </div>
         ) : (
                 <div className="collapse navbar-collapse mainNav">
-                    <ul className="navbar-nav mr-auto">
+                    <ul className="navbar-nav mr-2 ml-2">
                         <li className="nav-item">
                             <Link to="/login">Log In</Link>/<Link to="/register">Register</Link>
                         </li>
