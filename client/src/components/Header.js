@@ -2,23 +2,30 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const Header = props => (
-    <nav className="navbar fixed-top navbar-expand-lg navbar-light bg-light" >
+    <nav className="navbar navbar-expand-lg navbar-light bg-light" >
         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target=".mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
         </button>
-        <div className="collapse navbar-collapse mainNav">
-            <a className="navbar-brand" href="/">Buttered Popcorn</a>
-        </div>
-        <form className="form-inline">
+        <form className="form-inline order-1">
             <input className="form-control mr-sm-2" type="search" placeholder="Search" name="search" value={props.search} onChange={props.handleInputChange} />
             <Link to={"/search/" + props.search}>
                 <button className="btn btn-success my-2 my-sm-0"> Search
                     </button>
             </Link>
         </form>
+        <div className="collapse navbar-collapse mainNav order-0">
+            <a className="navbar-brand" href="/">Buttered Popcorn</a>
+        </div>
+        {/* <form className="form-inline justify-content-center">
+            <input className="form-control mr-sm-2" type="search" placeholder="Search" name="search" value={props.search} onChange={props.handleInputChange} />
+            <Link to={"/search/" + props.search}>
+                <button className="btn btn-success my-2 my-sm-0"> Search
+                    </button>
+            </Link>
+        </form> */}
         {props.user ? (
-            <div className="collapse navbar-collapse mainNav">
-                <ul className="navbar-nav ml-auto p-2">
+            <div className="collapse navbar-collapse mainNav order-2">
+                    <ul className="navbar-nav ml-auto p2">
                     <li className="nav-item ml-2 mr-2">
                         {/* <Link to="/profile"><span className="navbar-text">Welcome {props.user.user.firstName}</span></Link> */}
                         <Link to="/profile">Welcome {props.user.user.firstName}</Link>
