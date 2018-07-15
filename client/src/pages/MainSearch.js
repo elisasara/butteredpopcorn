@@ -31,11 +31,11 @@ class MainSearch extends Component {
     render() {
         if (this.state.results.length) {
             return (
-                <div>
+                <div className="container">
                     <DisplayResults>
                         {this.state.results.map(title => (
+                            <div>
                             <Results
-                                // userId={this.state.user.firstName}
                                 key={title.id}
                                 id={title.id}
                                 showTitle={title.name}
@@ -44,6 +44,8 @@ class MainSearch extends Component {
                                 overview={title.overview}
                                 searchTitle={this.searchTitle}
                             />
+                            <hr />
+                            </div>
                         ))}
                     </DisplayResults>
                 </div>

@@ -15,6 +15,7 @@ body {
 
 #mainArea {
   margin-top: 15px;
+  max-width: 90%;
   background-color: white;
   min-height: 95vh;
   border-style: double;
@@ -44,4 +45,12 @@ a {
 
 .createAccount, .login {
   margin-top: 15px;
+}
+
+.displayTitle {
+  font-weight: 600;
+}
+
+.resultContainer {
+  margin-top: 10px;
 }

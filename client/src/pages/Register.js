@@ -60,7 +60,7 @@ class Register extends Component {
                         <input type="password" className="form-control registerForm" id="password" placeholder="Password" name="password" value={this.state.password} onChange={this.handleInputChange} />
                     </div>
                     {/* <button className="btn btn-primary" onClick={() => this.handleSubmit(this.state.firstName, this.state.lastName, this.state.email, this.state.password)}>Create Account</button> */}
-                    <button className="btn" style={{backgroundColor: "#ef8b8b"}}type="submit" onClick={this.handleSubmit}>Create Account</button>
+                    <button className="btn" style={{backgroundColor: "#ef8b8b"}} type="submit" onClick={this.handleSubmit}>Create Account</button>
                     <h4 className="createAccount">Already have an account? <a href="/login" style={{color: "#ef8b8b"}}>Log in here.</a></h4>
                 </form>
             </div>
