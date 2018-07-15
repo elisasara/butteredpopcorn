@@ -55,6 +55,6 @@ a {
   margin-top: 10px;
 }
 
-#moviePoster, .movieInfo {
+.moviePoster, .movieInfo {
   display: inline;
 }
