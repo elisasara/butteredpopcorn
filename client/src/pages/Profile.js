@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 import dbAPI from "../utils/dbAPI";
+import WantToWatchList from "../components/WantToWatchList";
 
 class Profile extends Component {
     state = {
         userInfo: "",
-        watched: "",
-        wantToWatch: "",
-        watching: ""
+        watched: [],
+        wantToWatch: [],
+        watching: []
     }
 
     componentDidMount() {
@@ -77,7 +78,7 @@ class Profile extends Component {
                     </ul>
                     <div className="tab-content">
                         <div className="tab-pane fade show active" id="wants" role="tabpanel" aria-labelledby="wants-tab">
-                            Want to watch list
+                           <WantToWatchList wantToWatch={this.state.wantToWatch} />
                         </div>
                         <div className="tab-pane fade" id="watching" role="tabpanel" aria-labelledby="watching-tab">
                             Watching list
