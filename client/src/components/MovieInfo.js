@@ -12,9 +12,11 @@ const MovieInfo = props => {
             {imagePath ? (
                 <div>
                     <img className="img-fluid img-thumbnail moviePoster" src={imageURL} alt="poster" />
+                    <div className="movieInfo">
                     <h3>{name}</h3>
-                    <p className="font-italic movieInfo">{releaseDate}</p>
-                    <p className="movieInfo">{overview}</p>
+                    <p className="font-italic">{releaseDate}</p>
+                    <p>{overview}</p>
+                    </div>
                 </div>
             ) : (
                 <div>

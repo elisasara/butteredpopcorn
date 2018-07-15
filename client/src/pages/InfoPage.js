@@ -44,22 +44,24 @@ class InfoPage extends Component {
 
     render() {
         return (
-            <div>
-                {this.state.movie ? (<div className="row">
-                <div className="col l10 m9 s12">
-                    <MovieInfo info={this.state.info} />
-                    </div>
-                    <div className="col l2 m3 s12">
-                    <DBInfo title={this.state.info.title} type="movie" tmdbId={this.state.info.id} />
-                </div>
-                </div>) : (<div className="row">
-                    <div className="col l10 m9 s12">
-                        <TvInfo info={this.state.info} />
-                    </div>
-                    <div className="col l2 m3 s12">
-                        <DBInfo title={this.state.info.name} type="tv" tmdbId={this.state.info.id} />
-                    </div>
-                </div>)}
+            <div className="container">
+                {this.state.movie ? (
+                    <div className="row">
+                        <div className="col-lg-9 col-md-8 col-sm-12">
+                            <MovieInfo info={this.state.info} />
+                        </div>
+                        <div className="col-lg-3 col-md-4 col-sm-12">
+                            <DBInfo title={this.state.info.title} type="movie" tmdbId={this.state.info.id} />
+                        </div>
+                    </div>) : (
+                        <div className="row">
+                            <div className="col lg10 md9 sm12">
+                                <TvInfo info={this.state.info} />
+                            </div>
+                            <div className="col l2 m3 s12">
+                                <DBInfo title={this.state.info.name} type="tv" tmdbId={this.state.info.id} />
+                            </div>
+                        </div>)}
             </div>
         )
     }
