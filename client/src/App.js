@@ -70,6 +70,7 @@ class App extends Component {
       <div>
         <Router>
           <div>
+          {/* <div id="headerContainer"> */}
             <Header
               search={this.state.search}
               handleInputChange={this.handleInputChange}
@@ -77,6 +78,7 @@ class App extends Component {
               user={this.state.user}
               logout={this.logoutUser}
             />
+            {/* </div> */}
             <div className="container" id="mainArea">
               <Switch>
                 <Route exact path="/" component={Home} />

@@ -2,15 +2,15 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const Header = props => (
-    <div className="container">
-        <nav className="navbar navbar-expand-lg navbar-light bg-light" >
+    <div id="headerContainer">
+        <nav className="navbar navbar-expand-lg navbar-light" style={{backgroundColor: "#ef8b8b"}} >
             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target=".mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span className="navbar-toggler-icon"></span>
             </button>
             <form className="form-inline order-1">
                 <input className="form-control mr-sm-2" type="search" placeholder="Search" name="search" value={props.search} onChange={props.handleInputChange} />
                 <Link to={"/search/" + props.search}>
-                    <button className="btn btn-success my-2 my-sm-0"> Search
+                    <button className="btn btn-dark my-2 my-sm-0"> Search
                     </button>
                 </Link>
             </form>
@@ -21,7 +21,6 @@ const Header = props => (
                 <div className="collapse navbar-collapse mainNav order-2">
                     <ul className="navbar-nav ml-auto p2">
                         <li className="nav-item ml-2 mr-2">
-                            {/* <Link to="/profile"><span className="navbar-text">Welcome {props.user.user.firstName}</span></Link> */}
                             <Link to="/profile">Welcome {props.user.user.firstName}</Link>
                         </li>
                         <li className="nav-item ml-2 mr-2">
