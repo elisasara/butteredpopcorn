@@ -4,7 +4,7 @@ import FacebookLogin from "react-facebook-login";
 
 const responseFacebook = (response) => {
     console.log(response);
-  }
+}
 
 class Login extends Component {
     state = {
@@ -43,27 +43,26 @@ class Login extends Component {
     render() {
         return (
             <div>
-                {/* <button className="btn btn-primary" onClick={this.handleFacebook}>Log In with Facebook</button> */}
-                {/* <a href="/auth/facebook"><button className="btn btn-primary">Log In with Facebook</button></a> */}
-                <FacebookLogin
+                <h3 className="login">Log In</h3>
+                {/* <FacebookLogin
                     appId="1882216708738280"
                     autoLoad={true}
                     fields="name,email,picture"
                     // onClick={componentClicked}
-                    callback={responseFacebook} />
-                <form action="/login" method="post">
+                    callback={responseFacebook} /> */}
+                <form action="/login" method="post" className="forms">
                     <div className="form-group">
                         <label htmlFor="email">Email</label>
-                        <input type="email" className="form-control" id="email" name="email" placeholder="Email" value={this.state.email} onChange={this.handleInputChange} />
+                        <input type="email" className="form-control loginForm" id="email" name="email" placeholder="Email" value={this.state.email} onChange={this.handleInputChange} />
                     </div>
                     <div className="form-group">
                         <label htmlFor="password">Password</label>
-                        <input type="password" className="form-control" id="password" name="password" placeholder="Password" value={this.state.value} onChange={this.handleInputChange} />
+                        <input type="password" className="form-control loginForm" id="password" name="password" placeholder="Password" value={this.state.value} onChange={this.handleInputChange} />
                     </div>
                     <button type="submit" className="btn btn-primary" onClick={this.handleSubmit}>Login</button>
+                    <h4 className="login">Don't have an account? <a href="/register" style={{color: "#ef8b8b"}}>Create one here.</a></h4>
                 </form>
                 <div>
-                    <h4>Don't have an account? <a href="/register">Create one here.</a></h4>
                 </div>
             </div>
         )

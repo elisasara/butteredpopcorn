@@ -27,12 +27,7 @@ class Register extends Component {
                 fullName: fullName,
                 email: email,
                 password: password
-                // firstName: this.state.firstName,
-                // lastName: this.state.lastName,
-                // email: this.state.email,
-                // password: this.state.password
             }).then(res => {
-                // console.log(res);
                 this.props.history.push("/");
             })
                 .catch(err => console.log(err));
@@ -46,29 +41,28 @@ class Register extends Component {
     render() {
         return (
             <div>
-                <form action="/register" method="post">
+                <h3 className="createAccount">Create an account</h3>
+                <form className="forms" action="/register" method="post">
                     <div className="form-group">
                         <label htmlFor="firstName">First Name</label>
-                        <input type="text" className="form-control" id="firstName" placeholder="First Name" name="firstName" value={this.state.firstName} onChange={this.handleInputChange} />
+                        <input type="text" className="form-control registerForm" id="firstName" placeholder="First Name" name="firstName" value={this.state.firstName} onChange={this.handleInputChange} />
                     </div>
                     <div className="form-group">
                         <label htmlFor="lastName">Last Name</label>
-                        <input type="text" className="form-control" id="lastName" placeholder="Last Name" name="lastName" value={this.state.lastName} onChange={this.handleInputChange} />
+                        <input type="text" className="form-control registerForm" id="lastName" placeholder="Last Name" name="lastName" value={this.state.lastName} onChange={this.handleInputChange} />
                     </div>
                     <div className="form-group">
                         <label htmlFor="email">Email</label>
-                        <input type="email" className="form-control" id="email" placeholder="Email" name="email" value={this.state.email} onChange={this.handleInputChange} />
+                        <input type="email" className="form-control registerForm" id="email" placeholder="Email" name="email" value={this.state.email} onChange={this.handleInputChange} />
                     </div>
                     <div className="form-group">
                         <label htmlFor="password">Password</label>
-                        <input type="password" className="form-control" id="password" placeholder="Password" name="password" value={this.state.password} onChange={this.handleInputChange} />
+                        <input type="password" className="form-control registerForm" id="password" placeholder="Password" name="password" value={this.state.password} onChange={this.handleInputChange} />
                     </div>
                     {/* <button className="btn btn-primary" onClick={() => this.handleSubmit(this.state.firstName, this.state.lastName, this.state.email, this.state.password)}>Create Account</button> */}
-                    <button className="btn btn-primary" type="submit" onClick={this.handleSubmit}>Create Account</button>
+                    <button className="btn" style={{backgroundColor: "#ef8b8b"}}type="submit" onClick={this.handleSubmit}>Create Account</button>
+                    <h4 className="createAccount">Already have an account? <a href="/login" style={{color: "#ef8b8b"}}>Log in here.</a></h4>
                 </form>
-                <div>
-                    <h4>Already have an account? <a href="/login">Log in here.</a></h4>
-                </div>
             </div>
         );
     };

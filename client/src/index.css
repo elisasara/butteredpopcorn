@@ -16,7 +16,7 @@ body {
 #mainArea {
   margin-top: 15px;
   background-color: white;
-  height: 95vh;
+  min-height: 95vh;
   border-style: double;
   border-width: 5px;
   border-color: #ef8b8b;
@@ -29,4 +29,19 @@ a {
 
 #home {
   padding-top: 10px;
+}
+
+.registerForm, .loginForm {
+  max-width: 75%;
+}
+
+.forms {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-left: 25%;
+  margin-right: auto;
+}
+
+.createAccount, .login {
+  margin-top: 15px;
 }
