@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import API from "../utils/API";
-import FacebookLogin from "react-facebook-login";
+// import FacebookLogin from "react-facebook-login";
 
-const responseFacebook = (response) => {
-    console.log(response);
-}
+// const responseFacebook = (response) => {
+//     console.log(response);
+// }
 
 class Login extends Component {
     state = {

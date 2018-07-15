@@ -7,7 +7,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import NoMatch from "./pages/NoMatch";
 import MainSearch from "./pages/MainSearch";
-import InfoPage from "./components/InfoPage";
+import InfoPage from "./pages/InfoPage";
 import API from "./utils/API";
 import Profile from "./pages/Profile";
 import FindFriends from "./pages/FindFriends";

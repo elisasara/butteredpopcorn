@@ -73,12 +73,16 @@ class DBInfo extends Component {
     render() {
         return (
             <div className="container">
-                {/* <button onclick={() => this.wantToWatch(this.props.info.id)} className="btn btn-default" type="button">Want to Watch</button> */}
-                <WantToWatchBtn onClick={() => this.wantToWatch(this.props.tmdbId, this.props.title)} />
-                <WatchingBtn onClick={() => this.currentlyWatching(this.props.tmdbId, this.props.title)} />
-                {/* <WatchedBtn onClick={() => this.watched(this.props.tmdbId, this.props.title)} /> */}
-                <WatchedBtn onClick={this.showRating} />
-                <Rating visibility={this.state.visibility} tmdbID={this.props.tmdbId} title={this.props.title} submitToWatched={this.watched}/>
+                <div className="row">
+                    <WantToWatchBtn onClick={() => this.wantToWatch(this.props.tmdbId, this.props.title)} />
+                </div>
+                <div className="row">
+                    <WatchingBtn onClick={() => this.currentlyWatching(this.props.tmdbId, this.props.title)} />
+                </div>
+                <div className="row">
+                    <WatchedBtn onClick={this.showRating} />
+                    <Rating visibility={this.state.visibility} tmdbID={this.props.tmdbId} title={this.props.title} submitToWatched={this.watched} />
+                </div>
             </div>
         )
     }
@@ -99,7 +103,6 @@ class DBInfo extends Component {
 // </div>
 
 
-// THIS HAS NOT BEEN TESTED YET!!!
 
 
 export default DBInfo;

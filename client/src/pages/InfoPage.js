@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import MovieInfo from "./MovieInfo";
+import MovieInfo from "../components/MovieInfo";
 import movieAPI from "../utils/movieAPI";
 // import API from "../utils/API";
-import DBInfo from "./DBInfo";
-import TvInfo from "./TvInfo";
+import DBInfo from "../components/DBInfo";
+import TvInfo from "../components/TvInfo";
 
 // import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
@@ -45,14 +45,20 @@ class InfoPage extends Component {
     render() {
         return (
             <div>
-                {this.state.movie ? (<div>
+                {this.state.movie ? (<div className="row">
+                <div className="col l10 m9 s12">
                     <MovieInfo info={this.state.info} />
+                    </div>
+                    <div className="col l2 m3 s12">
                     <DBInfo title={this.state.info.title} type="movie" tmdbId={this.state.info.id} />
-                </div>) : (<div>
-                    <TvInfo info={this.state.info} />
-                    <DBInfo title={this.state.info.name} type="tv" tmdbId={this.state.info.id} />
-                    {/* <h1>TV Info goes here</h1> */}
-                    {/* <DBInfo title={this.state.info.title} tmdbId={this.state.info.id} /> */}
+                </div>
+                </div>) : (<div className="row">
+                    <div className="col l10 m9 s12">
+                        <TvInfo info={this.state.info} />
+                    </div>
+                    <div className="col l2 m3 s12">
+                        <DBInfo title={this.state.info.name} type="tv" tmdbId={this.state.info.id} />
+                    </div>
                 </div>)}
             </div>
         )

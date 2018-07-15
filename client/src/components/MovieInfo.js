@@ -1,26 +1,18 @@
 import React from "react";
 
 const MovieInfo = props => {
+    // make smart component so that it will know how to handle no poster
+    
     const name = props.info.title;
-    // console.log("name: ", name);
-    const imageURL = `https://image.tmdb.org/t/p/w300/${props.info.poster_path}`;
-    // console.log("img URL: ", imageURL);
+    const imageURL = `https://image.tmdb.org/t/p/w200/${props.info.poster_path}`;
     const overview = props.info.overview;
-    // console.log("overview: ", overview);
     const releaseDate = props.info.release_date;
-    // console.log("release date: ", releaseDate);
     return (
-        <div className="container">
-            <div className="row">
-                <div className="col-md-4">
-                    <img src={imageURL} alt="poster" />
-                </div>
-                <div className="col-md-4">
-                    <h3>{name}</h3>
-                    <p className="font-italic">{releaseDate}</p>
-                    <p>{overview}</p>
-                </div>
-            </div>
+        <div>
+            <img className="img-fluid img-thumbnail" id="moviePoster" src={imageURL} alt="poster" />
+            <h3>{name}</h3>
+            <p className="font-italic movieInfo">{releaseDate}</p>
+            <p className="movieInfo">{overview}</p>
         </div>
     )
 };
