@@ -26,3 +26,7 @@ body {
 a {
   color: black;
 }
+
+#home {
+  padding-top: 10px;
+}
