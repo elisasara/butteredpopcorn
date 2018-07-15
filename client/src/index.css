@@ -58,3 +58,13 @@ a {
 #infoArea {
   padding-top: 15px;
 }
+
+.ratingArea {
+  margin-top: 7px;
+  background-color: #ef8b8b;
+  padding: 10px;
+  border-radius: 15px;
+  margin-left: auto;
+  margin-right: auto;
+}
+

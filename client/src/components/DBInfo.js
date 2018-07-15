@@ -26,7 +26,7 @@ class DBInfo extends Component {
                     want: true,
                     watching: false,
                     watched: false,
-                    visibility: "invisible"
+                    visibility: "row ratingArea invisible"
                 });
             })
             .catch(err => console.log(err));
@@ -66,7 +66,7 @@ class DBInfo extends Component {
 
     showRating = () => {
         this.setState({
-            visibility: "visible"
+            visibility: "row ratingArea visible"
         })
     }
 
@@ -80,9 +80,9 @@ class DBInfo extends Component {
                     <WatchingBtn onClick={() => this.currentlyWatching(this.props.tmdbId, this.props.title)} />
                 </div>
                 <div className="row">
-                    <div>
                     <WatchedBtn onClick={this.showRating} />
-                    </div>
+                </div>
+                <div className={this.state.visibility}>
                     <Rating visibility={this.state.visibility} tmdbID={this.props.tmdbId} title={this.props.title} submitToWatched={this.watched} />
                 </div>
             </div>

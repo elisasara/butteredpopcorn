@@ -15,7 +15,7 @@ class Rating extends Component {
 
     render() {
         return (
-            <span className={this.props.visibility}>
+            <div>
                 <form>
                     <div className="form-group">
                         <label htmlFor="rating">Your Rating:</label>
@@ -27,9 +27,9 @@ class Rating extends Component {
                             <option value="5" >5</option>
                         </select>
                     </div>
-                    <button className="btn" onClick={() => this.props.submitToWatched(this.props.tmdbID, this.props.title, this.state.rating)} >Submit</button>
+                    <button className="btn btn-dark" onClick={() => this.props.submitToWatched(this.props.tmdbID, this.props.title, this.state.rating)} >Submit</button>
                 </form>
-            </span>
+            </div>
         )
     }
 }
