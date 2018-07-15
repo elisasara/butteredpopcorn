@@ -54,7 +54,7 @@ a {
 .resultContainer {
   margin-top: 10px;
 }
-/* 
-.moviePoster {
-min-width: 200px;
-} */
+
+#infoArea {
+  padding-top: 15px;
+}

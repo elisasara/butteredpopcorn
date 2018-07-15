@@ -46,16 +46,16 @@ class InfoPage extends Component {
         return (
             <div className="container">
                 {this.state.movie ? (
-                    <div className="row">
-                        <div className="col-lg-9 col-md-8 col-sm-12">
+                    <div className="row" id="infoArea">
+                        <div className="col-lg-9 col-md-8 col-sm-12 border-right border-secondary">
                             <MovieInfo info={this.state.info} />
                         </div>
                         <div className="col-lg-3 col-md-4 col-sm-12">
                             <DBInfo title={this.state.info.title} type="movie" tmdbId={this.state.info.id} />
                         </div>
                     </div>) : (
-                        <div className="row">
-                            <div className="col-lg-9 col-md-8 col-sm-12">
+                        <div className="row" id="infoArea">
+                            <div className="col-lg-9 col-md-8 col-sm-12 border-right border-secondary">
                                 <TvInfo info={this.state.info} />
                             </div>
                             <div className="col-lg-3 col-md-4 col-sm-12">

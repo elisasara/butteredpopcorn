@@ -1,7 +1,7 @@
 import React from "react";
 
 const WatchingBtn = props => (
-    <div className="btn " {...props}>Currently Watching</div>
+    <div className="btn btn-outline-secondary" {...props}>Currently Watching</div>
 )
 
 export default WatchingBtn;

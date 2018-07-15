@@ -80,7 +80,9 @@ class DBInfo extends Component {
                     <WatchingBtn onClick={() => this.currentlyWatching(this.props.tmdbId, this.props.title)} />
                 </div>
                 <div className="row">
+                    <div>
                     <WatchedBtn onClick={this.showRating} />
+                    </div>
                     <Rating visibility={this.state.visibility} tmdbID={this.props.tmdbId} title={this.props.title} submitToWatched={this.watched} />
                 </div>
             </div>

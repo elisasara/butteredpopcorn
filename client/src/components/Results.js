@@ -9,7 +9,7 @@ const Results = props =>
                     {props.showTitle ? (
                         <div>
                         <Link to={"/search/tv/" + props.id}><h3 className="displayTitle" onClick={props.searchTitle}>{props.showTitle}</h3></Link>
-                        <p>{props.media}<br />props.overview}</p>
+                        <p><em>{props.media}</em><br />{props.overview}</p>
                         </div>
                     ) : (
                         <div>
