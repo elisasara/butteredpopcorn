@@ -9,7 +9,7 @@ class Profile extends Component {
         watching: ""
     }
 
-    componentDidMount(){
+    componentDidMount() {
         this.getUserFromDb();
         this.getWatched();
         this.getWantToWatch();
@@ -18,12 +18,12 @@ class Profile extends Component {
 
     getUserFromDb = () => {
         dbAPI.getUserFromDb()
-        .then(res => {
-            this.setState({
-                userInfo: res.data
-            });
-            console.log("User Info: ", res.data);
-        })
+            .then(res => {
+                this.setState({
+                    userInfo: res.data[0]
+                });
+                console.log("User Info: ", res.data);
+            })
     }
 
     getWatched = () => {
@@ -60,9 +60,33 @@ class Profile extends Component {
     };
 
     render() {
-        return(
+        return (
             <div>
-                <h1>Info goes here</h1>
+                <h1>{this.state.userInfo.firstName}</h1>
+                <div>
+                    <ul className="nav nav-tabs">
+                        <li className="nav-item">
+                            <a className="nav-link" id="wants-tab" data-toggle="tab" href="#wants" role="tab" aria-controls="wants" aria-selected="true">Want To Watch</a>
+                        </li>
+                        <li className="nav nav-tabs">
+                            <a className="nav-link" id="watching-tab" data-toggle="tab" href="#watching" role="tab" aria-controls="watching" aria-selected="false">Watching</a>
+                        </li>
+                        <li className="nav nav-tabs">
+                            <a className="nav-link" id="watched-tab" data-toggle="tab" href="#watched" role="tab" aria-controls="watched" aria-selected="false">Watched</a>
+                        </li>
+                    </ul>
+                    <div className="tab-content">
+                        <div className="tab-pane fade show active" id="wants" role="tabpanel" aria-labelledby="wants-tab">
+                            Want to watch list
+                        </div>
+                        <div className="tab-pane fade" id="watching" role="tabpanel" aria-labelledby="watching-tab">
+                            Watching list
+                        </div>
+                        <div className="tab-pane fade" id="watched" role="tabpanel" aria-labelledby="watched-tab">
+                            Watched list
+                        </div>
+                    </div>
+                </div>
             </div>
         )
     };

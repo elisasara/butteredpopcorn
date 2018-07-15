@@ -51,20 +51,6 @@ class App extends Component {
     });
   };
 
-  // handleSubmit = event => {
-  //   event.preventDefault();
-  //   const search = this.state.search;
-  //   console.log(search);
-  //   movieAPI.searchFor(search)
-  //     .then(res => {
-  //       this.setState({
-  //         results: res.data
-  //       })
-  //       // console.log(this.state.results);
-  //     })
-  //     .catch(err => console.log(err));
-  // };
-
   render() {
     return (
       <div>
