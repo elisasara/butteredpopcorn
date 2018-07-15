@@ -8,9 +8,9 @@ const Header = props => (
                 <span className="navbar-toggler-icon"></span>
             </button>
             <form className="form-inline order-1">
-                <input className="form-control mr-sm-2" type="search" placeholder="Search" name="search" value={props.search} onChange={props.handleInputChange} />
+                <input className="form-control mr-auto ml-auto" type="search" placeholder="Search" name="search" value={props.search} onChange={props.handleInputChange} />
                 <Link to={"/search/" + props.search}>
-                    <button className="btn btn-dark my-2 my-sm-0"> Search
+                    <button className="btn btn-dark ml-sm-2 my-2 my-sm-0"> Search
                     </button>
                 </Link>
             </form>
