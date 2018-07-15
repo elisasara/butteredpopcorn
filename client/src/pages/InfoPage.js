@@ -55,10 +55,10 @@ class InfoPage extends Component {
                         </div>
                     </div>) : (
                         <div className="row">
-                            <div className="col lg10 md9 sm12">
+                            <div className="col-lg-9 col-md-8 col-sm-12">
                                 <TvInfo info={this.state.info} />
                             </div>
-                            <div className="col l2 m3 s12">
+                            <div className="col-lg-3 col-md-4 col-sm-12">
                                 <DBInfo title={this.state.info.name} type="tv" tmdbId={this.state.info.id} />
                             </div>
                         </div>)}

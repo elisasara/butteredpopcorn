@@ -10,22 +10,26 @@ const MovieInfo = props => {
     return (
         <div>
             {imagePath ? (
-                <div>
-                    <img className="img-fluid img-thumbnail moviePoster" src={imageURL} alt="poster" />
-                    <div className="movieInfo">
-                    <h3>{name}</h3>
-                    <p className="font-italic">{releaseDate}</p>
-                    <p>{overview}</p>
+                <div className="row">
+                    <div className="col-lg-4 col-md-4 col-sm-12">
+                        <img className="img-fluid img-thumbnail moviePoster" src={imageURL} alt="poster" />
+                    </div>
+                    <div className="col-lg-8 col-md-8 col-sm-12 text-left">
+                        <div className="movieInfo">
+                            <h3>{name}</h3>
+                            <p className="font-italic">{releaseDate}</p>
+                            <p>{overview}</p>
+                        </div>
                     </div>
                 </div>
             ) : (
-                <div>
-                <img className="img-fluid img-thumbnail moviePoster" src="https://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_available.svg" alt="poster" />
-                <h3>{name}</h3>
-                <p className="font-italic movieInfo">{releaseDate}</p>
-                <p className="movieInfo">{overview}</p> 
-                </div>
-            )}
+                    <div>
+                        <img className="img-fluid img-thumbnail moviePoster" src="https://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_available.svg" alt="poster" />
+                        <h3>{name}</h3>
+                        <p className="font-italic movieInfo">{releaseDate}</p>
+                        <p className="movieInfo">{overview}</p>
+                    </div>
+                )}
         </div>
     )
 };
