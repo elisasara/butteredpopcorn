@@ -59,8 +59,8 @@ class ChangeStatus extends Component {
                 .catch(err => console.log(err));
         }
 
-        else if (this.state.value === "Watching") {
-            dbAPI.currentlyWatching({ tmdbID: tmdbId, title: title, type })
+        if (this.state.value === "Watching") {
+            dbAPI.currentlyWatching({ tmdbID: tmdbId, title: title, type: type })
                 .then(res => {
                     console.log("Watching added to DB");
                     alert(`${title} added as currently watching!`);
@@ -89,18 +89,24 @@ class ChangeStatus extends Component {
         };
     };
 
+    getRating = event => {
+        const { name, value } = event.target;
+        this.setState({
+            [name]: value
+        });
+    };
+
     render() {
         return (
             <form>
                 <div className="form-group">
                     {/* <label htmlFor="changeStatus">Change to:</label> */}
-                    <select className="form-control-inline" id="changeStatus" value={this.state.value} name="value" onChange={this.handleChange}>
+                    <select className="form-control-inline" id="changeStatus" value={this.props.status} name="value" onChange={this.handleChange}>
                         {/* <option value="" selected disabled hidden>Change status to...</option> */}
-                        <option value="Want To Watch">Want to Watch</option>
-                        <option value="Watching">Watching</option>
-                        <option value="Watched">Watched</option>
+                        <option name="value" value="Want To Watch">Want to Watch</option>
+                        <option name="value" value="Watching">Watching</option>
+                        <option name="value" value="Watched">Watched</option>
                     </select>
-                    <button className="btn btn-sm btn-success" onClick={() => this.handleSubmit(this.props.tmdbId, this.props.title, this.props.type, this.state.rating)}>Update</button>
                 </div>
                 <div className="form-group" className={this.state.visibility}>
                     <label htmlFor="rating">Your Rating:</label>
@@ -112,6 +118,7 @@ class ChangeStatus extends Component {
                         <option value="5" >5</option>
                     </select>
                 </div>
+                <button className="btn btn-sm btn-success" onClick={() => this.handleSubmit(this.props.tmdbId, this.props.title, this.props.type, this.state.rating)}>Update</button>
             </form>
         )
     }

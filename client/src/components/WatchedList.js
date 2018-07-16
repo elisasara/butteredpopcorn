@@ -1,4 +1,5 @@
 import React from "react";
+import ChangeStatus from "./ChangeStatus";
 
 const WatchedList = props => {
     return (
@@ -18,7 +19,7 @@ const WatchedList = props => {
                             <th scope="row">{item.title}</th>
                             <td>{item.type}</td>
                             <td>{item.rating}</td>
-                            <td>Status and change option goes here</td>
+                            <td><ChangeStatus tmdbId={item.tmdbID} title={item.title} type={item.type} status={item.status}/></td>
                         </tr>
                     ))}
                 </tbody>
