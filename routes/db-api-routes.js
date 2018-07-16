@@ -118,11 +118,24 @@ module.exports = function (router) {
         });
     });
 
-    router.get("/db/findfriends/:friend", function (req, res) {
-        console.log(req.params.friend);
+    router.get("/db/findfriendsbyemail/:friendEmail", function (req, res) {
+        console.log(req.params.friendEmail);
         db.User.findAll({
             where: {
-                email: req.params.friend
+                email: req.params.friendEmail
+            }
+        }).then(data => {
+            res.json(data);
+        });
+    });
+
+    router.get("/db/findfriendsbyname/:friendName", function (req, res) {
+        console.log(req.params.friendName);
+        db.User.findAll({
+            where: {
+                fullName: {
+                    $like: `${req.params.friendName}`
+                } 
             }
         }).then(data => {
             res.json(data);

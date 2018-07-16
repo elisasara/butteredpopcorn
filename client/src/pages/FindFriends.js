@@ -4,7 +4,8 @@ import FriendList from "../components/FriendList";
 
 class FindFriends extends Component {
     state = {
-        searchFriends: "",
+        friendEmail: "",
+        friendName: "",
         results: []
     }
 
@@ -15,9 +16,22 @@ class FindFriends extends Component {
         });
     };
 
-    handleSearch = email => {
+    handleEmailSearch = email => {
         // event.preventDefault();
-        const friend = this.state.searchFriends;
+        const friend = this.state.friendEmail;
+        console.log("Friend Search: ", friend);
+        dbAPI.getSearchedFriend(friend)
+            .then(res => {
+                console.log("friend res: ", res.data);
+                this.setState({
+                    results: res.data
+                });
+            });
+    };
+
+    handleNameSearch = name => {
+        // event.preventDefault();
+        const friend = this.state.friendName;
         console.log("Friend Search: ", friend);
         dbAPI.getSearchedFriend(friend)
             .then(res => {
@@ -56,20 +70,29 @@ class FindFriends extends Component {
     render() {
         return (
             <div className="container">
-                {/* <form className="form-inline"> */}
-                <div className="form-group">
-                    <label htmlFor="friendEmail">Search by Email:</label>
-                    <input type="text" className="form-control" name="searchFriends" value={this.state.searchFriends} id="friendEmail" onChange={this.handleInputChange} />
+                <form className="form-inline">
+                    <div className="form-group">
+                        <label htmlFor="friendName">Search by Name</label>
+                        <input type="text" className="form-control" name="friendName" value={this.state.friendName} id="friendName" onChange={this.handleInputChange} />
+                        <button className="btn btn-primary" onClick={() => this.handleNameSearch(this.state.friendName)}>Search</button>
+                    </div>
+                </form>
+                <form className="form-inline">
+                    <div className="form-group">
+                        <label htmlFor="friendEmail">Search by Email:</label>
+                        <input type="text" className="form-control" name="friendEmail" value={this.state.friendEmail} id="friendEmail" onChange={this.handleInputChange} />
+                    </div>
+                    <button className="btn btn-primary" onClick={() => this.handleEmailSearch(this.state.friendEmail)}>Search</button>
+                </form>
+                <div>
+                    {this.state.results.length ? (
+                        this.state.results.map(friend =>
+                            <FriendList key={friend.id} name={friend.firstName} email={friend.email} joined={friend.createdAt} friendId={friend.id} />
+                        )
+                    ) : (
+                            <h1>Search for your friends here!</h1>
+                        )}
                 </div>
-                <button className="btn btn-primary" onClick={() => this.handleSearch(this.state.searchFriends)}>Search</button>
-                {/* </form> */}
-                {this.state.results.length ? (
-                    this.state.results.map(friend =>
-                        <FriendList key={friend.id} name={friend.firstName} email={friend.email} joined={friend.createdAt} friendId={friend.id} />
-                    )
-                ) : (
-                        <h1>Search for your friends here!</h1>
-                    )}
             </div>
         )
     }
