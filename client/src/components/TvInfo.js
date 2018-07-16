@@ -23,7 +23,7 @@ const TvInfo = props => {
             ) : (
                     <div className="row">
                         <div className="col-lg-4 col-md-4 col-sm-12">
-                            <img img-fluid img-thumbnail moviePoster src="https://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_available.svg" alt="poster" />
+                            <img className="img-fluid img-thumbnail moviePoster" src="https://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_available.svg" alt="poster" />
                         </div>
                         <div className="col-lg-8 col-md-8 col-sm-12 text-left">
                             <h3>{title}</h3>

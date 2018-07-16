@@ -34,17 +34,16 @@ class MainSearch extends Component {
                 <div className="container">
                     <DisplayResults>
                         {this.state.results.map(title => (
-                            <div>
-                            <Results
-                                key={title.id}
-                                id={title.id}
-                                showTitle={title.name}
-                                movieTitle={title.title}
-                                media={title.media_type}
-                                overview={title.overview}
-                                searchTitle={this.searchTitle}
-                            />
-                            <hr />
+                            <div key={title.id}>
+                                <Results
+                                    id={title.id}
+                                    showTitle={title.name}
+                                    movieTitle={title.title}
+                                    media={title.media_type}
+                                    overview={title.overview}
+                                    searchTitle={this.searchTitle}
+                                />
+                                <hr />
                             </div>
                         ))}
                     </DisplayResults>

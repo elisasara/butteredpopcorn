@@ -3,6 +3,7 @@ import dbAPI from "../utils/dbAPI";
 import WantToWatchList from "../components/WantToWatchList";
 import WatchedList from "../components/WatchedList";
 import WatchingList from "../components/WatchingList";
+import RandomSelect from "../components/RandomSelect";
 
 class Profile extends Component {
     state = {
@@ -82,7 +83,10 @@ class Profile extends Component {
 
                         <div className="tab-pane fade show active" id="wants" role="tabpanel" aria-labelledby="wants-tab">
                             {this.state.wantToWatch.length ? (
-                                <WantToWatchList wantToWatch={this.state.wantToWatch} />
+                                <div>
+                                    <RandomSelect options={this.state.wantToWatch} />
+                                    <WantToWatchList wantToWatch={this.state.wantToWatch} />
+                                </div>
                             ) : (
                                     <h3 className="noList">You haven't added any movies or shows to your Want To Watch list yet.</h3>
                                 )}
