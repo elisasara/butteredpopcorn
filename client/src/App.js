@@ -11,7 +11,7 @@ import InfoPage from "./pages/InfoPage";
 import API from "./utils/API";
 import Profile from "./pages/Profile";
 import FindFriends from "./pages/FindFriends";
-import Feed from "./pages/Feed";
+// import Feed from "./pages/Feed";
 
 class App extends Component {
   state = {
@@ -75,7 +75,7 @@ class App extends Component {
                 <Route exact path="/search/tv/:id" component={InfoPage} />
                 <Route exact path="/profile" component={Profile} />
                 <Route exact path="/findfriends" component={FindFriends} />
-                <Route exact path="/feed" component={Feed} />
+                {/* <Route exact path="/feed" component={Feed} /> */}
                 <Route component={NoMatch} />
               </Switch>
             </div>

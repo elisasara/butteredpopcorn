@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import {Link} from "react-router-dom";
 import dbAPI from "../utils/dbAPI";
 import NewsItem from "../components/NewsItem";
 // import Moment from "react-moment";
@@ -55,7 +56,10 @@ class Feed extends Component {
                         ))}
                     </div>
                 ) : (
-                        <h1>You don't have any friend activity. Click here to find your friends.</h1>
+                        <div className="text-center">
+                            <h5>You don't have any friend activity.</h5>
+                            <Link to="/findfriends"><h5>Click here to find your friends.</h5></Link>
+                        </div>
                     )}
             </div>
         );

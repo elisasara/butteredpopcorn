@@ -20,13 +20,16 @@ const Header = props => (
             {props.user ? (
                 <div className="collapse navbar-collapse mainNav order-2">
                     <ul className="navbar-nav ml-auto p2">
-                        <li className="nav-item ml-2 mr-2">
+                        <li className="nav-item ml-1 mr-1">
                             <Link to="/profile">Welcome {props.user.user.firstName}</Link>
                         </li>
-                        <li className="nav-item ml-2 mr-2">
+                        <li className="nav-item ml-1 mr-1">
                             <Link to="/findfriends">Find Friends</Link>
                         </li>
-                        <li className="navbar-item mr-2 ml-2" onClick={props.logout}><a href="/">Log Out</a></li>
+                        <li className="nav-item ml-1 mr-1">
+                            <Link to="/newsfeed">News Feed</Link>
+                        </li>
+                        <li className="navbar-item mr-1 ml-1" onClick={props.logout}><a href="/">Log Out</a></li>
                         {/* <span className="navbar-text"><button className="btn" type="submit" onClick={props.logout}>Log Out</button></span> */}
                     </ul>
                 </div>

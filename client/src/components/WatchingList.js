@@ -19,7 +19,7 @@ const WatchingList = props => {
                             <th scope="row">{item.title}</th>
                             <td>{item.type}</td>
                             <td>{item.updatedAt}</td>
-                            <td><ChangeStatus tmdbId={item.tmdbId} title={item.title} type={item.type} status={item.status}/></td>
+                            <td><ChangeStatus tmdbId={item.tmdbID} title={item.title} type={item.type} status={item.status}/></td>
                         </tr>
                     ))}
                 </tbody>
