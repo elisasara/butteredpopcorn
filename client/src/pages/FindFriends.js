@@ -16,11 +16,11 @@ class FindFriends extends Component {
         });
     };
 
-    handleEmailSearch = email => {
+    handleEmailSearch = () => {
         // event.preventDefault();
         const friend = this.state.friendEmail;
         console.log("Friend Search: ", friend);
-        dbAPI.getSearchedFriend(friend)
+        dbAPI.getSearchedFriendbyEmail(friend)
             .then(res => {
                 console.log("friend res: ", res.data);
                 this.setState({
@@ -29,11 +29,11 @@ class FindFriends extends Component {
             });
     };
 
-    handleNameSearch = name => {
+    handleNameSearch = () => {
         // event.preventDefault();
         const friend = this.state.friendName;
         console.log("Friend Search: ", friend);
-        dbAPI.getSearchedFriend(friend)
+        dbAPI.getSearchedFriendbyName(friend)
             .then(res => {
                 console.log("friend res: ", res.data);
                 this.setState({
@@ -70,20 +70,20 @@ class FindFriends extends Component {
     render() {
         return (
             <div className="container">
-                <form className="form-inline">
+                {/* <form className="form-inline"> */}
                     <div className="form-group">
                         <label htmlFor="friendName">Search by Name</label>
                         <input type="text" className="form-control" name="friendName" value={this.state.friendName} id="friendName" onChange={this.handleInputChange} />
                         <button className="btn btn-primary" onClick={() => this.handleNameSearch(this.state.friendName)}>Search</button>
                     </div>
-                </form>
-                <form className="form-inline">
+                {/* </form> */}
+                {/* <form className="form-inline"> */}
                     <div className="form-group">
                         <label htmlFor="friendEmail">Search by Email:</label>
                         <input type="text" className="form-control" name="friendEmail" value={this.state.friendEmail} id="friendEmail" onChange={this.handleInputChange} />
                     </div>
                     <button className="btn btn-primary" onClick={() => this.handleEmailSearch(this.state.friendEmail)}>Search</button>
-                </form>
+                {/* </form> */}
                 <div>
                     {this.state.results.length ? (
                         this.state.results.map(friend =>

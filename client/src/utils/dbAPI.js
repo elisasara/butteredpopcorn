@@ -31,12 +31,12 @@ export default {
 
     getSearchedFriendbyEmail: function(friendEmail) {
         console.log("friend email in dbapi: ", friendEmail);
-        return axios.get(`/db/findfriends/${friendEmail}`);
+        return axios.get(`/db/findfriendsbyemail/${friendEmail}`);
     },
 
     getSearchedFriendbyName: function(friendName) {
         console.log("friend name in dbapi: ", friendName);
-        return axios.get(`/db.fidnfriends/${friendName}`);
+        return axios.get(`/db/findfriendsbyname/${friendName}`);
     },
 
     findIfFriend: function(friend) {
