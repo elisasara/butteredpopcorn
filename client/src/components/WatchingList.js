@@ -1,4 +1,5 @@
 import React from "react";
+import ChangeStatus from "./ChangeStatus";
 
 const WatchingList = props => {
     return (
@@ -18,7 +19,11 @@ const WatchingList = props => {
                             <th scope="row">{item.title}</th>
                             <td>{item.type}</td>
                             <td>{item.updatedAt}</td>
-                            <td>Status and change option goes here</td>
+                            <td>{item.status}
+                            <br />
+                            <ChangeStatus info={props}/>
+                            </td>
+                            {/* <td><ChangeStatus info={props}/></td> */}
                         </tr>
                     ))}
                 </tbody>
