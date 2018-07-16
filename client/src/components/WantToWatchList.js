@@ -11,7 +11,7 @@ const WantToWatchList = props => {
                         <th scope="col">Type</th>
                         <th scope="col">Date Added</th>
                         <th scope="col">Status</th>
-                        <th scope="col"></th>
+                        {/* <th scope="col"></th> */}
                     </tr>
                 </thead>
                 <tbody>
@@ -20,9 +20,7 @@ const WantToWatchList = props => {
                             <th scope="row">{item.title}</th>
                             <td>{item.type}</td>
                             <td>{item.updatedAt}</td>
-                            <td>{item.status}
-                            <ChangeStatus info={props}/>
-                            </td>
+                            <td><ChangeStatus tmdbId={item.tmdbID} title={item.title} type={item.type} status={item.status}/></td>
                             {/* <td><ChangeStatus info={props}/></td> */}
                         </tr>
                     ))}

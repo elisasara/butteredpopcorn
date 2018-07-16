@@ -13,88 +13,104 @@ class ChangeStatus extends Component {
     }
 
     handleChange = event => {
-        const {name, value} = event.target;
-        this.setState({
-            [name]: value
-        });
+        const { name, value } = event.target;
+        if (value === "Watched") {
+            this.setState({
+                [name]: value,
+                visibility: "visible"
+            });
+        }
+        else {
+            this.setState({
+                [name]: value,
+                visibility: "invisible"
+            });
+        };
     };
 
-    wantToWatch = (tmdbId, title, type) => {
-        // console.log("I've been clicked");
-        // dbAPI.wantToWatch(tmdbId, title)
-        dbAPI.wantToWatch({ tmdbID: tmdbId, title: title, type: type })
-            .then(res => {
-                console.log("Want to Watch added to DB");
-                alert(`${title} added as want to watch!`);
-                this.setState({
-                    want: true,
-                    watching: false,
-                    watched: false,
-                    visibility: "row ratingArea invisible"
-                });
-            })
-            .catch(err => console.log(err));
-    };
+    // handleSubmit = (tmdbId, title, type, rating) => {
+    //     switch (this.state.value) {
+    //         case "Want To Watch":
+    //         this.wantToWatch(tmdbId, title, type)
+    //         break;
 
-    currentlyWatching = (tmdbId, title, type) => {
-        // console.log("I've been clicked");
-        // dbAPI.wantToWatch(tmdbId, title)
-        dbAPI.currentlyWatching({ tmdbID: tmdbId, title: title, type })
-            .then(res => {
-                console.log("Watching added to DB");
-                alert(`${title} added as currently watching!`);
-                this.setState({
-                    want: false,
-                    watching: true,
-                    watched: false,
-                    visibility: "invisible"
-                });
-            })
-            .catch(err => console.log(err));
-    };
+    //         case "Watching":
+    //         this.watching(tmdbId, title, type)
+    //         break;
 
-    watched = (tmdbId, title, type, rating) => {
-        // console.log("I've been clicked");
-        dbAPI.watched({ tmdbID: tmdbId, title: title, type: type, rating: rating })
-            .then(res => {
-                console.log("Watched added to DB");
-                alert(`${title} added as watched with a rating of ${rating}!`);
-                this.setState({
-                    want: false,
-                    watching: false,
-                    watched: true
-                });
-            })
-            .catch(err => console.log(err));
-    };
+    //         case "Watched":
+    //         this.watched(tmdbId, title, type, rating);
+    //     }
+    // }
 
-    showRating = () => {
-        this.setState({
-            visibility: "row ratingArea visible"
-        })
-    }
+    handleSubmit = (tmdbId, title, type, rating) => {
+        if (this.state.value === "Want To Watch") {
+            dbAPI.wantToWatch({ tmdbID: tmdbId, title: title, type: type })
+                .then(res => {
+                    console.log("Want to Watch added to DB");
+                    alert(`${title} added as want to watch!`);
+                    this.setState({
+                        want: true,
+                        watching: false,
+                        watched: false,
+                        visibility: "row ratingArea invisible"
+                    });
+                })
+                .catch(err => console.log(err));
+        }
+
+        else if (this.state.value === "Watching") {
+            dbAPI.currentlyWatching({ tmdbID: tmdbId, title: title, type })
+                .then(res => {
+                    console.log("Watching added to DB");
+                    alert(`${title} added as currently watching!`);
+                    this.setState({
+                        want: false,
+                        watching: true,
+                        watched: false,
+                        visibility: "invisible"
+                    });
+                })
+                .catch(err => console.log(err));
+        }
+
+        else {
+            dbAPI.watched({ tmdbID: tmdbId, title: title, type: type, rating: rating })
+                .then(res => {
+                    console.log("Watched added to DB");
+                    alert(`${title} added as watched with a rating of ${rating}!`);
+                    this.setState({
+                        want: false,
+                        watching: false,
+                        watched: true
+                    });
+                })
+                .catch(err => console.log(err));
+        };
+    };
 
     render() {
         return (
-            // <div className="dropbown">
-            //     <button type="button" class="btn btn-secondary dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            //         Change to:
-            // </button>
-            //     <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            //         <a className="dropdown-item" href="#">Want To Watch</a>
-            //         <a className="dropdown-item" href="#">Watching</a>
-            //         <a className="dropdown-item" href="#">Watched</a>
-            //     </div>
-            // </div>
             <form>
                 <div className="form-group">
-                <label htmlFor="changeStatus">Change status to:</label>
-                <select className="form-control" id="changeStatus" name="value" defaultValue={this.props.status} onChange={this.handleChange}>
-                {/* <option value="" defaultValue disabled hidden>Change status to...</option> */}
-                <option value="Want To Watch">Want to Watch</option>
-                <option value="Watching">Watching</option>
-                <option value="Watched">Watched</option>                
-                </select>
+                    {/* <label htmlFor="changeStatus">Change to:</label> */}
+                    <select className="form-control-inline" id="changeStatus" value={this.state.value} name="value" onChange={this.handleChange}>
+                        {/* <option value="" selected disabled hidden>Change status to...</option> */}
+                        <option value="Want To Watch">Want to Watch</option>
+                        <option value="Watching">Watching</option>
+                        <option value="Watched">Watched</option>
+                    </select>
+                    <button className="btn btn-sm btn-success" onClick={() => this.handleSubmit(this.props.tmdbId, this.props.title, this.props.type, this.state.rating)}>Update</button>
+                </div>
+                <div className="form-group" className={this.state.visibility}>
+                    <label htmlFor="rating">Your Rating:</label>
+                    <select onChange={this.getRating} name="rating" className="form-control" id="rating">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5" >5</option>
+                    </select>
                 </div>
             </form>
         )
