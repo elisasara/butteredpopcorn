@@ -27,7 +27,7 @@ class Rating extends Component {
                             <option value="5" >5</option>
                         </select>
                     </div>
-                    <button className="btn btn-dark" onClick={() => this.props.submitToWatched(this.props.tmdbID, this.props.title, this.state.rating)} >Submit</button>
+                    <button className="btn btn-dark" onClick={() => this.props.submitToWatched(this.props.tmdbID, this.props.title, this.props.type, this.state.rating)} >Submit</button>
                 </form>
             </div>
         )

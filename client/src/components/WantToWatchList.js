@@ -2,22 +2,28 @@ import React from "react";
 
 const WantToWatchList = props => {
     return (
-    <div>
-        <ul>
-            {props.wantToWatch.map(item => (
-                <li>
-                    <div className="row">
-                    <div className="col-md-8">
-                    {item.title}
-                    </div>
-                    <div className="col-md-4">
-                    Change status option here
-                    </div>
-                    </div>
-                </li>
-            ))}
-        </ul>
-    </div>
+        <div>
+            <table className="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Title</th>
+                        <th scope="col">Type</th>
+                        <th scope="col">Date Added</th>
+                        <th scope="col">Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {props.wantToWatch.map(item => (
+                        <tr key={item.id}>
+                            <th scope="row">{item.title}</th>
+                            <td>{item.type}</td>
+                            <td>{item.updatedAt}</td>
+                            <td>Status and change option goes here</td>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
+        </div>
     )
 };
 

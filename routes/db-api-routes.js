@@ -8,6 +8,7 @@ module.exports = function (router) {
         const addToWant = {
             tmdbID: req.body.movieData.tmdbID,
             title: req.body.movieData.title,
+            type: req.body.movieData.type,
             UserId: req.user.id
         };
         console.log("addToDb: ", addToWant);
@@ -26,6 +27,7 @@ module.exports = function (router) {
         const addToWatching = {
             tmdbID: req.body.movieData.tmdbID,
             title: req.body.movieData.title,
+            type: req.body.movieData.type,
             UserId: req.user.id
         };
         console.log("addToDb: ", addToWatching);
@@ -46,6 +48,7 @@ module.exports = function (router) {
         const addToWatched = {
             tmdbID: req.body.movieData.tmdbID,
             title: req.body.movieData.title,
+            type: req.body.movieData.type,
             rating: req.body.movieData.rating,
             UserId: req.user.id
         };
@@ -159,25 +162,7 @@ module.exports = function (router) {
                 idArr.push(friendId);
             });
             console.log(idArr);
-            // db.User.findAll({
-            //     where: {
-            //         id: {
-            //             [Op.or]: idArr
-            //         }
-            //     },
-            //     include: [{
-            //         model: db.CurrentlyWatching,
-            //     },
-            //     {
-            //         model: db.Watched,
-            //     },
-            //     {
-            //         model: db.WantToWatch
-            //     }]
-            // }).then(results => {
-            //     console.log(results);
-            //     res.json(results);
-            // });
+
             let resultsArr = [];
             db.CurrentlyWatching.findAll({
                 where: {

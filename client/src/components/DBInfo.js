@@ -15,10 +15,10 @@ class DBInfo extends Component {
         visibility: "invisible"
     }
 
-    wantToWatch = (tmdbId, title) => {
+    wantToWatch = (tmdbId, title, type) => {
         // console.log("I've been clicked");
         // dbAPI.wantToWatch(tmdbId, title)
-        dbAPI.wantToWatch({ tmdbID: tmdbId, title: title })
+        dbAPI.wantToWatch({ tmdbID: tmdbId, title: title, type: type })
             .then(res => {
                 console.log("Want to Watch added to DB");
                 alert(`${title} added as want to watch!`);
@@ -32,10 +32,10 @@ class DBInfo extends Component {
             .catch(err => console.log(err));
     };
 
-    currentlyWatching = (tmdbId, title) => {
+    currentlyWatching = (tmdbId, title, type) => {
         // console.log("I've been clicked");
         // dbAPI.wantToWatch(tmdbId, title)
-        dbAPI.currentlyWatching({ tmdbID: tmdbId, title: title })
+        dbAPI.currentlyWatching({ tmdbID: tmdbId, title: title, type })
             .then(res => {
                 console.log("Watching added to DB");
                 alert(`${title} added as currently watching!`);
@@ -49,9 +49,9 @@ class DBInfo extends Component {
             .catch(err => console.log(err));
     };
 
-    watched = (tmdbId, title, rating) => {
+    watched = (tmdbId, title, type, rating) => {
         // console.log("I've been clicked");
-        dbAPI.watched({ tmdbID: tmdbId, title: title, rating: rating })
+        dbAPI.watched({ tmdbID: tmdbId, title: title, type: type, rating: rating })
             .then(res => {
                 console.log("Watched added to DB");
                 alert(`${title} added as watched with a rating of ${rating}!`);
@@ -74,16 +74,16 @@ class DBInfo extends Component {
         return (
             <div className="container">
                 <div className="row">
-                    <WantToWatchBtn onClick={() => this.wantToWatch(this.props.tmdbId, this.props.title)} />
+                    <WantToWatchBtn onClick={() => this.wantToWatch(this.props.tmdbId, this.props.title, this.props.type)} />
                 </div>
                 <div className="row">
-                    <WatchingBtn onClick={() => this.currentlyWatching(this.props.tmdbId, this.props.title)} />
+                    <WatchingBtn onClick={() => this.currentlyWatching(this.props.tmdbId, this.props.title, this.props.type)} />
                 </div>
                 <div className="row">
                     <WatchedBtn onClick={this.showRating} />
                 </div>
                 <div className={this.state.visibility}>
-                    <Rating visibility={this.state.visibility} tmdbID={this.props.tmdbId} title={this.props.title} submitToWatched={this.watched} />
+                    <Rating visibility={this.state.visibility} tmdbID={this.props.tmdbId} title={this.props.title} type={this.props.type} submitToWatched={this.watched} />
                 </div>
             </div>
         )

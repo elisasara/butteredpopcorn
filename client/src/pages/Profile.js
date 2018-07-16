@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import dbAPI from "../utils/dbAPI";
 import WantToWatchList from "../components/WantToWatchList";
+import WatchedList from "../components/WatchedList";
+import WatchingList from "../components/WatchingList";
 
 class Profile extends Component {
     state = {
@@ -77,14 +79,27 @@ class Profile extends Component {
                         </li>
                     </ul>
                     <div className="tab-content">
+
                         <div className="tab-pane fade show active" id="wants" role="tabpanel" aria-labelledby="wants-tab">
-                           <WantToWatchList wantToWatch={this.state.wantToWatch} />
+                            {this.state.wantToWatch.length ? (
+                                <WantToWatchList wantToWatch={this.state.wantToWatch} />
+                            ) : (
+                                    <h3 className="noList">You haven't added any movies or shows to your Want To Watch list yet.</h3>
+                                )}
                         </div>
                         <div className="tab-pane fade" id="watching" role="tabpanel" aria-labelledby="watching-tab">
-                            Watching list
+                            {this.state.watching.length ? (
+                                <WatchingList watching={this.state.watching} />
+                            ) : (
+                                    <h3 className="noList">You haven't added any movies or shows to your Watching list yet.</h3>
+                                )}
                         </div>
                         <div className="tab-pane fade" id="watched" role="tabpanel" aria-labelledby="watched-tab">
-                            Watched list
+                            {this.state.watched.length ? (
+                                <WatchedList watched={this.state.watched} />
+                            ) : (
+                                    <h3 className="noList">You haven't added any movies or shows to your Watched list yet.</h3>
+                                )}
                         </div>
                     </div>
                 </div>
