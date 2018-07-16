@@ -53,7 +53,7 @@ module.exports = function(passport, user) {
                     {
                         firstName: req.body.firstName,
                         lastName: req.body.lastName,
-                        fullName: req.body.fullName,
+                        fullName: `${req.body.firstName} ${req.body.lastName}`,
                         email: email,
                         password: userPassword,
                     };
