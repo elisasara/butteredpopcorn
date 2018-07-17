@@ -12,6 +12,12 @@ class ChangeStatus extends Component {
         visibility: "d-none"
     }
 
+    componentDidMount (){
+        this.setState({
+            value: this.props.status
+        });
+    };
+
     handleChange = event => {
         const { name, value } = event.target;
         if (value === "Watched") {
@@ -101,7 +107,7 @@ class ChangeStatus extends Component {
             <form>
                 <div className="form-group-inline">
                     {/* <label htmlFor="changeStatus">Change to:</label> */}
-                    <select className="form-control-inline" id="changeStatus" value={this.props.status} name="value" onChange={this.handleChange}>
+                    <select className="form-control-inline" id="changeStatus" value={this.state.value} name="value" onChange={this.handleChange}>
                         {/* <option value="" selected disabled hidden>Change status to...</option> */}
                         <option name="value" value="Want To Watch">Want to Watch</option>
                         <option name="value" value="Watching">Watching</option>

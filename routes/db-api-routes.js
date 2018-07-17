@@ -28,6 +28,13 @@ module.exports = function (router) {
                 UserId: req.user.id
             }
         }).then(deleted => console.log("Currently watching deleted"));
+        // db.Watched.destroy({
+        //     where: {
+        //         tmdbID: req.body.movieData.tmdbID,
+        //         UserId: req.user.id
+        //     }
+        // }).then(deleted => console.log("Currently watching deleted"));
+
         // }
         // else {
         // res.redirect("/login");
