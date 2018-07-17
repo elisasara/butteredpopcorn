@@ -73,18 +73,28 @@ class DBInfo extends Component {
     render() {
         return (
             <div className="container">
-                <div className="row">
-                    <WantToWatchBtn onClick={() => this.wantToWatch(this.props.tmdbId, this.props.title, this.props.type)} />
-                </div>
-                <div className="row">
-                    <WatchingBtn onClick={() => this.currentlyWatching(this.props.tmdbId, this.props.title, this.props.type)} />
-                </div>
-                <div className="row">
-                    <WatchedBtn onClick={this.showRating} />
-                </div>
-                <div className={this.state.visibility}>
-                    <Rating visibility={this.state.visibility} tmdbID={this.props.tmdbId} title={this.props.title} type={this.props.type} submitToWatched={this.watched} />
-                </div>
+                {this.props.user ? (
+                    <div>
+                    <div className="row">
+                        <WantToWatchBtn onClick={() => this.wantToWatch(this.props.tmdbId, this.props.title, this.props.type)} />
+                    </div>
+                    <div className="row">
+                        <WatchingBtn onClick={() => this.currentlyWatching(this.props.tmdbId, this.props.title, this.props.type)} />
+                    </div>
+                    <div className="row">
+                        <WatchedBtn onClick={this.showRating} />
+                    </div>
+                    <div className={this.state.visibility}>
+                        <Rating visibility={this.state.visibility} tmdbID={this.props.tmdbId} title={this.props.title} type={this.props.type} submitToWatched={this.watched} />
+                    </div>
+                    </div>
+            ) : (
+                <div>
+                    <p>You must be logged in to save movies or shows to one of your lists.</p>
+                    <p><a href="/register">Create an account</a> or <a href="/login">login</a> now.</p>
+                    </div>
+            )}
+
             </div>
         )
     }
