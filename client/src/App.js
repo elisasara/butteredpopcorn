@@ -82,12 +82,12 @@ class App extends Component {
             {/* </div> */}
             <div className="container" id="mainArea">
               <Switch>
-                <Route exact path="/" render={props => <Home user={this.state.user} />} />
+                <Route exact path="/" render={props => <Home user={this.state.user} {...props} />} />
                 <Route exact path="/login" component={Login} />
                 <Route exact path="/register" component={Register} />
                 <Route exact path="/search/:search" component={MainSearch} />
-                <Route exact path="/search/movie/:id" component={InfoPage} />
-                <Route exact path="/search/tv/:id" component={InfoPage} />
+                <Route exact path="/search/movie/:id" render={props => <InfoPage user={this.state.user} {...props} />} />
+                <Route exact path="/search/tv/:id" render={props => <InfoPage user={this.state.user} {...props} />} />
                 <Route exact path="/profile" component={Profile} />
                 <Route exact path="/findfriends" component={FindFriends} />
                 {/* <PrivateRoute exact path="/profile" component={Profile} />
@@ -95,8 +95,8 @@ class App extends Component {
                 <Route component={NoMatch} />
               </Switch>
             </div>
-          </div>
-        </Router> 
+          </div>  
+        </Router>
       </div>
 
     );

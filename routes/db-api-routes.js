@@ -4,6 +4,11 @@ const db = require("../models");
 // const sequelize =require("sequelize");
 
 module.exports = function (router) {
+
+    // router.get("/login", function(req, res){
+    //     res.end();
+    // });
+
     router.post("/db/towatch", function (req, res) {
         // if (req.user !== undefined) {
         console.log(req.user.id);
