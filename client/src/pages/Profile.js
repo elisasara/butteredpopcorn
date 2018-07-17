@@ -7,28 +7,30 @@ import RandomSelect from "../components/RandomSelect";
 
 class Profile extends Component {
     state = {
-        userInfo: "",
+        // userInfo: "",
         watched: [],
         wantToWatch: [],
         watching: []
     }
 
     componentDidMount() {
-        this.getUserFromDb();
-        this.getWatched();
-        this.getWantToWatch();
-        this.getWatching();
-    }
+        // this.getUserFromDb();
+        if(this.props.user) {
+            this.getWatched();
+            this.getWantToWatch();
+            this.getWatching();
+        };
+    };
 
-    getUserFromDb = () => {
-        dbAPI.getUserFromDb()
-            .then(res => {
-                this.setState({
-                    userInfo: res.data[0]
-                });
-                console.log("User Info: ", res.data);
-            })
-    }
+    // getUserFromDb = () => {
+    //     dbAPI.getUserFromDb()
+    //         .then(res => {
+    //             this.setState({
+    //                 userInfo: res.data[0]
+    //             });
+    //             console.log("User Info: ", res.data);
+    //         })
+    // }
 
     getWatched = () => {
         // dbAPI.getWatched
@@ -66,47 +68,57 @@ class Profile extends Component {
     render() {
         return (
             <div>
-                <h1>{this.state.userInfo.firstName}</h1>
-                <nav>
-                    <ul className="nav nav-tabs" id="myMenu" role="tablist">
-                        <li className="nav-item">
-                            <a className="nav-link active" id="wants-tab" data-toggle="tab" href="#wants" role="tab" aria-controls="wants" aria-selected="true">Want To Watch</a>
-                        </li>
-                        <li className="nav-item">
-                            <a className="nav-link" id="watching-tab" data-toggle="tab" href="#watching" role="tab" aria-controls="watching" aria-selected="false">Watching</a>
-                        </li>
-                        <li className="nav-item">
-                            <a className="nav-link" id="watched-tab" data-toggle="tab" href="#watched" role="tab" aria-controls="watched" aria-selected="false">Watched</a>
-                        </li>
-                    </ul>
-                    <div className="tab-content">
+                {this.props.user ? (
+                    <div>
+                        <h1>{this.props.user.user.firstName}</h1>
+                        <nav>
+                            <ul className="nav nav-tabs" id="myMenu" role="tablist">
+                                <li className="nav-item">
+                                    <a className="nav-link active" id="wants-tab" data-toggle="tab" href="#wants" role="tab" aria-controls="wants" aria-selected="true">Want To Watch</a>
+                                </li>
+                                <li className="nav-item">
+                                    <a className="nav-link" id="watching-tab" data-toggle="tab" href="#watching" role="tab" aria-controls="watching" aria-selected="false">Watching</a>
+                                </li>
+                                <li className="nav-item">
+                                    <a className="nav-link" id="watched-tab" data-toggle="tab" href="#watched" role="tab" aria-controls="watched" aria-selected="false">Watched</a>
+                                </li>
+                            </ul>
+                            <div className="tab-content">
 
-                        <div className="tab-pane fade show active" id="wants" role="tabpanel" aria-labelledby="wants-tab">
-                            {this.state.wantToWatch.length ? (
-                                <div>
-                                    <RandomSelect options={this.state.wantToWatch} />
-                                    <WantToWatchList wantToWatch={this.state.wantToWatch} />
+                                <div className="tab-pane fade show active" id="wants" role="tabpanel" aria-labelledby="wants-tab">
+                                    {this.state.wantToWatch.length ? (
+                                        <div>
+                                            <RandomSelect options={this.state.wantToWatch} />
+                                            <WantToWatchList wantToWatch={this.state.wantToWatch} />
+                                        </div>
+                                    ) : (
+                                            <h3 className="noList">You haven't added any movies or shows to your Want To Watch list yet.</h3>
+                                        )}
                                 </div>
-                            ) : (
-                                    <h3 className="noList">You haven't added any movies or shows to your Want To Watch list yet.</h3>
-                                )}
-                        </div>
-                        <div className="tab-pane fade" id="watching" role="tabpanel" aria-labelledby="watching-tab">
-                            {this.state.watching.length ? (
-                                <WatchingList watching={this.state.watching} />
-                            ) : (
-                                    <h3 className="noList">You haven't added any movies or shows to your Watching list yet.</h3>
-                                )}
-                        </div>
-                        <div className="tab-pane fade" id="watched" role="tabpanel" aria-labelledby="watched-tab">
-                            {this.state.watched.length ? (
-                                <WatchedList watched={this.state.watched} />
-                            ) : (
-                                    <h3 className="noList">You haven't added any movies or shows to your Watched list yet.</h3>
-                                )}
-                        </div>
+                                <div className="tab-pane fade" id="watching" role="tabpanel" aria-labelledby="watching-tab">
+                                    {this.state.watching.length ? (
+                                        <WatchingList watching={this.state.watching} />
+                                    ) : (
+                                            <h3 className="noList">You haven't added any movies or shows to your Watching list yet.</h3>
+                                        )}
+                                </div>
+                                <div className="tab-pane fade" id="watched" role="tabpanel" aria-labelledby="watched-tab">
+                                    {this.state.watched.length ? (
+                                        <WatchedList watched={this.state.watched} />
+                                    ) : (
+                                            <h3 className="noList">You haven't added any movies or shows to your Watched list yet.</h3>
+                                        )}
+                                </div>
+                            </div>
+                        </nav>
                     </div>
-                </nav>
+                ) : (
+                        <div>
+                            <h3>You must be logged in to see your profile.</h3>
+                            <h3><a href="/register">Create an account</a> or <a href="/login">login</a> now.</h3>
+                        </div>
+                    )}
+
             </div>
         )
     };

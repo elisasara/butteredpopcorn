@@ -1,16 +1,17 @@
 import React from "react";
-import AddFriendBtn from "./AddFriendBtn";
+import Friend from "./Friend.js";
+// import AddFriendBtn from "./AddFriendBtn";
 
 const FriendList = props => (
     <div className="row">
-        <div className="col md-8">
-            <h3>{props.name}</h3>
-            <p>{props.email}</p>
-            <p>Joined Buttered Popcorn: {props.joined}</p>
-        </div>
-        <div className="col md-4">
-            <AddFriendBtn friendId={props.friendId} />
-        </div>
+        {props.results.length ? (
+            props.results.map(friend =>
+                <Friend key={friend.id} name={friend.firstName} email={friend.email} joined={friend.createdAt} friendId={friend.id} />
+            )
+        ) : (
+                <div>
+                </div>
+            )}
     </div>
 )
 

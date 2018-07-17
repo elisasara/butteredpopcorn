@@ -88,14 +88,14 @@ class App extends Component {
                 <Route exact path="/search/:search" component={MainSearch} />
                 <Route exact path="/search/movie/:id" render={props => <InfoPage user={this.state.user} {...props} />} />
                 <Route exact path="/search/tv/:id" render={props => <InfoPage user={this.state.user} {...props} />} />
-                <Route exact path="/profile" component={Profile} />
-                <Route exact path="/findfriends" component={FindFriends} />
+                <Route exact path="/profile" render={props => <Profile user={this.state.user} {...props} />} />
+                <Route exact path="/findfriends" render={props => <FindFriends user={this.state.user} {...props} />} />
                 {/* <PrivateRoute exact path="/profile" component={Profile} />
                 <PrivateRoute exact path="/findfriends" component={FindFriends} /> */}
                 <Route component={NoMatch} />
               </Switch>
             </div>
-          </div>  
+          </div>
         </Router>
       </div>
 
