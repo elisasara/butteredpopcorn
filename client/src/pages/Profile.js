@@ -15,11 +15,11 @@ class Profile extends Component {
 
     componentDidMount() {
         // this.getUserFromDb();
-        if(this.props.user) {
+        // if(this.props.user) {
             this.getWatched();
             this.getWantToWatch();
             this.getWatching();
-        };
+        // };
     };
 
     // getUserFromDb = () => {
