@@ -2,6 +2,7 @@ const express = require('express');
 const passport = require('passport');
 const User = require('../models/user');
 const router = express.Router();
+// const ensureLoggedIn = require("ensureLoggedIn");
 
 module.exports = function (router, passport, User) {
     // router.post('/login', passport.authenticate('local-signin', function (req, res) {
@@ -20,6 +21,10 @@ module.exports = function (router, passport, User) {
     //     res.redirect("/");
     // });
 
+    // router.get("/findfriends", ensureLoggedIn("/login"), function(req, res){
+    //     res.render("/findfriends", {user: req.user});
+    // });
+
     router.post('/login', passport.authenticate('local-signin', {
         successRedirect: "/",
         failureRedirect: "/login"
@@ -29,6 +34,19 @@ module.exports = function (router, passport, User) {
         successRedirect: "/",
         failureRedirect: "/register"
     }));
+
+    router.get("/findfriends", checkAuthentication, function(req, res){
+        res.render("/findfriends");
+    });
+
+    function checkAuthentication (req, res, next) {
+        if(req.isAuthenticated()){
+            next();
+        }
+        else{
+            res.redirect("/login");
+        };
+    };
 
     // router.get("/logout", )
 
