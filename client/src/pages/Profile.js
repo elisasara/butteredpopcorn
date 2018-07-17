@@ -67,15 +67,15 @@ class Profile extends Component {
         return (
             <div>
                 <h1>{this.state.userInfo.firstName}</h1>
-                <div>
-                    <ul className="nav nav-tabs">
+                <nav>
+                    <ul className="nav nav-tabs" id="myMenu" role="tablist">
                         <li className="nav-item">
-                            <a className="nav-link" id="wants-tab" data-toggle="tab" href="#wants" role="tab" aria-controls="wants" aria-selected="true">Want To Watch</a>
+                            <a className="nav-link active" id="wants-tab" data-toggle="tab" href="#wants" role="tab" aria-controls="wants" aria-selected="true">Want To Watch</a>
                         </li>
-                        <li className="nav nav-tabs">
+                        <li className="nav-item">
                             <a className="nav-link" id="watching-tab" data-toggle="tab" href="#watching" role="tab" aria-controls="watching" aria-selected="false">Watching</a>
                         </li>
-                        <li className="nav nav-tabs">
+                        <li className="nav-item">
                             <a className="nav-link" id="watched-tab" data-toggle="tab" href="#watched" role="tab" aria-controls="watched" aria-selected="false">Watched</a>
                         </li>
                     </ul>
@@ -106,7 +106,7 @@ class Profile extends Component {
                                 )}
                         </div>
                     </div>
-                </div>
+                </nav>
             </div>
         )
     };
