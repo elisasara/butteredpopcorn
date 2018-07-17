@@ -27,26 +27,26 @@ module.exports = function (router, passport, User) {
 
     router.post('/login', passport.authenticate('local-signin', {
         successRedirect: "/",
-        failureRedirect: "/login"
+        failureRedirect: "/login",
     }));
 
     router.post("/register", passport.authenticate("local-signup", {
         successRedirect: "/",
-        failureRedirect: "/register"
+        failureRedirect: "/register",
     }));
+    
+    // router.get("/findfriends", checkAuthentication, function(req, res){
+    //     res.render("/findfriends");
+    // });
 
-    router.get("/findfriends", checkAuthentication, function(req, res){
-        res.render("/findfriends");
-    });
-
-    function checkAuthentication (req, res, next) {
-        if(req.isAuthenticated()){
-            next();
-        }
-        else{
-            res.redirect("/login");
-        };
-    };
+    // function checkAuthentication (req, res, next) {
+    //     if(req.isAuthenticated()){
+    //         next();
+    //     }
+    //     else{
+    //         res.redirect("/login");
+    //     };
+    // };
 
     // router.get("/logout", )
 

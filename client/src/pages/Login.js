@@ -6,10 +6,23 @@ import API from "../utils/API";
 //     console.log(response);
 // }
 
+// const checkAuth = {
+//     isAuthenticated: false,
+//     authenticate(cb) {
+//         this.isAuthenticated = true;
+//         setTimeout(cb, 100); // fake async
+//     },
+//     signout(cb) {
+//         this.isAuthenticated = false;
+//         setTimeout(cb, 100);
+//     }
+// };
+
 class Login extends Component {
     state = {
         email: "",
-        password: ""
+        password: "",
+        // redirectToReferrer: false
     }
 
     handleInputChange = event => {
@@ -28,10 +41,17 @@ class Login extends Component {
             }).then(res => {
                 // console.log(res);
                 this.props.history.push("/");
+                // this.login();
             })
                 .catch(err => console.log(err));
         };
     };
+
+    // login = () => {
+    //     checkAuth.authenticate(() => {
+    //         this.setState({ redirectToReferrer: true });
+    //     });
+    // };
 
     // handleFacebook = () => {
     //     API.facebookLogin().then(res => {
@@ -59,8 +79,8 @@ class Login extends Component {
                         <label htmlFor="password">Password</label>
                         <input type="password" className="form-control loginForm" id="password" name="password" placeholder="Password" value={this.state.value} onChange={this.handleInputChange} />
                     </div>
-                    <button type="submit" className="btn" style={{backgroundColor: "#ef8b8b"}} onClick={this.handleSubmit}>Login</button>
-                    <h4 className="login">Don't have an account? <a href="/register" style={{color: "#ef8b8b"}}>Create one here.</a></h4>
+                    <button type="submit" className="btn" style={{ backgroundColor: "#ef8b8b" }} onClick={this.handleSubmit}>Login</button>
+                    <h4 className="login">Don't have an account? <a href="/register" style={{ color: "#ef8b8b" }}>Create one here.</a></h4>
                 </form>
                 <div>
                 </div>

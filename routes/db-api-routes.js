@@ -5,6 +5,7 @@ const db = require("../models");
 
 module.exports = function (router) {
     router.post("/db/towatch", function (req, res) {
+        // if (req.user !== undefined) {
         const addToWant = {
             tmdbID: req.body.movieData.tmdbID,
             title: req.body.movieData.title,
@@ -21,6 +22,10 @@ module.exports = function (router) {
                 UserId: req.user.id
             }
         }).then(deleted => console.log("Currently watching deleted"));
+    // }
+    // else {
+        res.redirect("/login");
+    // }
     });
 
     router.post("/db/watching", function (req, res) {
@@ -43,8 +48,6 @@ module.exports = function (router) {
     });
 
     router.post("/db/watched", function (req, res) {
-        // console.log("req.body.tmdbId: ", req.body.movieData.tmdbID);
-        // console.log("req.session.userId: ", req.user.id);
         const addToWatched = {
             tmdbID: req.body.movieData.tmdbID,
             title: req.body.movieData.title,

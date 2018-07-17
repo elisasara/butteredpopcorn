@@ -82,7 +82,7 @@ class App extends Component {
             {/* </div> */}
             <div className="container" id="mainArea">
               <Switch>
-                <Route exact path="/" component={Home} />
+                <Route exact path="/" render={props => <Home user={this.state.user} />} />
                 <Route exact path="/login" component={Login} />
                 <Route exact path="/register" component={Register} />
                 <Route exact path="/search/:search" component={MainSearch} />
@@ -96,7 +96,7 @@ class App extends Component {
               </Switch>
             </div>
           </div>
-        </Router>
+        </Router> 
       </div>
 
     );
@@ -105,11 +105,23 @@ class App extends Component {
 
 export default App;
 
+// const checkAuth = {
+//   isAuthenticated: false,
+//   authenticate(cb) {
+//     this.isAuthenticated = true;
+//     setTimeout(cb, 100); // fake async
+//   },
+//   signout(cb) {
+//     this.isAuthenticated = false;
+//     setTimeout(cb, 100);
+//   }
+// };
+
 // const PrivateRoute = ({ component: Component, ...rest }) => (
 //   <Route
 //     {...rest}
 //     render={props =>
-//       fakeAuth.isAuthenticated ? (
+//       checkAuth.isAuthenticated ? (
 //         <Component {...props} />
 //       ) : (
 //         <Redirect
