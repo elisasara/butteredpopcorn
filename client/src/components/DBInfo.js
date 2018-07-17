@@ -101,6 +101,9 @@ class DBInfo extends Component {
                     want: true,
                     watching: false,
                     watched: false,
+                    wantToWatchButton: "btn btn-success",
+                    watchingButton: "btn btn-outline-secondary",
+                    watchedButton: "btn btn-outline-secondary",
                     visibility: "row ratingArea d-none"
                 });
             })
@@ -118,6 +121,9 @@ class DBInfo extends Component {
                     want: false,
                     watching: true,
                     watched: false,
+                    watchingButton: "btn btn-success",
+                    wantToWatchButton: "btn btn-outline-secondary",
+                    watchedButton: "btn btn-outline-secondary",
                     visibility: "row ratingArea d-none"
                 });
             })
@@ -134,6 +140,9 @@ class DBInfo extends Component {
                     want: false,
                     watching: false,
                     watched: true,
+                    watchedButton: "btn btn-success",
+                    wantToWatchButton: "btn btn-outline-secondary",
+                    watchingButton: "btn btn-outline-secondary",
                     visibility: "row ratingArea d-block"
                 });
             })
