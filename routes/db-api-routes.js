@@ -6,6 +6,7 @@ const db = require("../models");
 module.exports = function (router) {
     router.post("/db/towatch", function (req, res) {
         // if (req.user !== undefined) {
+        console.log(req.user.id);
         const addToWant = {
             tmdbID: req.body.movieData.tmdbID,
             title: req.body.movieData.title,
@@ -22,10 +23,10 @@ module.exports = function (router) {
                 UserId: req.user.id
             }
         }).then(deleted => console.log("Currently watching deleted"));
-    // }
-    // else {
-        res.redirect("/login");
-    // }
+        // }
+        // else {
+        // res.redirect("/login");
+        // }
     });
 
     router.post("/db/watching", function (req, res) {
@@ -138,7 +139,7 @@ module.exports = function (router) {
             where: {
                 fullName: {
                     $like: `${req.params.friendName}`
-                } 
+                }
             }
         }).then(data => {
             res.json(data);
