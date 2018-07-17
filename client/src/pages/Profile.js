@@ -89,7 +89,7 @@ class Profile extends Component {
                                     {this.state.wantToWatch.length ? (
                                         <div>
                                             <RandomSelect options={this.state.wantToWatch} />
-                                            <WantToWatchList wantToWatch={this.state.wantToWatch} />
+                                            <WantToWatchList wantToWatch={this.state.wantToWatch} user={this.props.user} />
                                         </div>
                                     ) : (
                                             <h3 className="noList">You haven't added any movies or shows to your Want To Watch list yet.</h3>
@@ -97,14 +97,14 @@ class Profile extends Component {
                                 </div>
                                 <div className="tab-pane fade" id="watching" role="tabpanel" aria-labelledby="watching-tab">
                                     {this.state.watching.length ? (
-                                        <WatchingList watching={this.state.watching} />
+                                        <WatchingList watching={this.state.watching} user={this.props.user} />
                                     ) : (
                                             <h3 className="noList">You haven't added any movies or shows to your Watching list yet.</h3>
                                         )}
                                 </div>
                                 <div className="tab-pane fade" id="watched" role="tabpanel" aria-labelledby="watched-tab">
                                     {this.state.watched.length ? (
-                                        <WatchedList watched={this.state.watched} />
+                                        <WatchedList watched={this.state.watched} user={this.props.user} />
                                     ) : (
                                             <h3 className="noList">You haven't added any movies or shows to your Watched list yet.</h3>
                                         )}

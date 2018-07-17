@@ -51,7 +51,7 @@ class InfoPage extends Component {
                             <MovieInfo info={this.state.info} />
                         </div>
                         <div className="col-lg-3 col-md-4 col-sm-12">
-                            <DBInfo title={this.state.info.title} type="movie" tmdbId={this.state.info.id} />
+                            <DBInfo title={this.state.info.title} type="movie" tmdbId={this.state.info.id} user={this.props.user} />
                         </div>
                     </div>) : (
                         <div className="row" id="infoArea">
@@ -59,7 +59,7 @@ class InfoPage extends Component {
                                 <TvInfo info={this.state.info} />
                             </div>
                             <div className="col-lg-3 col-md-4 col-sm-12">
-                                <DBInfo title={this.state.info.name} type="tv" tmdbId={this.state.info.id} />
+                                <DBInfo title={this.state.info.name} type="tv" tmdbId={this.state.info.id} user={this.props.user} />
                             </div>
                         </div>)}
             </div>
