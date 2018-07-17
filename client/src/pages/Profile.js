@@ -74,7 +74,7 @@ class Profile extends Component {
                         <nav>
                             <ul className="nav nav-tabs" id="myMenu" role="tablist">
                                 <li className="nav-item">
-                                    <a className="nav-link active" id="wants-tab" data-toggle="tab" href="#wants" role="tab" aria-controls="wants" aria-selected="true">Want To Watch</a>
+                                    <a className="nav-link" id="wants-tab" data-toggle="tab" href="#wants" role="tab" aria-controls="wants" aria-selected="true">Want To Watch</a>
                                 </li>
                                 <li className="nav-item">
                                     <a className="nav-link" id="watching-tab" data-toggle="tab" href="#watching" role="tab" aria-controls="watching" aria-selected="false">Watching</a>

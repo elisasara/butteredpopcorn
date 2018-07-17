@@ -9,7 +9,7 @@ class ChangeStatus extends Component {
         watched: false,
         value: "",
         rating: "",
-        visibility: "invisible"
+        visibility: "d-none"
     }
 
     handleChange = event => {
@@ -17,13 +17,13 @@ class ChangeStatus extends Component {
         if (value === "Watched") {
             this.setState({
                 [name]: value,
-                visibility: "visible"
+                visibility: "d-block"
             });
         }
         else {
             this.setState({
                 [name]: value,
-                visibility: "invisible"
+                visibility: "d-none"
             });
         };
     };
@@ -74,7 +74,7 @@ class ChangeStatus extends Component {
                 .catch(err => console.log(err));
         }
 
-        else {
+        if (this.state.value === "Watched") {
             dbAPI.watched({ tmdbID: tmdbId, title: title, type: type, rating: rating })
                 .then(res => {
                     console.log("Watched added to DB");
@@ -108,7 +108,6 @@ class ChangeStatus extends Component {
                         <option name="value" value="Watched">Watched</option>
                     </select>
                 </div>
-                <button className="btn btn-sm btn-success" onClick={() => this.handleSubmit(this.props.tmdbId, this.props.title, this.props.type, this.state.rating)}>Update</button>
                 <div className="form-group" className={this.state.visibility}>
                     <label htmlFor="rating">Your Rating:</label>
                     <select onChange={this.getRating} name="rating" className="form-control" id="rating">
@@ -119,6 +118,7 @@ class ChangeStatus extends Component {
                         <option value="5" >5</option>
                     </select>
                 </div>
+                <button className="btn btn-sm btn-success" onClick={() => this.handleSubmit(this.props.tmdbId, this.props.title, this.props.type, this.state.rating)}>Update</button>
             </form>
         )
     }
