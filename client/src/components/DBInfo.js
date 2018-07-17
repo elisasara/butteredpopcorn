@@ -19,37 +19,9 @@ class DBInfo extends Component {
         watchedButton: "btn btn-outline-secondary"
     }
 
-    // componentWillMount(){
-    // }
-
     componentDidMount(){
         this.findStatus();
-        // this.updateButtons();
     }
-
-    // updateButtons = () => {
-    //     if (this.state.want) {
-    //         this.setState({
-    //             wantToWatchButton: "btn btn-success",
-    //             watchingButton: "btn btn-outline-secondary",
-    //             watchedButton: "btn btn-outline-secondary"
-    //         });
-    //     }
-    //     if (this.state.watching) {
-    //         this.setState({
-    //             wantToWatchButton: "btn btn-outline-secondary",
-    //             watchingButton: "btn btn-success",
-    //             watchedButton: "btn btn-outline-secondary"
-    //         });
-    //     }
-    //     if (this.state.watched === "Watched") {
-    //         this.setState({
-    //             wantToWatchButton: "btn btn-outline-secondary",
-    //             watchingButton: "btn btn-outline-secondary",
-    //             watchedButton: "btn btn-success"
-    //         });
-    //     };
-    // };
 
     findStatus = () => {
         dbAPI.getWatched()
@@ -59,7 +31,8 @@ class DBInfo extends Component {
                         watched: true,
                         watching: false,
                         want: false,
-                        watchedButton: "btn btn-success"
+                        watchedButton: "btn btn-success",
+                        alreadyRated: res.data[0].rating
                     });
                 };
             });
@@ -84,7 +57,6 @@ class DBInfo extends Component {
                         watching: false,
                         want: true,
                         wantToWatchButton: "btn btn-success",
-                        alreadyRated: res.data.rated
                     });
                 };
             });
@@ -140,10 +112,11 @@ class DBInfo extends Component {
                     want: false,
                     watching: false,
                     watched: true,
+                    alreadyRated: `${rating}`,
+                    visibility: "row ratingArea d-block",
                     watchedButton: "btn btn-success",
                     wantToWatchButton: "btn btn-outline-secondary",
-                    watchingButton: "btn btn-outline-secondary",
-                    visibility: "row ratingArea d-block"
+                    watchingButton: "btn btn-outline-secondary"
                 });
             })
             .catch(err => console.log(err));
@@ -167,7 +140,7 @@ class DBInfo extends Component {
                             <WatchingBtn onClick={() => this.currentlyWatching(this.props.tmdbId, this.props.title, this.props.type)} btnstyle={this.state.watchingButton} />
                         </div>
                         <div className="row">
-                            <WatchedBtn onClick={this.showRating} btnstyle={this.state.watchedButton} />
+                            <WatchedBtn onClick={this.showRating} btnstyle={this.state.watchedButton} rating={this.state.alreadyRated} />
                         </div>
                         <div className={this.state.visibility}>
                             <Rating visibility={this.state.visibility} tmdbID={this.props.tmdbId} title={this.props.title} type={this.props.type} submitToWatched={this.watched} />
