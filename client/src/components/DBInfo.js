@@ -12,8 +12,83 @@ class DBInfo extends Component {
         watching: false,
         watched: false,
         rating: "",
-        visibility: "invisible"
+        visibility: "row ratingArea d-none",
+        alreadyRated: "",
+        wantToWatchButton: "btn btn-outline-secondary",
+        watchingButton: "btn btn-outline-secondary",
+        watchedButton: "btn btn-outline-secondary"
     }
+
+    // componentWillMount(){
+    // }
+
+    componentDidMount(){
+        this.findStatus();
+        // this.updateButtons();
+    }
+
+    // updateButtons = () => {
+    //     if (this.state.want) {
+    //         this.setState({
+    //             wantToWatchButton: "btn btn-success",
+    //             watchingButton: "btn btn-outline-secondary",
+    //             watchedButton: "btn btn-outline-secondary"
+    //         });
+    //     }
+    //     if (this.state.watching) {
+    //         this.setState({
+    //             wantToWatchButton: "btn btn-outline-secondary",
+    //             watchingButton: "btn btn-success",
+    //             watchedButton: "btn btn-outline-secondary"
+    //         });
+    //     }
+    //     if (this.state.watched === "Watched") {
+    //         this.setState({
+    //             wantToWatchButton: "btn btn-outline-secondary",
+    //             watchingButton: "btn btn-outline-secondary",
+    //             watchedButton: "btn btn-success"
+    //         });
+    //     };
+    // };
+
+    findStatus = () => {
+        dbAPI.getWatched()
+            .then(res => {
+                if (res.data.length) {
+                    this.setState({
+                        watched: true,
+                        watching: false,
+                        want: false,
+                        watchedButton: "btn btn-success"
+                    });
+                };
+            });
+
+        dbAPI.getWatching()
+            .then(res => {
+                if (res.data.length) {
+                    this.setState({
+                        watched: false,
+                        watching: true,
+                        want: false,
+                        watchingButton: "btn btn-success"
+                    });
+                };
+            });
+
+        dbAPI.getWantToWatch()
+            .then(res => {
+                if (res.data.length) {
+                    this.setState({
+                        watched: false,
+                        watching: false,
+                        want: true,
+                        wantToWatchButton: "btn btn-success",
+                        alreadyRated: res.data.rated
+                    });
+                };
+            });
+    };
 
     wantToWatch = (tmdbId, title, type) => {
         // console.log("I've been clicked");
@@ -26,7 +101,7 @@ class DBInfo extends Component {
                     want: true,
                     watching: false,
                     watched: false,
-                    visibility: "row ratingArea invisible"
+                    visibility: "row ratingArea d-none"
                 });
             })
             .catch(err => console.log(err));
@@ -43,7 +118,7 @@ class DBInfo extends Component {
                     want: false,
                     watching: true,
                     watched: false,
-                    visibility: "invisible"
+                    visibility: "row ratingArea d-none"
                 });
             })
             .catch(err => console.log(err));
@@ -58,7 +133,8 @@ class DBInfo extends Component {
                 this.setState({
                     want: false,
                     watching: false,
-                    watched: true
+                    watched: true,
+                    visibility: "row ratingArea d-block"
                 });
             })
             .catch(err => console.log(err));
@@ -75,25 +151,25 @@ class DBInfo extends Component {
             <div className="container">
                 {this.props.user ? (
                     <div>
-                    <div className="row">
-                        <WantToWatchBtn onClick={() => this.wantToWatch(this.props.tmdbId, this.props.title, this.props.type)} />
+                        <div className="row">
+                            <WantToWatchBtn onClick={() => this.wantToWatch(this.props.tmdbId, this.props.title, this.props.type)} btnstyle={this.state.wantToWatchButton} />
+                        </div>
+                        <div className="row">
+                            <WatchingBtn onClick={() => this.currentlyWatching(this.props.tmdbId, this.props.title, this.props.type)} btnstyle={this.state.watchingButton} />
+                        </div>
+                        <div className="row">
+                            <WatchedBtn onClick={this.showRating} btnstyle={this.state.watchedButton} />
+                        </div>
+                        <div className={this.state.visibility}>
+                            <Rating visibility={this.state.visibility} tmdbID={this.props.tmdbId} title={this.props.title} type={this.props.type} submitToWatched={this.watched} />
+                        </div>
                     </div>
-                    <div className="row">
-                        <WatchingBtn onClick={() => this.currentlyWatching(this.props.tmdbId, this.props.title, this.props.type)} />
-                    </div>
-                    <div className="row">
-                        <WatchedBtn onClick={this.showRating} />
-                    </div>
-                    <div className={this.state.visibility}>
-                        <Rating visibility={this.state.visibility} tmdbID={this.props.tmdbId} title={this.props.title} type={this.props.type} submitToWatched={this.watched} />
-                    </div>
-                    </div>
-            ) : (
-                <div>
-                    <p>You must be logged in to save movies or shows to one of your lists.</p>
-                    <p><a href="/register">Create an account</a> or <a href="/login">login</a> now.</p>
-                    </div>
-            )}
+                ) : (
+                        <div>
+                            <p>You must be logged in to save movies or shows to one of your lists.</p>
+                            <p><a href="/register">Create an account</a> or <a href="/login">login</a> now.</p>
+                        </div>
+                    )}
 
             </div>
         )
