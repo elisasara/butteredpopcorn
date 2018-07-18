@@ -19,9 +19,9 @@ class InfoPage extends Component {
         rating: "",
         visibility: "row ratingArea d-none",
         alreadyRated: "",
-        wantToWatchButton: "",
-        watchingButton: "",
-        watchedButton: ""
+        wantToWatchButton: "btn btn-outline-secondary",
+        watchingButton: "btn btn-outline-secondary",
+        watchedButton: "btn btn-outline-secondary"
     }
 
     componentDidMount() {
@@ -198,6 +198,7 @@ class InfoPage extends Component {
                                 wantToWatch={this.wantToWatch}
                                 watched={this.watched}
                                 currentlyWatching={this.currentlyWatching}
+                                showRating={this.showRating}
                                  />
                             </div>
                         </div>)}

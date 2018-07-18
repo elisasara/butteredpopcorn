@@ -16,7 +16,7 @@ class Rating extends Component {
     render() {
         return (
             <div>
-                <form>
+                {/* <form> */}
                     <div className="form-group">
                         <label htmlFor="rating">Your Rating:</label>
                         <select onChange={this.getRating} name="rating" className="form-control" id="rating">
@@ -28,7 +28,7 @@ class Rating extends Component {
                         </select>
                     </div>
                     <button className="btn btn-dark" onClick={() => this.props.submitToWatched(this.props.tmdbID, this.props.title, this.props.type, this.state.rating)} >Submit</button>
-                </form>
+                {/* </form> */}
             </div>
         )
     }
