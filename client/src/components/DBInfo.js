@@ -155,7 +155,7 @@ class DBInfo extends Component {
                 ) : (
                         <div>
                             <p>You must be logged in to save movies or shows to one of your lists.</p>
-                            <p><a href="/register">Create an account</a> or <a href="/login">login</a> now.</p>
+                            <p><a href="/register" className="redLink">Create an account</a> or <a href="/login" className="redLink"    >login</a> now.</p>
                         </div>
                     )}
 

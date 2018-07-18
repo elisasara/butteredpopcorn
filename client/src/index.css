@@ -76,7 +76,7 @@ a {
   margin-top: 5px;
 }
 
-#friendListArea {
+#friendListArea, #newsFeedArea {
   max-width: 80%;
   margin-left: auto;
   margin-right: auto;
@@ -90,8 +90,17 @@ a {
   padding-top: 10px;
 }
 
-.indFriend {
+.findFriend {
   max-width: 50%;
   margin-left: auto;
   margin-right: auto;
 }
+
+.redLink {
+  color: #ef8b8b;
+}
+
+#newsFeed {
+  min-width: 100%;
+}
+

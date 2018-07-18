@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import dbAPI from "../utils/dbAPI";
 import NewsItem from "../components/NewsItem";
 // import Moment from "react-moment";
@@ -44,21 +44,37 @@ class Feed extends Component {
         return (
             <div>
                 {this.state.feed.length ? (
-                    <div>
-                        {this.state.feed.map(news => (
-                            <NewsItem
-                                key={`${news.User.firstName}${news.tmdbID}`}
-                                name={news.User.firstName}
-                                title={news.title}
-                                rating={news.rating}
-                                status={news.status}
-                            />
-                        ))}
+                    <div className="container">
+                        <div className="container table-responsive" id="newsFeedArea">
+                            <h5 style={{paddingTop: "7px"}}>Here's what your friends have been up to:</h5>
+                            <br />
+                            <table className="table table-striped" id="newsFeed">
+                                <thead>
+                                </thead>
+                                <tbody>
+                                    {this.state.feed.map(news => (
+                                        <tr>
+                                            <td>
+                                                <NewsItem
+                                                    key={`${news.User.firstName}${news.tmdbID}`}
+                                                    id={news.tmdbID}
+                                                    name={news.User.fullName}
+                                                    title={news.title}
+                                                    type={news.type}
+                                                    rating={news.rating}
+                                                    status={news.status}
+                                                />
+                                            </td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 ) : (
                         <div className="text-center">
                             <h5>You don't have any friend activity.</h5>
-                            <Link to="/findfriends"><h5>Click here to find your friends.</h5></Link>
+                            <Link to="/findfriends" className="redLink"><h5>Click here to find your friends.</h5></Link>
                         </div>
                     )}
             </div>

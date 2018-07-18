@@ -89,7 +89,7 @@ class FindFriends extends Component {
                 ) : (
                         <div>
                             <h3>You must be logged in to find your friends.</h3>
-                            <h3><a href="/register">Create an account</a> or <a href="/login">login</a> now.</h3>
+                            <h3><a href="/register" className="redLink">Create an account</a> or <a href="/login" className="redLink">login</a> now.</h3>
                         </div>
                     )}
             </div>

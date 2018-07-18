@@ -31,18 +31,18 @@ class NewsItem extends Component {
 
     render() {
         return (
-            <div>
+            <div className="container">
             {this.state.watched ? (
                 <div>
-                    <p>{this.props.name} watched {this.props.title} and gave it {this.props.rating} stars</p>
+                    <h5><strong>{this.props.name}</strong> watched <em><a href={`/search/${this.props.type}/${this.props.id}`} className="redLink">{this.props.title}</a></em> and gave it {this.props.rating} stars</h5>
                 </div>
             ) : this.state.watching ? (
                 <div>
-                    <p>{this.props.name} is now watching {this.props.title}.</p>
+                    <h5><strong>{this.props.name}</strong> is now watching <em><a href={`/search/${this.props.type}/${this.props.id}`} className="redLink">{this.props.title}</a></em>.</h5>
                 </div>
             ) : (
                 <div>
-                    <p>{this.props.name} added {this.props.title} to their want to watch list.</p>
+                    <h5><strong>{this.props.name}</strong> added <em><a href={`/search/${this.props.type}/${this.props.id}`} className="redLink">{this.props.title}</a></em> to their want to watch list.</h5>
                 </div>
             )}
             </div>
