@@ -32,8 +32,8 @@ class Login extends Component {
         });
     };
 
-    handleSubmit = event => {
-        event.preventDefault();
+    handleSubmit = () => {
+        // event.preventDefault();
         if (this.state.email && this.state.password) {
             API.loginUser({
                 email: this.state.email,
