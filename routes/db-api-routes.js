@@ -198,7 +198,7 @@ module.exports = function (router) {
                 where: {
                     UserId: {
                         // [Op.or]: idArr
-                        $or: idArr
+                        $in: idArr
                     }
                 },
                 include: [{
@@ -210,7 +210,7 @@ module.exports = function (router) {
                     where: {
                         UserId: {
                             // [Op.or]: idArr
-                            $or: idArr
+                            $in: idArr
                         }
                     },
                     include: {
@@ -222,7 +222,7 @@ module.exports = function (router) {
                         where: {
                             UserId: {
                                 // [Op.or]: idArr
-                                $or: idArr
+                                $in: idArr
                             }
                         },
                         include: {
