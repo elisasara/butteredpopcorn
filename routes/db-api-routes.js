@@ -185,7 +185,7 @@ module.exports = function (router) {
             }
         }).then(data => {
             console.log("data: ", data);
-            const Op = db.sequelize.Op;
+            // const Op = db.sequelize.Op;
             let idArr = [];
             data.forEach(function (friend) {
                 const friendId = friend.friendId;
@@ -197,7 +197,8 @@ module.exports = function (router) {
             db.CurrentlyWatching.findAll({
                 where: {
                     UserId: {
-                        [Op.or]: idArr
+                        // [Op.or]: idArr
+                        $or: idArr
                     }
                 },
                 include: [{
@@ -208,7 +209,8 @@ module.exports = function (router) {
                 db.Watched.findAll({
                     where: {
                         UserId: {
-                            [Op.or]: idArr
+                            // [Op.or]: idArr
+                            $or: idArr
                         }
                     },
                     include: {
@@ -219,7 +221,8 @@ module.exports = function (router) {
                     db.WantToWatch.findAll({
                         where: {
                             UserId: {
-                                [Op.or]: idArr
+                                // [Op.or]: idArr
+                                $or: idArr
                             }
                         },
                         include: {
