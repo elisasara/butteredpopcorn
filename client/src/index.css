@@ -32,8 +32,8 @@ a {
   padding-top: 10px;
 }
 
-.registerForm, .loginForm {
-  max-width: 75%;
+.registerForm, .loginForm, .findFriendForm {
+  max-width: 70%;
 }
 
 .forms {
@@ -70,4 +70,22 @@ a {
 
 .noList {
   margin-top: 10px;
+}
+
+.btn {
+  margin-top: 5px;
+}
+
+#friendListArea {
+  max-width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  border-style: solid;
+  border-color: #ef8b8b;
+  border-width: 3px;
+  min-height: 200px; 
+}
+
+#friendList {
+  padding-top: 10px;
 }

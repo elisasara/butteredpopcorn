@@ -72,18 +72,17 @@ class FindFriends extends Component {
             <div>
                 {this.props.user ? (
                     <div className="container">
-                        <div className="form-group">
+                        <div className="form-group forms">
                             <label htmlFor="friendName">Search by Name</label>
-                            <input type="text" className="form-control" name="friendName" value={this.state.friendName} id="friendName" onChange={this.handleInputChange} />
-                            <button className="btn btn-primary" onClick={() => this.handleNameSearch(this.state.friendName)}>Search</button>
+                            <input type="text" className="form-control findFriendForm" name="friendName" value={this.state.friendName} id="friendName" onChange={this.handleInputChange} />
+                            <button className="btn" style={{ backgroundColor: "#ef8b8b" }} onClick={() => this.handleNameSearch(this.state.friendName)}>Search</button>
                         </div>
-
-                        <div className="form-group">
+                        <div className="form-group forms">
                             <label htmlFor="friendEmail">Search by Email:</label>
-                            <input type="text" className="form-control" name="friendEmail" value={this.state.friendEmail} id="friendEmail" onChange={this.handleInputChange} />
+                            <input type="text" className="form-control findFriendForm" name="friendEmail" value={this.state.friendEmail} id="friendEmail" onChange={this.handleInputChange} />
+                            <button className="btn" style={{ backgroundColor: "#ef8b8b" }} onClick={() => this.handleEmailSearch(this.state.friendEmail)}>Search</button>
                         </div>
-                        <button className="btn btn-primary" onClick={() => this.handleEmailSearch(this.state.friendEmail)}>Search</button>
-                        <div>
+                        <div className="container" id="friendListArea">
                             <FriendList user={this.props.user} results={this.state.results} />
                         </div>
                     </div>
