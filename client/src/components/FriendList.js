@@ -10,6 +10,7 @@ const FriendList = props => (
             )
         ) : (
                 <div>
+                    <h3>No friends found.</h3>
                 </div>
             )}
     </div>

@@ -72,29 +72,19 @@ class FindFriends extends Component {
             <div>
                 {this.props.user ? (
                     <div className="container">
-                        {/* <form className="form-inline"> */}
                         <div className="form-group">
                             <label htmlFor="friendName">Search by Name</label>
                             <input type="text" className="form-control" name="friendName" value={this.state.friendName} id="friendName" onChange={this.handleInputChange} />
                             <button className="btn btn-primary" onClick={() => this.handleNameSearch(this.state.friendName)}>Search</button>
                         </div>
-                        {/* </form> */}
-                        {/* <form className="form-inline"> */}
+
                         <div className="form-group">
                             <label htmlFor="friendEmail">Search by Email:</label>
                             <input type="text" className="form-control" name="friendEmail" value={this.state.friendEmail} id="friendEmail" onChange={this.handleInputChange} />
                         </div>
                         <button className="btn btn-primary" onClick={() => this.handleEmailSearch(this.state.friendEmail)}>Search</button>
-                        {/* </form> */}
                         <div>
                             <FriendList user={this.props.user} results={this.state.results} />
-                            {/* {this.state.results.length ? (
-                                this.state.results.map(friend =>
-                                    <FriendList key={friend.id} name={friend.firstName} email={friend.email} joined={friend.createdAt} friendId={friend.id} />
-                                )
-                            ) : (
-                                    <h1>Search for your friends here!</h1>
-                                )} */}
                         </div>
                     </div>
                 ) : (
