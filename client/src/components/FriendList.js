@@ -7,8 +7,8 @@ const FriendList = props => (
         {/* <div className="row"> */}
             {props.results.length ? (
                 props.results.map(friend =>
-                    <div>
-                    <Friend key={friend.id} name={friend.firstName} email={friend.email} joined={friend.createdAt} friendId={friend.id} />
+                    <div key={`${friend.id}${friend.lastName}`}>
+                    <Friend name={friend.fullName} email={friend.email} joined={friend.createdAt} friendId={friend.id} />
                     <hr />
                     </div>
 

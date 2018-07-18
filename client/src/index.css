@@ -89,3 +89,9 @@ a {
 #friendList {
   padding-top: 10px;
 }
+
+.indFriend {
+  max-width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+}
