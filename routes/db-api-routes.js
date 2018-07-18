@@ -150,9 +150,15 @@ module.exports = function (router) {
         console.log(req.params.friendName);
         db.User.findAll({
             where: {
-                fullName: {
+                $or: [{fullName: {
                     $like: `${req.params.friendName}`
-                }
+                }},
+                 {firstName: {
+                    $like: `${req.params.friendName}`
+                }},
+                {lastName: {
+                    $like: `${req.params.friendName}`
+                }}]
             }
         }).then(data => {
             res.json(data);

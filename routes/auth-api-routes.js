@@ -21,8 +21,9 @@ module.exports = function (router, passport, User) {
     });
 
 
-    router.post("/auth/login", passport.authenticate("local-signin", { session: true }), function (req, res) {
+    router.post("/auth/login", passport.authenticate("local-signin", { session: true }),function (req, res) {
         // req.session.userId = res.id;
+        // console.log("original url: ", req.originalUrl);
         res.json(true);
     });
 
@@ -46,7 +47,6 @@ module.exports = function (router, passport, User) {
 
     router.get("/auth/facebook/callback", passport.authenticate("facebook", { failureRedirect: "/login" }), function (req, res) {
         res.redirect("/");
-        // res.redirect(`http://${config.host}:${config.port}`);
     });
 
 };

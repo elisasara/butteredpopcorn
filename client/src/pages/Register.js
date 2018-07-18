@@ -28,7 +28,7 @@ class Register extends Component {
                 email: email,
                 password: password
             }).then(res => {
-                this.props.history.push("/");
+                this.context.history.push("/path");
             })
                 .catch(err => console.log(err));
         }
