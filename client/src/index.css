@@ -122,3 +122,12 @@ a {
   border-color: #ef8b8b;
   border-radius: 10px;
 }
+
+.searchInfo {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.posterForSearch {
+  max-width: 200px;
+}

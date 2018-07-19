@@ -42,6 +42,7 @@ class MainSearch extends Component {
                                     media={title.media_type}
                                     overview={title.overview}
                                     searchTitle={this.searchTitle}
+                                    imageURL={title.poster_path}
                                 />
                                 <hr />
                             </div>
