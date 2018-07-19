@@ -13,9 +13,10 @@ class Stars extends Component {
     getStars = () => {
         const starArr = [];
         const starsGiven = this.props.stars;
+        console.log(starsGiven);
         let i = 0
         while (i < starsGiven) {
-            starArr.push("<span><i class=`fas fa-star`></i></span>")
+            starArr.push("star")
             i++
         }
         this.setState({
@@ -26,7 +27,8 @@ class Stars extends Component {
     render() {
         return (
             <div>
-                {this.state.stars.forEach(star => (star))}
+                {this.state.stars.map(star => (
+                <span><i className="fas fa-star"></i></span>))}
             </div>
         );
     };
