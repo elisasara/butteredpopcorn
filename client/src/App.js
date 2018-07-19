@@ -11,6 +11,7 @@ import InfoPage from "./pages/InfoPage";
 import API from "./utils/API";
 import Profile from "./pages/Profile";
 import FindFriends from "./pages/FindFriends";
+import Footer from "./components/Footer";
 // import Feed from "./pages/Feed";
 
 // const activeUser = {
@@ -95,6 +96,7 @@ class App extends Component {
                 <Route component={NoMatch} />
               </Switch>
             </div>
+            <Footer />
           </div>
         </Router>
       </div>

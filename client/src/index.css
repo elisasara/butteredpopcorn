@@ -1,7 +1,9 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  /* font-family: sans-serif; */
+  /* font-family: 'Mr Bedfort', serif; */
+  font-family: 'Noto Serif', serif;
   background-image: url("https://image.freepik.com/free-photo/composition-of-popcorns_23-2147689652.jpg");
 }
 
@@ -12,12 +14,24 @@ body {
   display: block;
 }
 
+h1, h2 {
+  font-family: 'Mr Bedfort', serif;
+}
+
+.navbar-brand {
+  font-family: 'Mr Bedfort', serif;
+}
+
+.brandPhoto {
+  max-height: 25px;
+}
+
 
 #mainArea {
   margin-top: 15px;
   max-width: 90%;
   background-color: white;
-  min-height: 95vh;
+  min-height: 85vh;
   border-style: double;
   border-width: 5px;
   border-color: #ef8b8b;

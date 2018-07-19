@@ -7,7 +7,7 @@ const TvInfo = props => {
     const genre = props.info.genres;
     const overview = props.info.overview;
     const imagePath = props.info.poster_path;
-    const imageURL = `https://image.tmdb.org/t/p/w200/${props.info.poster_path}`;
+    const imageURL = `https://image.tmdb.org/t/p/w300/${props.info.poster_path}`;
     const network = props.info.networks;
 
     return (
@@ -22,13 +22,13 @@ const TvInfo = props => {
                         <p>{network[0].name}</p>
                         <p className="font-italic">Seasons: {seasons}</p>
                         <p className="font-italic">Original air date: {airDate}</p>
+                        <p>{overview}</p>
                         <p>Genres:
                         <span><ul style={{listStyleType: "none"}}>
                             {genre.map(genre => (
                                 <li>{genre.name}</li>
                             ))}
                             </ul></span></p>
-                        <p>{overview}</p>
                     </div>
                 </div>
             ) : (
