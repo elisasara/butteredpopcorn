@@ -3,9 +3,12 @@ import React from "react";
 const TvInfo = props => {
     const title = props.info.name;
     const seasons = props.info.number_of_seasons;
+    const airDate = props.info.first_air_date;
+    const genre = props.info.genres;
     const overview = props.info.overview;
     const imagePath = props.info.poster_path;
     const imageURL = `https://image.tmdb.org/t/p/w200/${props.info.poster_path}`;
+    const network = props.info.networks;
 
     return (
         <div>
@@ -16,7 +19,15 @@ const TvInfo = props => {
                     </div>
                     <div className="col-lg-8 col-md-8 col-sm-12 text-left">
                         <h3>{title}</h3>
+                        <p>{network[0].name}</p>
                         <p className="font-italic">Seasons: {seasons}</p>
+                        <p className="font-italic">Original air date: {airDate}</p>
+                        <p>Genres:
+                        <span><ul style={{listStyleType: "none"}}>
+                            {genre.map(genre => (
+                                <li>{genre.name}</li>
+                            ))}
+                            </ul></span></p>
                         <p>{overview}</p>
                     </div>
                 </div>
