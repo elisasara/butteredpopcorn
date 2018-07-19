@@ -34,7 +34,7 @@ class NewsItem extends Component {
             <div className="container">
             {this.state.watched ? (
                 <div>
-                    <h5><strong>{this.props.name}</strong> watched <em><a href={`/search/${this.props.type}/${this.props.id}`} className="redLink">{this.props.title}</a></em> and gave it {this.props.rating} stars</h5>
+                    <h5><strong>{this.props.name}</strong> watched <em><a href={`/search/${this.props.type}/${this.props.id}`} className="redLink">{this.props.title}</a></em> and rated it {this.props.rating} <span><img src="https://www.freepngimg.com/download/popcorn/22995-2-popcorn-hd.png" className=" img-responsive popcornRating" alt="popcorn" /></span></h5>
                 </div>
             ) : this.state.watching ? (
                 <div>

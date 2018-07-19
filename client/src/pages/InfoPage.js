@@ -58,11 +58,13 @@ class InfoPage extends Component {
                 })
                 .catch(err => console.log(err));
         }
+        this.findStatus();
     };
 
     findStatus = () => {
         dbAPI.getWatched()
             .then(res => {
+                console.log("watched res.data: ", res.data);
                 if (res.data.length) {
                     this.setState({
                         watched: true,

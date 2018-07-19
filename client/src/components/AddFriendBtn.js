@@ -34,7 +34,7 @@ class AddFriendBtn extends Component {
             this.setState({
                 friends: true
             });
-            alert(`Friend added!`);
+            // alert(`Friend added!`);
         });
     };
 
