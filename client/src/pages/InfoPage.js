@@ -102,7 +102,7 @@ class InfoPage extends Component {
         dbAPI.wantToWatch({ tmdbID: tmdbId, title: title, type: type })
             .then(res => {
                 console.log("Want to Watch added to DB");
-                alert(`${title} added as want to watch!`);
+                // alert(`${title} added as want to watch!`);
                 this.setState({
                     want: true,
                     watching: false,
@@ -122,7 +122,7 @@ class InfoPage extends Component {
         dbAPI.currentlyWatching({ tmdbID: tmdbId, title: title, type })
             .then(res => {
                 console.log("Watching added to DB");
-                alert(`${title} added as currently watching!`);
+                // alert(`${title} added as currently watching!`);
                 this.setState({
                     want: false,
                     watching: true,
@@ -141,7 +141,7 @@ class InfoPage extends Component {
         dbAPI.watched({ tmdbID: tmdbId, title: title, type: type, rating: rating })
             .then(res => {
                 console.log("Watched added to DB");
-                alert(`${title} added as watched with a rating of ${rating}!`);
+                // alert(`${title} added as watched with a rating of ${rating}!`);
                 this.setState({
                     want: false,
                     watching: false,
