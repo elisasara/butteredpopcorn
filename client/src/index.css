@@ -26,6 +26,13 @@ h1, h2 {
   max-height: 25px;
 }
 
+footer {
+  background-color: #ef8b8b;
+  opacity: .75;
+  position: absolute;
+  width: 100%
+}
+
 
 #mainArea {
   margin-top: 15px;

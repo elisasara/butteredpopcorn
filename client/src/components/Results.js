@@ -33,7 +33,7 @@ class Results extends Component {
                         {this.props.showTitle ? (
                             <div className="row">
                                 <div className="col-lg-3 col-md-3 col-sm-12">
-                                    <img src={this.state.imageURL} className="img-responsive posterForSearch" />
+                                    <img src={this.state.imageURL} className="img-responsive posterForSearch" alt="poster"/>
                                 </div>
                                 <div className="col-lg-9 col-lg-9 col-sm-12 searchInfo">
                                     <Link to={"/search/tv/" + this.props.id} className="redLink"><h3 className="displayTitle" onClick={this.props.searchTitle}>{this.props.showTitle}</h3></Link>
@@ -43,7 +43,7 @@ class Results extends Component {
                         ) : (
                                 <div className="row">
                                     <div className="col-lg-3 col-md-3 col-sm-12">
-                                        <img src={this.state.imageURL} className="img-responsive posterForSearch" />
+                                        <img src={this.state.imageURL} className="img-responsive posterForSearch" alt="poster" />
                                     </div>
                                     <div className="col-lg-9 col-md-9 col-sm-12 searchInfo">
                                         <Link to={"/search/movie/" + this.props.id} className="redLink"><h3 className="displayTitle" onClick={this.props.searchTitle}>{this.props.movieTitle}</h3></Link>

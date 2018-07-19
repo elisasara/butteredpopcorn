@@ -1,155 +1,27 @@
-import React, { Component } from "react";
-import dbAPI from "../utils/dbAPI";
+import React from "react";
 import WantToWatchBtn from "./WantToWatchBtn";
 import WatchingBtn from "./WatchingBtn";
 import WatchedBtn from "./WatchedBtn";
 import Rating from "./Rating";
 
-class DBInfo extends Component {
-    // use state to highlight which option was chosen
-    // state = {
-    //     want: false,
-    //     watching: false,
-    //     watched: false,
-    //     rating: "",
-    //     visibility: "row ratingArea d-none",
-    //     alreadyRated: "",
-    //     wantToWatchButton: "",
-    //     watchingButton: "",
-    //     watchedButton: ""
-    // }
-
-    // componentDidMount(){
-    //     this.findStatus();
-    // }
-
-    // findStatus = () => {
-    //     dbAPI.getWatched()
-    //         .then(res => {
-    //             if (res.data.length) {
-    //                 this.setState({
-    //                     watched: true,
-    //                     watching: false,
-    //                     want: false,
-    //                     wantToWatchButton: "btn btn-outline-secondary",
-    //                     watchingButton: "btn btn-outline-secondary",                
-    //                     watchedButton: "btn btn-success",
-    //                     alreadyRated: res.data[0].rating
-    //                 });
-    //             };
-    //         });
-
-    //     dbAPI.getWatching()
-    //         .then(res => {
-    //             if (res.data.length) {
-    //                 this.setState({
-    //                     watched: false,
-    //                     watching: true,
-    //                     want: false,
-    //                     wantToWatchButton: "btn btn-outline-secondary",
-    //                     watchingButton: "btn btn-success",
-    //                     watchedButton: "btn btn-outline-secondary"
-    //                 });
-    //             };
-    //         });
-
-    //     dbAPI.getWantToWatch()
-    //         .then(res => {
-    //             if (res.data.length) {
-    //                 this.setState({
-    //                     watched: false,
-    //                     watching: false,
-    //                     want: true,
-    //                     wantToWatchButton: "btn btn-success",
-    //                     watchingButton: "btn btn-outline-secondary",
-    //                     watchedButton: "btn btn-outline-secondary"
-    //                 });
-    //             };
-    //         });
-    // };
-
-    // wantToWatch = (tmdbId, title, type) => {
-    //     // console.log("I've been clicked");
-    //     // dbAPI.wantToWatch(tmdbId, title)
-    //     dbAPI.wantToWatch({ tmdbID: tmdbId, title: title, type: type })
-    //         .then(res => {
-    //             console.log("Want to Watch added to DB");
-    //             alert(`${title} added as want to watch!`);
-    //             this.setState({
-    //                 want: true,
-    //                 watching: false,
-    //                 watched: false,
-    //                 wantToWatchButton: "btn btn-success",
-    //                 watchingButton: "btn btn-outline-secondary",
-    //                 watchedButton: "btn btn-outline-secondary",
-    //                 visibility: "row ratingArea d-none"
-    //             });
-    //         })
-    //         .catch(err => console.log(err));
-    // };
-
-    // currentlyWatching = (tmdbId, title, type) => {
-    //     // console.log("I've been clicked");
-    //     // dbAPI.wantToWatch(tmdbId, title)
-    //     dbAPI.currentlyWatching({ tmdbID: tmdbId, title: title, type })
-    //         .then(res => {
-    //             console.log("Watching added to DB");
-    //             alert(`${title} added as currently watching!`);
-    //             this.setState({
-    //                 want: false,
-    //                 watching: true,
-    //                 watched: false,
-    //                 watchingButton: "btn btn-success",
-    //                 wantToWatchButton: "btn btn-outline-secondary",
-    //                 watchedButton: "btn btn-outline-secondary",
-    //                 visibility: "row ratingArea d-none"
-    //             });
-    //         })
-    //         .catch(err => console.log(err));
-    // };
-
-    // watched = (tmdbId, title, type, rating) => {
-    //     // console.log("I've been clicked");
-    //     dbAPI.watched({ tmdbID: tmdbId, title: title, type: type, rating: rating })
-    //         .then(res => {
-    //             console.log("Watched added to DB");
-    //             alert(`${title} added as watched with a rating of ${rating}!`);
-    //             this.setState({
-    //                 want: false,
-    //                 watching: false,
-    //                 watched: true,
-    //                 alreadyRated: `${rating}`,
-    //                 visibility: "row ratingArea d-block",
-    //                 watchedButton: "btn btn-success",
-    //                 wantToWatchButton: "btn btn-outline-secondary",
-    //                 watchingButton: "btn btn-outline-secondary"
-    //             });
-    //         })
-    //         .catch(err => console.log(err));
-    // };
-
-    // showRating = () => {
-    //     this.setState({
-    //         visibility: "row ratingArea visible"
-    //     })
-    // }
-
-    render() {
-        return (
+// class DBInfo extends Component {
+//     render() {
+//         return (
+    const DBInfo = props => (
             <div className="container">
-                {this.props.user ? (
+                {props.user ? (
                     <div>
                         <div className="row">
-                            <WantToWatchBtn onClick={() => this.props.wantToWatch(this.props.tmdbId, this.props.title, this.props.type)} btnstyle={this.props.allData.wantToWatchButton} />
+                            <WantToWatchBtn onClick={() => props.wantToWatch(props.tmdbId, props.title, props.type)} btnstyle={props.allData.wantToWatchButton} />
                         </div>
                         <div className="row">
-                            <WatchingBtn onClick={() => this.props.currentlyWatching(this.props.tmdbId, this.props.title, this.props.type)} btnstyle={this.props.allData.watchingButton} />
+                            <WatchingBtn onClick={() => props.currentlyWatching(props.tmdbId, props.title, props.type)} btnstyle={props.allData.watchingButton} />
                         </div>
                         <div className="row">
-                            <WatchedBtn onClick={this.props.showRating} btnstyle={this.props.allData.watchedButton} rating={this.props.allData.alreadyRated} />
+                            <WatchedBtn onClick={props.showRating} btnstyle={props.allData.watchedButton} rating={props.allData.alreadyRated} />
                         </div>
-                        <div className={this.props.allData.visibility}>
-                            <Rating visibility={this.props.allData.visibility} tmdbID={this.props.tmdbId} title={this.props.title} type={this.props.type} submitToWatched={this.props.watched} />
+                        <div className={props.allData.visibility}>
+                            <Rating visibility={props.allData.visibility} tmdbID={props.tmdbId} title={props.title} type={props.type} submitToWatched={props.watched} />
                         </div>
                     </div>
                 ) : (
@@ -161,8 +33,6 @@ class DBInfo extends Component {
 
             </div>
         )
-    }
-}
 
 
 

@@ -1,6 +1,5 @@
 import React from "react";
 import ChangeStatus from "./ChangeStatus";
-import DBInfo from "./DBInfo";
 
 const WantToWatchList = props => {
     return (

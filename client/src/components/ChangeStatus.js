@@ -114,7 +114,7 @@ class ChangeStatus extends Component {
                         <option name="value" value="Watched">Watched</option>
                     </select>
                 </div>
-                <div className="form-group" className={this.state.visibility}>
+                <div className={`form-group ${this.state.visibility}`}>
                     <label htmlFor="rating">Your Rating:</label>
                     <select onChange={this.getRating} name="rating" className="form-control" id="rating">
                         <option value="1">1</option>

@@ -29,7 +29,7 @@ class Stars extends Component {
             <div>
                 {this.state.stars.map(star => (
                 // <span key={Math.floor(Math.random()*100)}><i className="fas fa-star"></i></span>))}
-                <span key={Math.floor(Math.random()*100)}><img src="http://images.clipartpanda.com/popcorn-clip-art-box-of-popcorn-Download-Royalty-free-Vector-File-EPS-1741.jpg" className=" img-responsive popcornRating" /></span>))}
+                <span key={Math.floor(Math.random()*100)}><img src="http://images.clipartpanda.com/popcorn-clip-art-box-of-popcorn-Download-Royalty-free-Vector-File-EPS-1741.jpg" className=" img-responsive popcornRating" alt="popcorn" /></span>))}
             </div>
         );
     };
