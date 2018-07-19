@@ -29,7 +29,7 @@ class InfoPage extends Component {
     componentDidMount() {
         this.setState({
             loading: true
-        })
+        });
         console.log("this.props.match: ", this.props.match)
         if (this.props.match.path === "/search/movie/:id") {
             movieAPI.searchMovie(this.props.match.params.id)
@@ -40,6 +40,7 @@ class InfoPage extends Component {
                         movie: true,
                         tv: false
                     });
+                    this.findStatus();
                     // console.log(this.state.info);
                 })
                 .catch(err => console.log(err));
@@ -54,11 +55,11 @@ class InfoPage extends Component {
                         movie: false,
                         tv: true
                     });
+                    this.findStatus();
                     // console.log(this.state.info);
                 })
                 .catch(err => console.log(err));
         }
-        this.findStatus();
     };
 
     findStatus = () => {
