@@ -4,10 +4,12 @@ import React, { Component } from "react";
 import DisplayResults from "../components/DisplayResults";
 import Results from "../components/Results";
 import movieAPI from "../utils/movieAPI";
+import Loading from "../components/Loading";
 
 
 class MainSearch extends Component {
     state = {
+        loading: false,
         results: []
     }
 
@@ -16,12 +18,16 @@ class MainSearch extends Component {
     }
 
     handleSubmit = () => {
-        // event.preventDefault();
+        // event.preventDefault()
+        this.setState({
+            loading: true
+        });
         const search = this.props.match.params.search;
         // console.log(search);
         movieAPI.searchFor(search)
             .then(res => {
                 this.setState({
+                    loading: false,
                     results: res.data
                 })
             })
@@ -29,37 +35,68 @@ class MainSearch extends Component {
     };
 
     render() {
-        if (this.state.results.length) {
-            return (
-                <div className="container">
-                    <DisplayResults>
-                        {this.state.results.map(title => (
-                            <div key={title.id}>
-                                <Results
-                                    id={title.id}
-                                    showTitle={title.name}
-                                    movieTitle={title.title}
-                                    media={title.media_type}
-                                    overview={title.overview}
-                                    searchTitle={this.searchTitle}
-                                    imageURL={title.poster_path}
-                                />
-                                <hr />
-                            </div>
-                        ))}
-                    </DisplayResults>
-                </div>
-            )
-        }
-        else {
-            return (
-                <div>
-                    <h2>There are no results matching that title</h2>
-                </div>
-            )
-        }
-    }
+        return (
+            <div>
+                {this.state.loading ? (
+                    <Loading />
+                ) : (this.state.results.length ? (
+                    <div className="container">
+                        <DisplayResults>
+                            {this.state.results.map(title => (
+                                <div key={title.id}>
+                                    <Results
+                                        id={title.id}
+                                        showTitle={title.name}
+                                        movieTitle={title.title}
+                                        media={title.media_type}
+                                        overview={title.overview}
+                                        searchTitle={this.searchTitle}
+                                        imageURL={title.poster_path}
+                                    />
+                                    <hr />
+                                </div>
+                            ))}
+                        </DisplayResults>
+                    </div>
+                ) : (
+                        <div>
+                            <h2>There are no results matching that title</h2>
+                        </div>))}
+            </div>
+        )
+    };
 }
+        // if (this.state.results.length) {
+        //     return (
+        //         <div className="container">
+        //             <DisplayResults>
+        //                 {this.state.results.map(title => (
+        //                     <div key={title.id}>
+        //                         <Results
+        //                             id={title.id}
+        //                             showTitle={title.name}
+        //                             movieTitle={title.title}
+        //                             media={title.media_type}
+        //                             overview={title.overview}
+        //                             searchTitle={this.searchTitle}
+        //                             imageURL={title.poster_path}
+        //                         />
+        //                         <hr />
+        //                     </div>
+        //                 ))}
+        //             </DisplayResults>
+        //         </div>
+        //     )
+        // }
+        // else {
+        //     return (
+        //         <div>
+        //             <h2>There are no results matching that title</h2>
+        //         </div>
+        //     )
+        // }
 
 
-export default MainSearch;
+
+
+        export default MainSearch;

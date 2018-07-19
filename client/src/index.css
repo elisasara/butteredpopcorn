@@ -152,3 +152,9 @@ a {
 .posterForSearch {
   max-width: 200px;
 }
+
+#loadingSpinner {
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 15px;
+}
