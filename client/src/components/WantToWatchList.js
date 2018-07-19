@@ -4,7 +4,7 @@ import DBInfo from "./DBInfo";
 
 const WantToWatchList = props => {
     return (
-        <div>
+        <div className="table-responsive">
             <table className="table">
                 <thead>
                     <tr>

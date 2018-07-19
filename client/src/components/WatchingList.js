@@ -3,7 +3,7 @@ import ChangeStatus from "./ChangeStatus";
 
 const WatchingList = props => {
     return (
-        <div>
+        <div className="table-responsive">
             <table className="table">
                 <thead>
                     <tr>
