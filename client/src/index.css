@@ -108,3 +108,7 @@ a {
   background-color: #ef8b8b;
 }
 
+.popcornRating {
+  max-height: 35px;
+}
+
