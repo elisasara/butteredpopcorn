@@ -1,7 +1,9 @@
 import React from "react";
 import ChangeStatus from "./ChangeStatus";
+import moment from "moment";
 
 const WantToWatchList = props => {
+    // const formattedTime=moment().format(item.updatedAt)
     return (
         <div className="table-responsive">
             <table className="table">
@@ -19,7 +21,7 @@ const WantToWatchList = props => {
                         <tr key={item.id}>
                             <th scope="row">{item.title}</th>
                             <td>{item.type}</td>
-                            <td>{item.updatedAt}</td>
+                            <td>{moment(item.updatedAt).format("MMMM DD, YYYY")}</td>
                             <td><ChangeStatus tmdbId={item.tmdbID} title={item.title} type={item.type} status={item.status}/></td>
                         </tr>
                     ))}

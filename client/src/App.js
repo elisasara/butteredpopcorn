@@ -12,6 +12,7 @@ import API from "./utils/API";
 import Profile from "./pages/Profile";
 import FindFriends from "./pages/FindFriends";
 import Footer from "./components/Footer";
+import movieAPI from "./utils/movieAPI";
 // import Feed from "./pages/Feed";
 
 // const activeUser = {
@@ -30,7 +31,8 @@ import Footer from "./components/Footer";
 class App extends Component {
   state = {
     user: null,
-    search: ""
+    search: "",
+    results: []
   }
 
   componentDidMount() {
@@ -65,6 +67,20 @@ class App extends Component {
     });
   };
 
+  // handleSubmit = () => {
+  //   movieAPI.searchFor(this.state.search)
+  //   .then( res => {
+  //     console.log("search res: ", res.data)
+  //     this.setState({
+  //       results: res.data
+  //     });
+  //     // this.props.history.push(`"/search/${this.state.search}"`);
+  //   });
+  // };
+
+  // handleSubmit = () => {
+  //   this.props.history.push(`/search/${this.state.search}`);
+  // };
 
 
   render() {
@@ -72,7 +88,6 @@ class App extends Component {
       <div>
         <Router>
           <div>
-            {/* <div id="headerContainer"> */}
             <Header
               search={this.state.search}
               handleInputChange={this.handleInputChange}
@@ -80,13 +95,13 @@ class App extends Component {
               user={this.state.user}
               logout={this.logoutUser}
             />
-            {/* </div> */}
             <div className="container" id="mainArea">
               <Switch>
                 <Route exact path="/" render={props => <Home user={this.state.user} {...props} />} />
                 <Route exact path="/login" component={Login} />
                 <Route exact path="/register" component={Register} />
                 <Route exact path="/search/:search" component={MainSearch} />
+                {/* <Route exact path="/search/:search" render={props => <MainSearch user={this.state.user} info={this.state.results} {...props}/>} /> */}
                 <Route exact path="/search/movie/:id" render={props => <InfoPage user={this.state.user} {...props} />} />
                 <Route exact path="/search/tv/:id" render={props => <InfoPage user={this.state.user} {...props} />} />
                 <Route exact path="/profile" render={props => <Profile user={this.state.user} {...props} />} />

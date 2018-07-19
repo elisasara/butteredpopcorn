@@ -3,13 +3,15 @@ import { Link } from "react-router-dom";
 
 const Header = props => (
     <div id="headerContainer">
-        <nav className="navbar navbar-expand-lg navbar-light" style={{backgroundColor: "#ef8b8b"}} >
+        <nav className="navbar navbar-expand-lg navbar-light" style={{ backgroundColor: "#ef8b8b" }} >
             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target=".mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span className="navbar-toggler-icon"></span>
             </button>
             <form className="form-inline order-1">
                 <input className="form-control mr-auto ml-auto" type="search" placeholder="Search" name="search" value={props.search} onChange={props.handleInputChange} />
                 <Link to={"/search/" + props.search}>
+                    {/* <button className="btn btn-dark ml-sm-2 my-2 my-sm-0" onClick={props.handleSubmit}> Search
+                    </button> */}
                     <button className="btn btn-dark ml-sm-2 my-2 my-sm-0"> Search
                     </button>
                 </Link>

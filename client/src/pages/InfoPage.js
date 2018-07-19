@@ -37,7 +37,8 @@ class InfoPage extends Component {
                     this.setState({
                         loading: false,
                         info: res.data,
-                        movie: true
+                        movie: true,
+                        tv: false
                     });
                     // console.log(this.state.info);
                 })
@@ -50,6 +51,7 @@ class InfoPage extends Component {
                     this.setState({
                         loading: false,
                         info: res.data,
+                        movie: false,
                         tv: true
                     });
                     // console.log(this.state.info);

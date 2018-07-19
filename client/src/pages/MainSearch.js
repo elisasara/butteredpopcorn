@@ -9,13 +9,22 @@ import Loading from "../components/Loading";
 
 class MainSearch extends Component {
     state = {
+        // params: this.props.match.params.search,
+        // info: this.props.info,
         loading: false,
         results: []
     }
 
     componentDidMount() {
+        // this.setState({
+        //     params: this.props.match.params.search
+        // })
         this.handleSubmit();
     }
+
+// componentWillReceiveProps(newProps) {
+//     this.props.match.params.search;
+// }
 
     handleSubmit = () => {
         // event.preventDefault()
@@ -34,17 +43,19 @@ class MainSearch extends Component {
             .catch(err => console.log(err));
     };
 
-    render() {
+    render() {        
         return (
             <div>
                 {this.state.loading ? (
                     <Loading />
                 ) : (this.state.results.length ? (
                     <div className="container">
-                        <DisplayResults>
+                        {/* <DisplayResults> */}
+                        <div>
                             {this.state.results.map(title => (
                                 <div key={title.id}>
                                     <Results
+                                        // info={this.state.results}
                                         id={title.id}
                                         showTitle={title.name}
                                         movieTitle={title.title}
@@ -56,7 +67,8 @@ class MainSearch extends Component {
                                     <hr />
                                 </div>
                             ))}
-                        </DisplayResults>
+                        </div>
+                        {/* </DisplayResults> */}
                     </div>
                 ) : (
                         <div>
@@ -67,4 +79,4 @@ class MainSearch extends Component {
     };
 };
 
-        export default MainSearch;
+export default MainSearch;

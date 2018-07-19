@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 
 class Results extends Component {
     state = {
+        // info: this.props.info,
         hasImage: true,
         imageURL: ""
     }
@@ -35,7 +36,7 @@ class Results extends Component {
                                 <div className="col-lg-3 col-md-3 col-sm-12">
                                     <img src={this.state.imageURL} className="img-responsive posterForSearch" alt="poster"/>
                                 </div>
-                                <div className="col-lg-9 col-lg-9 col-sm-12 searchInfo">
+                                <div className="col-lg-9 col-md-9 col-sm-12 searchInfo">
                                     <Link to={"/search/tv/" + this.props.id} className="redLink"><h3 className="displayTitle" onClick={this.props.searchTitle}>{this.props.showTitle}</h3></Link>
                                     <p><em>{this.props.media}</em><br />{this.props.overview}</p>
                                 </div>
