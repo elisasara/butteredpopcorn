@@ -1,4 +1,5 @@
 import React from "react";
+import moment from "moment";
 
 const MovieInfo = props => {
 
@@ -23,7 +24,7 @@ const MovieInfo = props => {
                             <h3>{name}</h3>
                             <h4><em>{tagline}</em></h4>
                             <p>{length} minutes</p>
-                            <p className="font-italic">Release Date: {releaseDate}</p>
+                            <p className="font-italic">Release Date: {moment(releaseDate).format("MMMM DD, YYYY")}</p>
                             <p>{overview}</p>
                             <p>Genres:<span>
                                 <ul style={{ listStyleType: "none" }}>

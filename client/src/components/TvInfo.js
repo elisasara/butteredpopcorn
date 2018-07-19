@@ -1,4 +1,5 @@
 import React from "react";
+import moment from "moment";
 
 const TvInfo = props => {
     const title = props.info.name;
@@ -21,7 +22,7 @@ const TvInfo = props => {
                         <h3>{title}</h3>
                         <p>{network[0].name}</p>
                         <p className="font-italic">Seasons: {seasons}</p>
-                        <p className="font-italic">Original air date: {airDate}</p>
+                        <p className="font-italic">Original air date: {moment(airDate).format("MMMM DD, YYYY")}</p>
                         <p>{overview}</p>
                         <p>Genres:
                         <span><ul style={{listStyleType: "none"}}>
