@@ -7,6 +7,10 @@ const MovieInfo = props => {
     const imageURL = `https://image.tmdb.org/t/p/w200/${props.info.poster_path}`;
     const overview = props.info.overview;
     const releaseDate = props.info.release_date;
+    const genre = props.info.genres;
+    const length = props.info.runtime;
+    const tagline = props.info.tagline;
+
     return (
         <div>
             {imagePath ? (
@@ -17,7 +21,15 @@ const MovieInfo = props => {
                     <div className="col-lg-8 col-md-8 col-sm-12 text-left">
                         <div className="movieInfo">
                             <h3>{name}</h3>
-                            <p className="font-italic">{releaseDate}</p>
+                            <h4><em>{tagline}</em></h4>
+                            <p>{length} minutes</p>
+                            <p className="font-italic">Release Date: {releaseDate}</p>
+                            <p>Genres:<span>
+                                <ul style={{ listStyleType: "none" }}>
+                                    {genre.map(genre => (
+                                        <li>{genre.name}</li>
+                                    ))}
+                                </ul></span></p>
                             <p>{overview}</p>
                         </div>
                     </div>
