@@ -21,13 +21,7 @@ const WantToWatchList = props => {
                             <th scope="row">{item.title}</th>
                             <td>{item.type}</td>
                             <td>{item.updatedAt}</td>
-                            {/* <span>
-                            how to get it to know whether it's a movie or not??
-                                <td><DBInfo title={item.title} type="movie" tmdbId={item.id} user={props.user} />
-                                </td>
-                            </span> */}
                             <td><ChangeStatus tmdbId={item.tmdbID} title={item.title} type={item.type} status={item.status}/></td>
-                            {/* <td><ChangeStatus info={props}/></td> */}
                         </tr>
                     ))}
                 </tbody>

@@ -112,3 +112,13 @@ a {
   max-height: 35px;
 }
 
+#randomButton {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  border-style: solid;
+  border-color: #ef8b8b;
+  border-radius: 10px;
+}

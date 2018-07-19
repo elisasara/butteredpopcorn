@@ -20,8 +20,8 @@ class RandomSelect extends Component {
             <div>
                 {this.state.clicked ? (
                     <div>
-                        <h4>You should watch <em>{this.state.chosen.title}</em> next!</h4>
-                        <button type="button" className="btn btn-secondary" id="randomButton" onClick={this.chooseRandom}>What should I watch next?</button>
+                        <button type="button" className="btn btn-secondary" id="randomButton" onClick={this.chooseRandom}>Try Again</button>
+                        <center><h4>You should watch <em>{this.state.chosen.title}</em> next!</h4></center>
                     </div>
                 ) : (
                         <button type="button" className="btn btn-secondary" id="randomButton" onClick={this.chooseRandom}>What should I watch next?</button>
