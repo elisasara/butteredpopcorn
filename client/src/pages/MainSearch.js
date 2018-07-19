@@ -65,38 +65,6 @@ class MainSearch extends Component {
             </div>
         )
     };
-}
-        // if (this.state.results.length) {
-        //     return (
-        //         <div className="container">
-        //             <DisplayResults>
-        //                 {this.state.results.map(title => (
-        //                     <div key={title.id}>
-        //                         <Results
-        //                             id={title.id}
-        //                             showTitle={title.name}
-        //                             movieTitle={title.title}
-        //                             media={title.media_type}
-        //                             overview={title.overview}
-        //                             searchTitle={this.searchTitle}
-        //                             imageURL={title.poster_path}
-        //                         />
-        //                         <hr />
-        //                     </div>
-        //                 ))}
-        //             </DisplayResults>
-        //         </div>
-        //     )
-        // }
-        // else {
-        //     return (
-        //         <div>
-        //             <h2>There are no results matching that title</h2>
-        //         </div>
-        //     )
-        // }
-
-
-
+};
 
         export default MainSearch;

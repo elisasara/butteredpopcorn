@@ -5,11 +5,13 @@ import movieAPI from "../utils/movieAPI";
 import DBInfo from "../components/DBInfo";
 import TvInfo from "../components/TvInfo";
 import dbAPI from "../utils/dbAPI";
+import Loading from "../components/Loading";
 
 // import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 class InfoPage extends Component {
     state = {
+        loading: false,
         info: {},
         movie: false,
         tv: false,
@@ -25,11 +27,15 @@ class InfoPage extends Component {
     }
 
     componentDidMount() {
+        this.setState({
+            loading: true
+        })
         console.log("this.props.match: ", this.props.match)
         if (this.props.match.path === "/search/movie/:id") {
             movieAPI.searchMovie(this.props.match.params.id)
                 .then(res => {
                     this.setState({
+                        loading: false,
                         info: res.data,
                         movie: true
                     });
@@ -42,6 +48,7 @@ class InfoPage extends Component {
             movieAPI.searchTV(this.props.match.params.id)
                 .then(res => {
                     this.setState({
+                        loading: false,
                         info: res.data,
                         tv: true
                     });
@@ -60,7 +67,7 @@ class InfoPage extends Component {
                         watching: false,
                         want: false,
                         wantToWatchButton: "btn btn-outline-secondary",
-                        watchingButton: "btn btn-outline-secondary",                
+                        watchingButton: "btn btn-outline-secondary",
                         watchedButton: "btn btn-success",
                         alreadyRated: res.data[0].rating
                     });
@@ -167,44 +174,90 @@ class InfoPage extends Component {
     render() {
         return (
             <div className="container">
-                {this.state.movie ? (
+                {this.state.loading ? (
+                    <Loading />
+                ) : (this.state.movie ? (
                     <div className="row" id="infoArea">
                         <div className="col-lg-9 col-md-8 col-sm-12 border-right border-secondary">
                             <MovieInfo info={this.state.info} />
                         </div>
                         <div className="col-lg-3 col-md-4 col-sm-12">
-                            <DBInfo 
-                            title={this.state.info.title} 
-                            type="movie" tmdbId={this.state.info.id} 
-                            user={this.props.user} 
-                            allData={this.state} 
-                            wantToWatch={this.wantToWatch}
-                            watched={this.watched}
-                            currentlyWatching={this.currentlyWatching} 
-                            showRating={this.showRating} 
-                            />
-                        </div>
-                    </div>) : (
-                        <div className="row" id="infoArea">
-                            <div className="col-lg-9 col-md-8 col-sm-12 border-right border-secondary">
-                                <TvInfo info={this.state.info} />
-                            </div>
-                            <div className="col-lg-3 col-md-4 col-sm-12">
-                                <DBInfo 
-                                title={this.state.info.name}
-                                type="tv" tmdbId={this.state.info.id} 
-                                user={this.props.user} 
+                            <DBInfo
+                                title={this.state.info.title}
+                                type="movie" tmdbId={this.state.info.id}
+                                user={this.props.user}
                                 allData={this.state}
                                 wantToWatch={this.wantToWatch}
                                 watched={this.watched}
                                 currentlyWatching={this.currentlyWatching}
                                 showRating={this.showRating}
-                                 />
-                            </div>
-                        </div>)}
-            </div>
+                            />
+                        </div>
+                    </div>  
+                ) : (
+                    <div className="row" id="infoArea">
+                    <div className="col-lg-9 col-md-8 col-sm-12 border-right border-secondary">
+                        <TvInfo info={this.state.info} />
+                    </div>
+                    <div className="col-lg-3 col-md-4 col-sm-12">
+                        <DBInfo
+                            title={this.state.info.name}
+                            type="tv" tmdbId={this.state.info.id}
+                            user={this.props.user}
+                            allData={this.state}
+                            wantToWatch={this.wantToWatch}
+                            watched={this.watched}
+                            currentlyWatching={this.currentlyWatching}
+                            showRating={this.showRating}
+                        />
+                    </div>
+                </div>)
+                )}
+                </div>
         )
     }
 }
+
+
+// <div className="container">
+//     {this.state.movie ? (
+//         <div className="row" id="infoArea">
+//             <div className="col-lg-9 col-md-8 col-sm-12 border-right border-secondary">
+//                 <MovieInfo info={this.state.info} />
+//             </div>
+//             <div className="col-lg-3 col-md-4 col-sm-12">
+//                 <DBInfo
+//                     title={this.state.info.title}
+//                     type="movie" tmdbId={this.state.info.id}
+//                     user={this.props.user}
+//                     allData={this.state}
+//                     wantToWatch={this.wantToWatch}
+//                     watched={this.watched}
+//                     currentlyWatching={this.currentlyWatching}
+//                     showRating={this.showRating}
+//                 />
+//             </div>
+//         </div>) : (
+//             <div className="row" id="infoArea">
+//                 <div className="col-lg-9 col-md-8 col-sm-12 border-right border-secondary">
+//                     <TvInfo info={this.state.info} />
+//                 </div>
+//                 <div className="col-lg-3 col-md-4 col-sm-12">
+//                     <DBInfo
+//                         title={this.state.info.name}
+//                         type="tv" tmdbId={this.state.info.id}
+//                         user={this.props.user}
+//                         allData={this.state}
+//                         wantToWatch={this.wantToWatch}
+//                         watched={this.watched}
+//                         currentlyWatching={this.currentlyWatching}
+//                         showRating={this.showRating}
+//                     />
+//                 </div>
+//             </div>)}
+//     {/* </div> */}
+// </div>
+// )
+
 
 export default InfoPage;
