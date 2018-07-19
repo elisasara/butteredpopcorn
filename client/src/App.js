@@ -100,8 +100,8 @@ class App extends Component {
                 <Route exact path="/" render={props => <Home user={this.state.user} {...props} />} />
                 <Route exact path="/login" component={Login} />
                 <Route exact path="/register" component={Register} />
-                <Route exact path="/search/:search" component={MainSearch} />
-                {/* <Route exact path="/search/:search" render={props => <MainSearch user={this.state.user} info={this.state.results} {...props}/>} /> */}
+                {/* <Route exact path="/search/:search" component={MainSearch} /> */}
+                <Route exact path="/search/:search" render={props => <MainSearch key={props.match.params.search} user={this.state.user} {...props}/>} />
                 <Route exact path="/search/movie/:id" render={props => <InfoPage user={this.state.user} {...props} />} />
                 <Route exact path="/search/tv/:id" render={props => <InfoPage user={this.state.user} {...props} />} />
                 <Route exact path="/profile" render={props => <Profile user={this.state.user} {...props} />} />

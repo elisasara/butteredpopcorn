@@ -45,7 +45,7 @@ class MainSearch extends Component {
 
     render() {        
         return (
-            <div>
+            <div key={this.props.match.params.search}>
                 {this.state.loading ? (
                     <Loading />
                 ) : (this.state.results.length ? (
