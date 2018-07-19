@@ -27,7 +27,7 @@ const TvInfo = props => {
                         <p>Genres:
                         <span><ul style={{listStyleType: "none"}}>
                             {genre.map(genre => (
-                                <li>{genre.name}</li>
+                                <li key={genre.id}>{genre.name}</li>
                             ))}
                             </ul></span></p>
                     </div>

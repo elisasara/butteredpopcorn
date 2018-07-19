@@ -1,5 +1,6 @@
 import React from "react";
 import ChangeStatus from "./ChangeStatus";
+import moment from "moment"
 
 const WatchingList = props => {
     return (
@@ -18,7 +19,7 @@ const WatchingList = props => {
                         <tr key={item.id}>
                             <th scope="row">{item.title}</th>
                             <td>{item.type}</td>
-                            <td>{item.updatedAt}</td>
+                            <td>{moment(item.updatedAt).format("MMMM DD, YYYY")}</td>
                             <td><ChangeStatus tmdbId={item.tmdbID} title={item.title} type={item.type} status={item.status}/></td>
                         </tr>
                     ))}
