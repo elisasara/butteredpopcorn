@@ -40,7 +40,7 @@ class InfoPage extends Component {
                         movie: true,
                         tv: false
                     });
-                    this.findStatus();
+                    // this.findStatus();
                     // console.log(this.state.info);
                 })
                 .catch(err => console.log(err));
@@ -55,7 +55,7 @@ class InfoPage extends Component {
                         movie: false,
                         tv: true
                     });
-                    this.findStatus();
+                    // this.findStatus();
                     // console.log(this.state.info);
                 })
                 .catch(err => console.log(err));
@@ -174,6 +174,13 @@ class InfoPage extends Component {
         })
     }
 
+    // componentWillUnmount() {
+    //     this.setState({
+    //         wantToWatchButton: "btn btn-outline-secondary",
+    //         watchingButton: "btn btn-outline-secondary",
+    //         watchedButton: "btn btn-outline-secondary"
+    //     })
+    // }
 
 
     render() {
@@ -198,27 +205,27 @@ class InfoPage extends Component {
                                 showRating={this.showRating}
                             />
                         </div>
-                    </div>  
+                    </div>
                 ) : (
-                    <div className="row" id="infoArea">
-                    <div className="col-lg-9 col-md-8 col-sm-12 border-right border-secondary">
-                        <TvInfo info={this.state.info} />
-                    </div>
-                    <div className="col-lg-3 col-md-4 col-sm-12">
-                        <DBInfo
-                            title={this.state.info.name}
-                            type="tv" tmdbId={this.state.info.id}
-                            user={this.props.user}
-                            allData={this.state}
-                            wantToWatch={this.wantToWatch}
-                            watched={this.watched}
-                            currentlyWatching={this.currentlyWatching}
-                            showRating={this.showRating}
-                        />
-                    </div>
-                </div>)
-                )}
-                </div>
+                        <div className="row" id="infoArea">
+                            <div className="col-lg-9 col-md-8 col-sm-12 border-right border-secondary">
+                                <TvInfo info={this.state.info} />
+                            </div>
+                            <div className="col-lg-3 col-md-4 col-sm-12">
+                                <DBInfo
+                                    title={this.state.info.name}
+                                    type="tv" tmdbId={this.state.info.id}
+                                    user={this.props.user}
+                                    allData={this.state}
+                                    wantToWatch={this.wantToWatch}
+                                    watched={this.watched}
+                                    currentlyWatching={this.currentlyWatching}
+                                    showRating={this.showRating}
+                                />
+                            </div>
+                        </div>)
+                    )}
+            </div>
         )
     }
 }
