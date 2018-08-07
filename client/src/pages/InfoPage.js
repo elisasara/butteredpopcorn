@@ -40,8 +40,8 @@ class InfoPage extends Component {
                         movie: true,
                         tv: false
                     });
-                    // this.findStatus();
-                    // console.log(this.state.info);
+                    this.findStatus();
+                    console.log(this.state.info);
                 })
                 .catch(err => console.log(err));
         }
@@ -55,8 +55,8 @@ class InfoPage extends Component {
                         movie: false,
                         tv: true
                     });
-                    // this.findStatus();
-                    // console.log(this.state.info);
+                    this.findStatus();
+                    console.log(this.state.info);
                 })
                 .catch(err => console.log(err));
         }
@@ -73,7 +73,7 @@ class InfoPage extends Component {
                         want: false,
                         wantToWatchButton: "btn btn-outline-secondary",
                         watchingButton: "btn btn-outline-secondary",
-                        watchedButton: "btn btn-success",
+                        // watchedButton: "btn btn-success",
                         alreadyRated: res.data[0].rating
                     });
                 };
