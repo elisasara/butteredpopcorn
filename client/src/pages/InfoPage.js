@@ -73,40 +73,88 @@ class InfoPage extends Component {
                         want: false,
                         wantToWatchButton: "btn btn-outline-secondary",
                         watchingButton: "btn btn-outline-secondary",
-                        // watchedButton: "btn btn-success",
+                        watchedButton: "btn btn-success",
                         alreadyRated: res.data[0].rating
                     });
-                };
-            });
-
-        dbAPI.getWatching()
-            .then(res => {
-                if (res.data.length) {
-                    this.setState({
-                        watched: false,
-                        watching: true,
-                        want: false,
-                        wantToWatchButton: "btn btn-outline-secondary",
-                        watchingButton: "btn btn-success",
-                        watchedButton: "btn btn-outline-secondary"
-                    });
-                };
-            });
-
-        dbAPI.getWantToWatch()
-            .then(res => {
-                if (res.data.length) {
-                    this.setState({
-                        watched: false,
-                        watching: false,
-                        want: true,
-                        wantToWatchButton: "btn btn-success",
-                        watchingButton: "btn btn-outline-secondary",
-                        watchedButton: "btn btn-outline-secondary"
-                    });
-                };
+                }
+                else {
+                    dbAPI.getWatching()
+                        .then(res => {
+                            if (res.data.length) {
+                                this.setState({
+                                    watched: false,
+                                    watching: true,
+                                    want: false,
+                                    wantToWatchButton: "btn btn-outline-secondary",
+                                    watchingButton: "btn btn-success",
+                                    watchedButton: "btn btn-outline-secondary"
+                                });
+                            }
+                            else {
+                                dbAPI.getWantToWatch()
+                                    .then(res => {
+                                        if (res.data.length) {
+                                            this.setState({
+                                                watched: false,
+                                                watching: false,
+                                                want: true,
+                                                wantToWatchButton: "btn btn-success",
+                                                watchingButton: "btn btn-outline-secondary",
+                                                watchedButton: "btn btn-outline-secondary"
+                                            });
+                                        };
+                                    });
+                            }
+                        });
+                }
             });
     };
+
+    // findStatus = () => {
+    //     dbAPI.getWatched()
+    //         .then(res => {
+    //             console.log("watched res.data: ", res.data);
+    //             if (res.data.length) {
+    //                 this.setState({
+    //                     watched: true,
+    //                     watching: false,
+    //                     want: false,
+    //                     wantToWatchButton: "btn btn-outline-secondary",
+    //                     watchingButton: "btn btn-outline-secondary",
+    //                     watchedButton: "btn btn-success",
+    //                     alreadyRated: res.data[0].rating
+    //                 });
+    //             };
+    //         });
+
+    //     dbAPI.getWatching()
+    //         .then(res => {
+    //             if (res.data.length) {
+    //                 this.setState({
+    //                     watched: false,
+    //                     watching: true,
+    //                     want: false,
+    //                     wantToWatchButton: "btn btn-outline-secondary",
+    //                     watchingButton: "btn btn-success",
+    //                     watchedButton: "btn btn-outline-secondary"
+    //                 });
+    //             };
+    //         });
+
+    //     dbAPI.getWantToWatch()
+    //         .then(res => {
+    //             if (res.data.length) {
+    //                 this.setState({
+    //                     watched: false,
+    //                     watching: false,
+    //                     want: true,
+    //                     wantToWatchButton: "btn btn-success",
+    //                     watchingButton: "btn btn-outline-secondary",
+    //                     watchedButton: "btn btn-outline-secondary"
+    //                 });
+    //             };
+    //         });
+    // };
 
     wantToWatch = (tmdbId, title, type) => {
         // console.log("I've been clicked");
