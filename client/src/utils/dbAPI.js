@@ -25,6 +25,21 @@ export default {
         return axios.get("/db/towatch");
     },
 
+    //TEST FOR BUTTONS
+    getThisWatched: function(titleId) {
+        return axios.get(`/db/thiswatched/${titleId}`);
+    },
+
+    getThisWatching: function(titleId) {
+        return axios.get(`/db/thiswatching/${titleId}`);
+    },
+
+    getThisToWatch: function(titleId) {
+        return axios.get(`/db/thistowatch/${titleId}`);
+    },
+
+    // End Test Area
+
     getUserFromDb: function() {
         return axios.get("/db/user");
     },

@@ -99,6 +99,45 @@ module.exports = function (router) {
         });
     });
 
+    // TEST ROUTES TO SEE IF THIS WORKS FOR CORRECTING THE BUTTONS
+    router.get("/db/thiswatched/:titleId", function (req, res){
+        const userId = req.user.id;
+        db.Watched.findAll({
+            where: {
+                UserId: userId,
+                tmdbID: req.params.titleId
+            }
+        }).then(data => {
+            res.json(data);
+        });
+    });
+
+    router.get("/db/thiswatching/:titleId", function (req, res){
+        const userId = req.user.id;
+        db.CurrentlyWatching.findAll({
+            where: {
+                UserId: userId,
+                tmdbID: req.params.titleId
+            }
+        }).then(data => {
+            res.json(data);
+        });
+    });
+
+    router.get("/db/thistowatch/:titleId", function (req, res){
+        const userId = req.user.id;
+        db.WantToWatch.findAll({
+            where: {
+                UserId: userId,
+                tmdbID: req.params.titleId
+            }
+        }).then(data => {
+            res.json(data);
+        });
+    });
+
+    //End test area
+
     router.get("/db/watching", function (req, res) {
         const userId = req.user.id;
         console.log("User ID: ", userId);
