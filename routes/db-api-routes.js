@@ -102,6 +102,7 @@ module.exports = function (router) {
     // TEST ROUTES TO SEE IF THIS WORKS FOR CORRECTING THE BUTTONS
     router.get("/db/thiswatched/:titleId", function (req, res){
         const userId = req.user.id;
+        console.log("Title ID on backend:", req.params.titleId);
         db.Watched.findAll({
             where: {
                 UserId: userId,
@@ -114,6 +115,7 @@ module.exports = function (router) {
 
     router.get("/db/thiswatching/:titleId", function (req, res){
         const userId = req.user.id;
+        console.log("Title ID on backend:", req.params.titleId);
         db.CurrentlyWatching.findAll({
             where: {
                 UserId: userId,
@@ -126,6 +128,7 @@ module.exports = function (router) {
 
     router.get("/db/thistowatch/:titleId", function (req, res){
         const userId = req.user.id;
+        console.log("Title ID on backend:", req.params.titleId);
         db.WantToWatch.findAll({
             where: {
                 UserId: userId,

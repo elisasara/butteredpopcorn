@@ -27,14 +27,17 @@ export default {
 
     //TEST FOR BUTTONS
     getThisWatched: function(titleId) {
+        console.log("Title ID:", titleId);
         return axios.get(`/db/thiswatched/${titleId}`);
     },
 
     getThisWatching: function(titleId) {
+        console.log("Title ID:", titleId);
         return axios.get(`/db/thiswatching/${titleId}`);
     },
 
     getThisToWatch: function(titleId) {
+        console.log("Title ID:", titleId);
         return axios.get(`/db/thistowatch/${titleId}`);
     },
 

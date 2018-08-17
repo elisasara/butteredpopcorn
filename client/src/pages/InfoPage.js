@@ -157,6 +157,7 @@ class InfoPage extends Component {
     // };
 
     findStatus = () => {
+        console.log("ID to check based on params:", this.props.match.params.id);
         dbAPI.getThisWatched(this.props.match.params.id)
             .then(res => {
                 console.log("watched res.data: ", res.data);
@@ -170,10 +171,10 @@ class InfoPage extends Component {
                         watchedButton: "btn btn-success",
                         alreadyRated: res.data[0].rating
                     });
-                };
+                }
             });
 
-        dbAPI.getWatching()
+        dbAPI.getThisWatching(this.props.match.params.id)
             .then(res => {
                 if (res.data.length) {
                     this.setState({
@@ -184,10 +185,10 @@ class InfoPage extends Component {
                         watchingButton: "btn btn-success",
                         watchedButton: "btn btn-outline-secondary"
                     });
-                };
+                }
             });
 
-        dbAPI.getWantToWatch()
+        dbAPI.getThisToWatch(this.props.match.params.id)
             .then(res => {
                 if (res.data.length) {
                     this.setState({
@@ -198,7 +199,7 @@ class InfoPage extends Component {
                         watchingButton: "btn btn-outline-secondary",
                         watchedButton: "btn btn-outline-secondary"
                     });
-                };
+                }
             });
     };
 
